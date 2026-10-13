@@ -1,0 +1,1202 @@
+[
+  {
+    "iteration": 1,
+    "epoch": 1,
+    "harness": "h00",
+    "successor_harness": "h01",
+    "task_id": "zio--zrk-typecheck",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.031066510981739
+  },
+  {
+    "iteration": 1,
+    "epoch": 1,
+    "harness": "h00",
+    "successor_harness": "h01",
+    "task_id": "snarkvm--mainnet-execution-verify",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9992479297082889
+  },
+  {
+    "iteration": 1,
+    "epoch": 1,
+    "harness": "h00",
+    "successor_harness": "h01",
+    "task_id": "gridflock--drawer-stl",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0247587173023267
+  },
+  {
+    "iteration": 1,
+    "epoch": 1,
+    "harness": "h00",
+    "successor_harness": "h01",
+    "task_id": "commitizen--check",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 2.2397738195568495
+  },
+  {
+    "iteration": 1,
+    "epoch": 1,
+    "harness": "h00",
+    "successor_harness": "h01",
+    "task_id": "nerdbank-messagepack--earthquake-fanout",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0441253174877356
+  },
+  {
+    "iteration": 2,
+    "epoch": 1,
+    "harness": "h01",
+    "successor_harness": "h02",
+    "task_id": "react-native-code-push--mattermost-release",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0078682903814618
+  },
+  {
+    "iteration": 2,
+    "epoch": 1,
+    "harness": "h01",
+    "successor_harness": "h02",
+    "task_id": "latexsnipper--formula-batch",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0521291486426758
+  },
+  {
+    "iteration": 2,
+    "epoch": 1,
+    "harness": "h01",
+    "successor_harness": "h02",
+    "task_id": "kiwifs--kubernetes-reindex",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 3.0718961800502105
+  },
+  {
+    "iteration": 2,
+    "epoch": 1,
+    "harness": "h01",
+    "successor_harness": "h02",
+    "task_id": "doc-detective--redpanda-transforms",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.039439155333328
+  },
+  {
+    "iteration": 2,
+    "epoch": 1,
+    "harness": "h01",
+    "successor_harness": "h02",
+    "task_id": "youtrackdb--osm-roads",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.1487754220665907
+  },
+  {
+    "iteration": 3,
+    "epoch": 1,
+    "harness": "h02",
+    "successor_harness": "h03",
+    "task_id": "bevy-voxel-world--terrain-streaming",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.0
+  },
+  {
+    "iteration": 3,
+    "epoch": 1,
+    "harness": "h02",
+    "successor_harness": "h03",
+    "task_id": "msdialworkbench--lcms-alignment",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9773984891485917
+  },
+  {
+    "iteration": 3,
+    "epoch": 1,
+    "harness": "h02",
+    "successor_harness": "h03",
+    "task_id": "chaste--ttp06-sheet",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9486726942038173
+  },
+  {
+    "iteration": 3,
+    "epoch": 1,
+    "harness": "h02",
+    "successor_harness": "h03",
+    "task_id": "petsc--ocean-age-solve",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9086866941999124
+  },
+  {
+    "iteration": 3,
+    "epoch": 1,
+    "harness": "h02",
+    "successor_harness": "h03",
+    "task_id": "spectral--api-lint",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.030675804337032
+  },
+  {
+    "iteration": 4,
+    "epoch": 1,
+    "harness": "h03",
+    "successor_harness": "h04",
+    "task_id": "tileserver-gl--country-atlas",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0310619395146974
+  },
+  {
+    "iteration": 4,
+    "epoch": 1,
+    "harness": "h03",
+    "successor_harness": "h04",
+    "task_id": "dusty--fpindex-ingest",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.8982419831307721
+  },
+  {
+    "iteration": 4,
+    "epoch": 1,
+    "harness": "h03",
+    "successor_harness": "h04",
+    "task_id": "metamorpho--reallocate",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0
+  },
+  {
+    "iteration": 4,
+    "epoch": 1,
+    "harness": "h03",
+    "successor_harness": "h04",
+    "task_id": "reactant--fashion-mnist-train",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9893307065865405
+  },
+  {
+    "iteration": 4,
+    "epoch": 1,
+    "harness": "h03",
+    "successor_harness": "h04",
+    "task_id": "eole--gpt2-wikitext-generate",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.020230036227849
+  },
+  {
+    "iteration": 5,
+    "epoch": 1,
+    "harness": "h04",
+    "successor_harness": "h05",
+    "task_id": "mrst--norne-import",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0135775471263064
+  },
+  {
+    "iteration": 5,
+    "epoch": 1,
+    "harness": "h04",
+    "successor_harness": "h05",
+    "task_id": "duckdb--taxi-ingest",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0684276178107681
+  },
+  {
+    "iteration": 5,
+    "epoch": 1,
+    "harness": "h04",
+    "successor_harness": "h05",
+    "task_id": "mssql-extension--taxi-copy",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0462107902274678
+  },
+  {
+    "iteration": 5,
+    "epoch": 1,
+    "harness": "h04",
+    "successor_harness": "h05",
+    "task_id": "kms--batch-encrypt",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.0
+  },
+  {
+    "iteration": 5,
+    "epoch": 1,
+    "harness": "h04",
+    "successor_harness": "h05",
+    "task_id": "wiredtiger--pageviews",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0251728909684588
+  },
+  {
+    "iteration": 6,
+    "epoch": 1,
+    "harness": "h05",
+    "successor_harness": "h06",
+    "task_id": "cocoon--oci-import",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0067219159304548
+  },
+  {
+    "iteration": 6,
+    "epoch": 1,
+    "harness": "h05",
+    "successor_harness": "h06",
+    "task_id": "senpi--image-batch",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 2.280585331691952
+  },
+  {
+    "iteration": 6,
+    "epoch": 1,
+    "harness": "h05",
+    "successor_harness": "h06",
+    "task_id": "anyrender--openmoji",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0107976258442835
+  },
+  {
+    "iteration": 6,
+    "epoch": 1,
+    "harness": "h05",
+    "successor_harness": "h06",
+    "task_id": "sqruff--glam-etl",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9887977116457003
+  },
+  {
+    "iteration": 6,
+    "epoch": 1,
+    "harness": "h05",
+    "successor_harness": "h06",
+    "task_id": "calldiff--pi-review",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0902219263719366
+  },
+  {
+    "iteration": 7,
+    "epoch": 1,
+    "harness": "h06",
+    "successor_harness": "h07",
+    "task_id": "typst--napkin",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9585406085992247
+  },
+  {
+    "iteration": 7,
+    "epoch": 1,
+    "harness": "h06",
+    "successor_harness": "h07",
+    "task_id": "apalache--zcash-sync",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0183710220138618
+  },
+  {
+    "iteration": 7,
+    "epoch": 1,
+    "harness": "h06",
+    "successor_harness": "h07",
+    "task_id": "meshmonitor--coverage-grid",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.46215684463606
+  },
+  {
+    "iteration": 7,
+    "epoch": 1,
+    "harness": "h06",
+    "successor_harness": "h07",
+    "task_id": "jagua--nesting",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0365038565676443
+  },
+  {
+    "iteration": 7,
+    "epoch": 1,
+    "harness": "h06",
+    "successor_harness": "h07",
+    "task_id": "ojp--taxi-export",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.973372696089319
+  },
+  {
+    "iteration": 8,
+    "epoch": 1,
+    "harness": "h07",
+    "successor_harness": "h08",
+    "task_id": "embree--chess-render",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0044838509908536
+  },
+  {
+    "iteration": 8,
+    "epoch": 1,
+    "harness": "h07",
+    "successor_harness": "h08",
+    "task_id": "cpp2rust--woff2-compress",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0175226374196813
+  },
+  {
+    "iteration": 8,
+    "epoch": 1,
+    "harness": "h07",
+    "successor_harness": "h08",
+    "task_id": "svf-tools-svf--nginx-andersen-wpa",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9580185795915623
+  },
+  {
+    "iteration": 8,
+    "epoch": 1,
+    "harness": "h07",
+    "successor_harness": "h08",
+    "task_id": "sundials--cantera-ignition",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0439587561116088
+  },
+  {
+    "iteration": 8,
+    "epoch": 1,
+    "harness": "h07",
+    "successor_harness": "h08",
+    "task_id": "polkadot-api--descriptor-generation",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.4057206954570949
+  },
+  {
+    "iteration": 9,
+    "epoch": 2,
+    "harness": "h08",
+    "successor_harness": "h09",
+    "task_id": "typst--napkin",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0186264248442172
+  },
+  {
+    "iteration": 9,
+    "epoch": 2,
+    "harness": "h08",
+    "successor_harness": "h09",
+    "task_id": "cpp2rust--woff2-compress",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0851051800583884
+  },
+  {
+    "iteration": 9,
+    "epoch": 2,
+    "harness": "h08",
+    "successor_harness": "h09",
+    "task_id": "youtrackdb--osm-roads",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.132934693351713
+  },
+  {
+    "iteration": 9,
+    "epoch": 2,
+    "harness": "h08",
+    "successor_harness": "h09",
+    "task_id": "dusty--fpindex-ingest",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0098144256691777
+  },
+  {
+    "iteration": 9,
+    "epoch": 2,
+    "harness": "h08",
+    "successor_harness": "h09",
+    "task_id": "zio--zrk-typecheck",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0245503408981609
+  },
+  {
+    "iteration": 10,
+    "epoch": 2,
+    "harness": "h09",
+    "successor_harness": "h10",
+    "task_id": "senpi--image-batch",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0524804839633424
+  },
+  {
+    "iteration": 10,
+    "epoch": 2,
+    "harness": "h09",
+    "successor_harness": "h10",
+    "task_id": "tileserver-gl--country-atlas",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0863833403048024
+  },
+  {
+    "iteration": 10,
+    "epoch": 2,
+    "harness": "h09",
+    "successor_harness": "h10",
+    "task_id": "mssql-extension--taxi-copy",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.4770075425158882
+  },
+  {
+    "iteration": 10,
+    "epoch": 2,
+    "harness": "h09",
+    "successor_harness": "h10",
+    "task_id": "jagua--nesting",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0001412722690957
+  },
+  {
+    "iteration": 10,
+    "epoch": 2,
+    "harness": "h09",
+    "successor_harness": "h10",
+    "task_id": "ojp--taxi-export",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0077428243167608
+  },
+  {
+    "iteration": 11,
+    "epoch": 2,
+    "harness": "h10",
+    "successor_harness": "h11",
+    "task_id": "sundials--cantera-ignition",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.976543259921287
+  },
+  {
+    "iteration": 11,
+    "epoch": 2,
+    "harness": "h10",
+    "successor_harness": "h11",
+    "task_id": "snarkvm--mainnet-execution-verify",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.00309263814022
+  },
+  {
+    "iteration": 11,
+    "epoch": 2,
+    "harness": "h10",
+    "successor_harness": "h11",
+    "task_id": "embree--chess-render",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9998300909013679
+  },
+  {
+    "iteration": 11,
+    "epoch": 2,
+    "harness": "h10",
+    "successor_harness": "h11",
+    "task_id": "eole--gpt2-wikitext-generate",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0376807180868575
+  },
+  {
+    "iteration": 11,
+    "epoch": 2,
+    "harness": "h10",
+    "successor_harness": "h11",
+    "task_id": "gridflock--drawer-stl",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0288041426710495
+  },
+  {
+    "iteration": 12,
+    "epoch": 2,
+    "harness": "h11",
+    "successor_harness": "h12",
+    "task_id": "commitizen--check",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0859741234559563
+  },
+  {
+    "iteration": 12,
+    "epoch": 2,
+    "harness": "h11",
+    "successor_harness": "h12",
+    "task_id": "meshmonitor--coverage-grid",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.4708581743816107
+  },
+  {
+    "iteration": 12,
+    "epoch": 2,
+    "harness": "h11",
+    "successor_harness": "h12",
+    "task_id": "doc-detective--redpanda-transforms",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.1010048349973032
+  },
+  {
+    "iteration": 12,
+    "epoch": 2,
+    "harness": "h11",
+    "successor_harness": "h12",
+    "task_id": "wiredtiger--pageviews",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9998543660027596
+  },
+  {
+    "iteration": 12,
+    "epoch": 2,
+    "harness": "h11",
+    "successor_harness": "h12",
+    "task_id": "bevy-voxel-world--terrain-streaming",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0313377538758275
+  },
+  {
+    "iteration": 13,
+    "epoch": 2,
+    "harness": "h12",
+    "successor_harness": "h13",
+    "task_id": "svf-tools-svf--nginx-andersen-wpa",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.912627892280459
+  },
+  {
+    "iteration": 13,
+    "epoch": 2,
+    "harness": "h12",
+    "successor_harness": "h13",
+    "task_id": "sqruff--glam-etl",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9735919356635115
+  },
+  {
+    "iteration": 13,
+    "epoch": 2,
+    "harness": "h12",
+    "successor_harness": "h13",
+    "task_id": "mrst--norne-import",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0178197391339536
+  },
+  {
+    "iteration": 13,
+    "epoch": 2,
+    "harness": "h12",
+    "successor_harness": "h13",
+    "task_id": "nerdbank-messagepack--earthquake-fanout",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0576813343736067
+  },
+  {
+    "iteration": 13,
+    "epoch": 2,
+    "harness": "h12",
+    "successor_harness": "h13",
+    "task_id": "react-native-code-push--mattermost-release",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0050471382571085
+  },
+  {
+    "iteration": 14,
+    "epoch": 2,
+    "harness": "h13",
+    "successor_harness": "h14",
+    "task_id": "reactant--fashion-mnist-train",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9806517236752915
+  },
+  {
+    "iteration": 14,
+    "epoch": 2,
+    "harness": "h13",
+    "successor_harness": "h14",
+    "task_id": "petsc--ocean-age-solve",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9716161332800433
+  },
+  {
+    "iteration": 14,
+    "epoch": 2,
+    "harness": "h13",
+    "successor_harness": "h14",
+    "task_id": "duckdb--taxi-ingest",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0322028230537297
+  },
+  {
+    "iteration": 14,
+    "epoch": 2,
+    "harness": "h13",
+    "successor_harness": "h14",
+    "task_id": "calldiff--pi-review",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0880945832516553
+  },
+  {
+    "iteration": 14,
+    "epoch": 2,
+    "harness": "h13",
+    "successor_harness": "h14",
+    "task_id": "anyrender--openmoji",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.013593879560556
+  },
+  {
+    "iteration": 15,
+    "epoch": 2,
+    "harness": "h14",
+    "successor_harness": "h15",
+    "task_id": "kiwifs--kubernetes-reindex",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 2.022792161317999
+  },
+  {
+    "iteration": 15,
+    "epoch": 2,
+    "harness": "h14",
+    "successor_harness": "h15",
+    "task_id": "chaste--ttp06-sheet",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9658597617701766
+  },
+  {
+    "iteration": 15,
+    "epoch": 2,
+    "harness": "h14",
+    "successor_harness": "h15",
+    "task_id": "apalache--zcash-sync",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.034809737951566
+  },
+  {
+    "iteration": 15,
+    "epoch": 2,
+    "harness": "h14",
+    "successor_harness": "h15",
+    "task_id": "msdialworkbench--lcms-alignment",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0004080524200083
+  },
+  {
+    "iteration": 15,
+    "epoch": 2,
+    "harness": "h14",
+    "successor_harness": "h15",
+    "task_id": "metamorpho--reallocate",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0008892897241828
+  },
+  {
+    "iteration": 16,
+    "epoch": 2,
+    "harness": "h15",
+    "successor_harness": "h16",
+    "task_id": "cocoon--oci-import",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0151005442633407
+  },
+  {
+    "iteration": 16,
+    "epoch": 2,
+    "harness": "h15",
+    "successor_harness": "h16",
+    "task_id": "kms--batch-encrypt",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0068288371134846
+  },
+  {
+    "iteration": 16,
+    "epoch": 2,
+    "harness": "h15",
+    "successor_harness": "h16",
+    "task_id": "spectral--api-lint",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9909643743501024
+  },
+  {
+    "iteration": 16,
+    "epoch": 2,
+    "harness": "h15",
+    "successor_harness": "h16",
+    "task_id": "polkadot-api--descriptor-generation",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.3500430910657855
+  },
+  {
+    "iteration": 16,
+    "epoch": 2,
+    "harness": "h15",
+    "successor_harness": "h16",
+    "task_id": "latexsnipper--formula-batch",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9933134002781512
+  },
+  {
+    "iteration": 17,
+    "epoch": 3,
+    "harness": "h16",
+    "successor_harness": "h17",
+    "task_id": "snarkvm--mainnet-execution-verify",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0522226835740542
+  },
+  {
+    "iteration": 17,
+    "epoch": 3,
+    "harness": "h16",
+    "successor_harness": "h17",
+    "task_id": "msdialworkbench--lcms-alignment",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9719403213868895
+  },
+  {
+    "iteration": 17,
+    "epoch": 3,
+    "harness": "h16",
+    "successor_harness": "h17",
+    "task_id": "cocoon--oci-import",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0466257975703974
+  },
+  {
+    "iteration": 17,
+    "epoch": 3,
+    "harness": "h16",
+    "successor_harness": "h17",
+    "task_id": "calldiff--pi-review",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0899092902129273
+  },
+  {
+    "iteration": 17,
+    "epoch": 3,
+    "harness": "h16",
+    "successor_harness": "h17",
+    "task_id": "nerdbank-messagepack--earthquake-fanout",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9973943526832352
+  },
+  {
+    "iteration": 18,
+    "epoch": 3,
+    "harness": "h17",
+    "successor_harness": "h18",
+    "task_id": "metamorpho--reallocate",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0548975992704446
+  },
+  {
+    "iteration": 18,
+    "epoch": 3,
+    "harness": "h17",
+    "successor_harness": "h18",
+    "task_id": "reactant--fashion-mnist-train",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0042160038529235
+  },
+  {
+    "iteration": 18,
+    "epoch": 3,
+    "harness": "h17",
+    "successor_harness": "h18",
+    "task_id": "commitizen--check",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 2.1281400785391202
+  },
+  {
+    "iteration": 18,
+    "epoch": 3,
+    "harness": "h17",
+    "successor_harness": "h18",
+    "task_id": "meshmonitor--coverage-grid",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.0
+  },
+  {
+    "iteration": 18,
+    "epoch": 3,
+    "harness": "h17",
+    "successor_harness": "h18",
+    "task_id": "mssql-extension--taxi-copy",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9737075016436143
+  },
+  {
+    "iteration": 19,
+    "epoch": 3,
+    "harness": "h18",
+    "successor_harness": "h19",
+    "task_id": "doc-detective--redpanda-transforms",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0529414398330121
+  },
+  {
+    "iteration": 19,
+    "epoch": 3,
+    "harness": "h18",
+    "successor_harness": "h19",
+    "task_id": "gridflock--drawer-stl",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0512155562523862
+  },
+  {
+    "iteration": 19,
+    "epoch": 3,
+    "harness": "h18",
+    "successor_harness": "h19",
+    "task_id": "react-native-code-push--mattermost-release",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.271920121590935
+  },
+  {
+    "iteration": 19,
+    "epoch": 3,
+    "harness": "h18",
+    "successor_harness": "h19",
+    "task_id": "typst--napkin",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.017801417362693
+  },
+  {
+    "iteration": 19,
+    "epoch": 3,
+    "harness": "h18",
+    "successor_harness": "h19",
+    "task_id": "cpp2rust--woff2-compress",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9922795206436394
+  },
+  {
+    "iteration": 20,
+    "epoch": 3,
+    "harness": "h19",
+    "successor_harness": "h20",
+    "task_id": "ojp--taxi-export",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0068487071946568
+  },
+  {
+    "iteration": 20,
+    "epoch": 3,
+    "harness": "h19",
+    "successor_harness": "h20",
+    "task_id": "embree--chess-render",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0042795297974543
+  },
+  {
+    "iteration": 20,
+    "epoch": 3,
+    "harness": "h19",
+    "successor_harness": "h20",
+    "task_id": "kiwifs--kubernetes-reindex",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.9112131378345112
+  },
+  {
+    "iteration": 20,
+    "epoch": 3,
+    "harness": "h19",
+    "successor_harness": "h20",
+    "task_id": "eole--gpt2-wikitext-generate",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.001463930909768
+  },
+  {
+    "iteration": 20,
+    "epoch": 3,
+    "harness": "h19",
+    "successor_harness": "h20",
+    "task_id": "tileserver-gl--country-atlas",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.001808643044603
+  },
+  {
+    "iteration": 21,
+    "epoch": 3,
+    "harness": "h20",
+    "successor_harness": "h21",
+    "task_id": "senpi--image-batch",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.064988599422296
+  },
+  {
+    "iteration": 21,
+    "epoch": 3,
+    "harness": "h20",
+    "successor_harness": "h21",
+    "task_id": "kms--batch-encrypt",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9846746120085065
+  },
+  {
+    "iteration": 21,
+    "epoch": 3,
+    "harness": "h20",
+    "successor_harness": "h21",
+    "task_id": "svf-tools-svf--nginx-andersen-wpa",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.2996572548249576
+  },
+  {
+    "iteration": 21,
+    "epoch": 3,
+    "harness": "h20",
+    "successor_harness": "h21",
+    "task_id": "latexsnipper--formula-batch",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9950152585166366
+  },
+  {
+    "iteration": 21,
+    "epoch": 3,
+    "harness": "h20",
+    "successor_harness": "h21",
+    "task_id": "spectral--api-lint",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0479079058060674
+  },
+  {
+    "iteration": 22,
+    "epoch": 3,
+    "harness": "h21",
+    "successor_harness": "h22",
+    "task_id": "anyrender--openmoji",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9716944097843224
+  },
+  {
+    "iteration": 22,
+    "epoch": 3,
+    "harness": "h21",
+    "successor_harness": "h22",
+    "task_id": "sqruff--glam-etl",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.8247205059015744
+  },
+  {
+    "iteration": 22,
+    "epoch": 3,
+    "harness": "h21",
+    "successor_harness": "h22",
+    "task_id": "polkadot-api--descriptor-generation",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9318626843475025
+  },
+  {
+    "iteration": 22,
+    "epoch": 3,
+    "harness": "h21",
+    "successor_harness": "h22",
+    "task_id": "mrst--norne-import",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.2684907993839776
+  },
+  {
+    "iteration": 22,
+    "epoch": 3,
+    "harness": "h21",
+    "successor_harness": "h22",
+    "task_id": "dusty--fpindex-ingest",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9290712207733803
+  },
+  {
+    "iteration": 23,
+    "epoch": 3,
+    "harness": "h22",
+    "successor_harness": "h23",
+    "task_id": "youtrackdb--osm-roads",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.093337629572126
+  },
+  {
+    "iteration": 23,
+    "epoch": 3,
+    "harness": "h22",
+    "successor_harness": "h23",
+    "task_id": "zio--zrk-typecheck",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.030562372385388
+  },
+  {
+    "iteration": 23,
+    "epoch": 3,
+    "harness": "h22",
+    "successor_harness": "h23",
+    "task_id": "apalache--zcash-sync",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.2849276821916238
+  },
+  {
+    "iteration": 23,
+    "epoch": 3,
+    "harness": "h22",
+    "successor_harness": "h23",
+    "task_id": "wiredtiger--pageviews",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0111589428714658
+  },
+  {
+    "iteration": 23,
+    "epoch": 3,
+    "harness": "h22",
+    "successor_harness": "h23",
+    "task_id": "duckdb--taxi-ingest",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0219578006080516
+  },
+  {
+    "iteration": 24,
+    "epoch": 3,
+    "harness": "h23",
+    "successor_harness": "h24",
+    "task_id": "sundials--cantera-ignition",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.971956843402743
+  },
+  {
+    "iteration": 24,
+    "epoch": 3,
+    "harness": "h23",
+    "successor_harness": "h24",
+    "task_id": "jagua--nesting",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.060417513422007
+  },
+  {
+    "iteration": 24,
+    "epoch": 3,
+    "harness": "h23",
+    "successor_harness": "h24",
+    "task_id": "bevy-voxel-world--terrain-streaming",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 1.0050732824959705
+  },
+  {
+    "iteration": 24,
+    "epoch": 3,
+    "harness": "h23",
+    "successor_harness": "h24",
+    "task_id": "petsc--ocean-age-solve",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9374076399521732
+  },
+  {
+    "iteration": 24,
+    "epoch": 3,
+    "harness": "h23",
+    "successor_harness": "h24",
+    "task_id": "chaste--ttp06-sheet",
+    "repeat": 1,
+    "budget_seconds": 2700,
+    "recorded_reward": 0.9373789348716696
+  }
+]

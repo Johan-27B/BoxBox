@@ -1,0 +1,506 @@
+//! Intrinsics for emitting data format events and debug / error
+//! tracing
+
+use crate::eval::{
+    emit::{Emitter, RenderMetadata},
+    error::ExecutionError,
+    machine::intrinsic::{CallGlobal0, CallGlobal1, CallGlobal2, IntrinsicMachine, StgIntrinsic},
+    memory::{
+        self,
+        mutator::MutatorHeapView,
+        ndarray::HeapNdArray,
+        set::{HeapSet, Primitive as SetPrimitive},
+        syntax::{Ref, RefPtr},
+        vec::HeapVec,
+    },
+    primitive::Primitive,
+};
+
+use super::support::machine_return_unit;
+
+/// Convert a set primitive to a rendering primitive
+fn set_primitive_to_render_primitive(
+    prim: &SetPrimitive,
+    machine: &dyn IntrinsicMachine,
+) -> Primitive {
+    match prim {
+        SetPrimitive::Num(n) => {
+            let num = serde_json::Number::from_f64(n.into_inner())
+                .unwrap_or_else(|| serde_json::Number::from(0));
+            Primitive::Num(num)
+        }
+        SetPrimitive::Str(s) => Primitive::Str(s.clone()),
+        SetPrimitive::Sym(id) => Primitive::Sym(machine.symbol_pool().resolve(*id).to_string()),
+    }
+}
+
+/// Emit a set as a sorted sequence of scalars
+fn emit_set(
+    machine: &dyn IntrinsicMachine,
+    view: MutatorHeapView<'_>,
+    emitter: &mut dyn Emitter,
+    set_ref: RefPtr<HeapSet>,
+    metadata: &RenderMetadata,
+) {
+    let set: crate::eval::memory::alloc::ScopedPtr<'_, HeapSet> = view.scoped(set_ref);
+    emitter.sequence_start(metadata);
+    for elem in set.sorted_elements() {
+        let prim = set_primitive_to_render_primitive(elem, machine);
+        emitter.scalar(&RenderMetadata::empty(), &prim);
+    }
+    emitter.sequence_end();
+}
+
+/// Emit an n-dimensional array as nested sequences.
+///
+/// A 1D array is emitted as a flat sequence of scalars.
+/// A 2D array is emitted as a sequence of 1D row sequences.
+/// In general, an N-D array is emitted as a sequence of (N-1)-D sub-arrays,
+/// recursing down to scalar elements at rank 0.
+fn emit_ndarray_data(emitter: &mut dyn Emitter, arr: &HeapNdArray, metadata: &RenderMetadata) {
+    let rank = arr.rank();
+    if rank == 0 {
+        // A scalar array: emit the single element value
+        let val = arr.get(&[]).unwrap_or(0.0);
+        let num = serde_json::Number::from_f64(val).unwrap_or_else(|| serde_json::Number::from(0));
+        emitter.scalar(metadata, &Primitive::Num(num));
+    } else if rank == 1 {
+        emitter.sequence_start(metadata);
+        let len = arr.shape()[0];
+        for i in 0..len {
+            let val = arr.get(&[i]).unwrap_or(0.0);
+            let num =
+                serde_json::Number::from_f64(val).unwrap_or_else(|| serde_json::Number::from(0));
+            emitter.scalar(&RenderMetadata::empty(), &Primitive::Num(num));
+        }
+        emitter.sequence_end();
+    } else {
+        emitter.sequence_start(metadata);
+        let rows = arr.shape()[0];
+        for i in 0..rows {
+            if let Some(sub) = arr.slice_along(0, i) {
+                emit_ndarray_data(emitter, &sub, &RenderMetadata::empty());
+            }
+        }
+        emitter.sequence_end();
+    }
+}
+
+/// Emit an NdArray from a heap pointer as nested sequences.
+fn emit_ndarray(
+    view: MutatorHeapView<'_>,
+    emitter: &mut dyn Emitter,
+    arr_ref: RefPtr<HeapNdArray>,
+    metadata: &RenderMetadata,
+) {
+    let arr: crate::eval::memory::alloc::ScopedPtr<'_, HeapNdArray> = view.scoped(arr_ref);
+    emit_ndarray_data(emitter, &arr, metadata);
+}
+
+/// Emit a vec as a sequence of scalars in element order.
+fn emit_vec(
+    machine: &dyn IntrinsicMachine,
+    view: MutatorHeapView<'_>,
+    emitter: &mut dyn Emitter,
+    vec_ref: RefPtr<HeapVec>,
+    metadata: &RenderMetadata,
+) {
+    let vec: crate::eval::memory::alloc::ScopedPtr<'_, HeapVec> = view.scoped(vec_ref);
+    emitter.sequence_start(metadata);
+    for elem in vec.elements() {
+        let prim = set_primitive_to_render_primitive(elem, machine);
+        emitter.scalar(&RenderMetadata::empty(), &prim);
+    }
+    emitter.sequence_end();
+}
+
+/// Interpret arg as tag if it exists otherwise None
+fn tag_from_arg(
+    arg: &Ref,
+    machine: &mut dyn IntrinsicMachine,
+    view: MutatorHeapView,
+) -> Option<String> {
+    let tag_nat = machine.nav(view).resolve_native(arg).ok();
+    match tag_nat {
+        Some(memory::syntax::Native::Sym(id)) => {
+            Some(machine.symbol_pool().resolve(id).to_string())
+        }
+        Some(memory::syntax::Native::Str(s)) => Some(view.scoped(s).as_str().to_string()),
+        _ => None,
+    }
+}
+
+/// EMIT0
+///
+/// Emit a "null"
+pub struct Emit0;
+
+impl StgIntrinsic for Emit0 {
+    fn name(&self) -> &str {
+        "EMIT0"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        _args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        emitter.scalar(&RenderMetadata::empty(), &Primitive::Null);
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal0 for Emit0 {}
+
+/// EMITT
+///
+/// Emit a true
+pub struct EmitT;
+
+impl StgIntrinsic for EmitT {
+    fn name(&self) -> &str {
+        "EMITT"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        _args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        emitter.scalar(&RenderMetadata::empty(), &Primitive::Bool(true));
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal0 for EmitT {}
+
+/// EMITF
+///
+/// Emit a false
+pub struct EmitF;
+
+impl StgIntrinsic for EmitF {
+    fn name(&self) -> &str {
+        "EMITF"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        _args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        emitter.scalar(&RenderMetadata::empty(), &Primitive::Bool(false));
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal0 for EmitF {}
+
+/// EMITx
+///
+/// Emit a native
+pub struct EmitNative;
+
+impl StgIntrinsic for EmitNative {
+    fn name(&self) -> &str {
+        "EMITx"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        let native = machine.nav(view).resolve_native(&args[0])?;
+        match native {
+            memory::syntax::Native::Set(ptr) => {
+                emit_set(machine, view, emitter, ptr, &RenderMetadata::empty());
+            }
+            memory::syntax::Native::NdArray(ptr) => {
+                emit_ndarray(view, emitter, ptr, &RenderMetadata::empty());
+            }
+            memory::syntax::Native::Vec(ptr) => {
+                emit_vec(machine, view, emitter, ptr, &RenderMetadata::empty());
+            }
+            memory::syntax::Native::Sym(id) => {
+                let primitive = Primitive::Sym(machine.symbol_pool().resolve(id).to_string());
+                emitter.scalar(&RenderMetadata::empty(), &primitive);
+            }
+            memory::syntax::Native::Str(s) => {
+                let primitive = Primitive::Str(view.scoped(s).as_str().to_string());
+                emitter.scalar(&RenderMetadata::empty(), &primitive);
+            }
+            memory::syntax::Native::Num(n) => {
+                emitter.scalar(&RenderMetadata::empty(), &Primitive::Num(n));
+            }
+            memory::syntax::Native::Zdt(dt) => {
+                emitter.scalar(&RenderMetadata::empty(), &Primitive::ZonedDateTime(dt));
+            }
+            memory::syntax::Native::Index(_)
+            | memory::syntax::Native::Prng(_)
+            | memory::syntax::Native::Producer(_) => {
+                return Err(ExecutionError::NotScalar(machine.annotation()));
+            }
+        }
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal1 for EmitNative {}
+
+/// EMITTAGx(tag, native)
+///
+/// Emit a native
+pub struct EmitTagNative;
+
+impl StgIntrinsic for EmitTagNative {
+    fn name(&self) -> &str {
+        "EMITTAGx"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        let tag = tag_from_arg(&args[0], machine, view);
+        let native = machine.nav(view).resolve_native(&args[1])?;
+        match native {
+            memory::syntax::Native::Set(ptr) => {
+                emit_set(machine, view, emitter, ptr, &RenderMetadata::new(tag));
+            }
+            memory::syntax::Native::NdArray(ptr) => {
+                emit_ndarray(view, emitter, ptr, &RenderMetadata::new(tag));
+            }
+            memory::syntax::Native::Vec(ptr) => {
+                emit_vec(machine, view, emitter, ptr, &RenderMetadata::new(tag));
+            }
+            memory::syntax::Native::Sym(id) => {
+                let primitive = Primitive::Sym(machine.symbol_pool().resolve(id).to_string());
+                emitter.scalar(&RenderMetadata::new(tag), &primitive);
+            }
+            memory::syntax::Native::Str(s) => {
+                let primitive = Primitive::Str(view.scoped(s).as_str().to_string());
+                emitter.scalar(&RenderMetadata::new(tag), &primitive);
+            }
+            memory::syntax::Native::Num(n) => {
+                emitter.scalar(&RenderMetadata::new(tag), &Primitive::Num(n));
+            }
+            memory::syntax::Native::Zdt(dt) => {
+                emitter.scalar(&RenderMetadata::new(tag), &Primitive::ZonedDateTime(dt));
+            }
+            memory::syntax::Native::Index(_)
+            | memory::syntax::Native::Prng(_)
+            | memory::syntax::Native::Producer(_) => {
+                return Err(ExecutionError::NotScalar(machine.annotation()));
+            }
+        }
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal2 for EmitTagNative {}
+
+/// EMIT[
+///
+/// Emit a sequence start
+pub struct EmitSeqStart;
+
+impl StgIntrinsic for EmitSeqStart {
+    fn name(&self) -> &str {
+        "EMIT["
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        _args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        emitter.sequence_start(&RenderMetadata::empty());
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal0 for EmitSeqStart {}
+
+/// EMITTAG[
+///
+/// Emit a sequence start
+pub struct EmitTagSeqStart;
+
+impl StgIntrinsic for EmitTagSeqStart {
+    fn name(&self) -> &str {
+        "EMITTAG["
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        let tag = tag_from_arg(&args[0], machine, view);
+        emitter.sequence_start(&RenderMetadata::new(tag));
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal1 for EmitTagSeqStart {}
+
+/// EMIT]
+///
+/// Emit a sequence end
+pub struct EmitSeqEnd;
+
+impl StgIntrinsic for EmitSeqEnd {
+    fn name(&self) -> &str {
+        "EMIT]"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        _args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        emitter.sequence_end();
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal0 for EmitSeqEnd {}
+
+/// EMIT{
+///
+/// Emit a block start
+pub struct EmitBlockStart;
+
+impl StgIntrinsic for EmitBlockStart {
+    fn name(&self) -> &str {
+        "EMIT{"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        _args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        emitter.block_start(&RenderMetadata::empty());
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal0 for EmitBlockStart {}
+
+/// EMITTAG{
+///
+/// Emit a block start
+pub struct EmitTagBlockStart;
+
+impl StgIntrinsic for EmitTagBlockStart {
+    fn name(&self) -> &str {
+        "EMITTAG{"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        let tag = tag_from_arg(&args[0], machine, view);
+        emitter.block_start(&RenderMetadata::new(tag));
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal1 for EmitTagBlockStart {}
+
+/// EMIT}
+///
+/// Emit a block end
+pub struct EmitBlockEnd;
+
+impl StgIntrinsic for EmitBlockEnd {
+    fn name(&self) -> &str {
+        "EMIT}"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        _args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        emitter.block_end();
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal0 for EmitBlockEnd {}
+
+/// EMIT<
+///
+/// Emit a doc start
+pub struct EmitDocStart;
+
+impl StgIntrinsic for EmitDocStart {
+    fn name(&self) -> &str {
+        "EMIT<"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        _args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        emitter.doc_start();
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal0 for EmitDocStart {}
+
+/// EMIT>
+///
+/// Emit a doc end
+pub struct EmitDocEnd;
+
+impl StgIntrinsic for EmitDocEnd {
+    fn name(&self) -> &str {
+        "EMIT>"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        emitter: &mut dyn Emitter,
+        _args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        emitter.doc_end();
+        machine_return_unit(machine, view)
+    }
+}
+
+impl CallGlobal0 for EmitDocEnd {}

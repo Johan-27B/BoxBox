@@ -1,0 +1,9 @@
+type: tool
+name: complete_task
+description: Finish the current debugger or evolution task with a concise result.
+input_schema:
+  type: object
+  properties:
+    result: {type: string}
+  required: [result]
+  additionalProperties: false

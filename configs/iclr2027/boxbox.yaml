@@ -1,0 +1,22 @@
+# Set the provider endpoint, credentials, and model; supply task paths with --path.
+task_budget_sec: 14400
+enable_cache: false
+api_gateway:
+  port: 4101
+  base_url: ${env:LLM_BASE_URL}
+  api_key: ${env:LLM_API_KEY}
+job:
+  job_name: boxbox
+  jobs_dir: runs
+  n_attempts: 3
+  n_concurrent_trials: 1
+  environment:
+    type: docker
+  agents:
+    - name: terminus-boxbox
+      model_name: REPLACE_WITH_MODEL_ID
+      kwargs:
+        reasoning_effort: high
+      env:
+        LLM_BASE_URL: ${api_gateway.container_base_url}
+        LLM_API_KEY: ${api_gateway.api_key}

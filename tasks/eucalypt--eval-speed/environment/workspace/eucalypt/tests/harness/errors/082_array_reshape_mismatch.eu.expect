@@ -1,0 +1,2 @@
+exit: 1
+stderr: "cannot reshape 4 elements into shape"

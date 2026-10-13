@@ -1,0 +1,345 @@
+//! An implementation of a spineless tagless G-machine variant plus a
+//! compiler for core syntax that targets it.
+//!
+pub mod arena;
+pub mod arith;
+pub mod array;
+pub mod assert;
+#[cfg(not(target_arch = "wasm32"))]
+pub mod blob;
+pub mod block;
+pub mod boolean;
+pub mod compiler;
+pub mod constant;
+pub mod debug;
+pub mod embed;
+pub mod emit;
+pub mod encoding;
+pub mod eq;
+pub mod expect;
+pub mod force;
+pub mod graph;
+pub mod io;
+pub mod json_to_stg;
+pub mod list;
+pub mod meta;
+pub mod null;
+pub mod optimiser;
+pub mod panic;
+pub mod parse_string;
+pub mod platform;
+pub mod pretty;
+pub mod printf;
+pub mod prng;
+pub mod render;
+pub mod render_to_string;
+pub mod running;
+pub mod runtime;
+pub mod set;
+pub mod stream;
+pub mod stream_intrinsic;
+pub mod stream_prng;
+pub mod string;
+pub mod support;
+pub mod syntax;
+pub mod tags;
+mod testing;
+pub mod time;
+pub mod vec;
+pub mod version;
+pub mod wrap;
+
+use std::{collections::HashMap, fmt, rc::Rc, str::FromStr};
+
+use crate::{common::sourcemap::SourceMap, core::expr::RcExpr};
+
+use self::{
+    compiler::CompileError,
+    runtime::{NativeVariant, Runtime},
+    syntax::StgSyn,
+};
+
+pub fn make_standard_runtime(source_map: &mut SourceMap) -> Box<runtime::StandardRuntime> {
+    let mut rt = runtime::StandardRuntime::default();
+    rt.add(Box::new(arith::Add));
+    rt.add(Box::new(arith::Sub));
+    rt.add(Box::new(arith::Mul));
+    rt.add(Box::new(arith::Div));
+    rt.add(Box::new(arith::Mod));
+    rt.add(Box::new(arith::Gt));
+    rt.add(Box::new(arith::Lt));
+    rt.add(Box::new(arith::Gte));
+    rt.add(Box::new(arith::Lte));
+    rt.add(Box::new(arith::Floor));
+    rt.add(Box::new(arith::Ceil));
+    rt.add(Box::new(arith::Pow));
+    rt.add(Box::new(arith::PreciseDiv));
+    rt.add(Box::new(arith::Quot));
+    rt.add(Box::new(arith::Rem));
+    rt.add(Box::new(eq::Eq));
+    rt.add(Box::new(boolean::True));
+    rt.add(Box::new(boolean::False));
+    rt.add(Box::new(boolean::And));
+    rt.add(Box::new(boolean::Or));
+    rt.add(Box::new(boolean::Not));
+    rt.add(Box::new(boolean::If));
+    rt.add(Box::new(boolean::Cond));
+    rt.add(Box::new(boolean::Clause));
+    rt.add(Box::new(panic::Panic));
+    rt.add(Box::new(assert::AssertFail));
+    rt.add(Box::new(block::Block));
+    rt.add(Box::new(block::Kv));
+    rt.add(Box::new(block::Dekv));
+    rt.add(Box::new(block::Elements));
+    rt.add(Box::new(block::MatchesKey));
+    rt.add(Box::new(block::ExtractValue));
+    rt.add(Box::new(block::ExtractKey));
+    rt.add(Box::new(block::PackPair));
+    rt.add(Box::new(block::BlockPair));
+    rt.add(Box::new(block::Merge));
+    rt.add(Box::new(block::MergeWith));
+    rt.add(Box::new(block::DeepMerge));
+    rt.add(Box::new(block::LookupOr(NativeVariant::Boxed)));
+    rt.add(Box::new(block::LookupOr(NativeVariant::Unboxed)));
+    rt.add(Box::new(block::SafeLookup(NativeVariant::Boxed)));
+    rt.add(Box::new(block::Lookup));
+    rt.add(Box::new(emit::Emit0));
+    rt.add(Box::new(emit::EmitT));
+    rt.add(Box::new(emit::EmitF));
+    rt.add(Box::new(emit::EmitNative));
+    rt.add(Box::new(emit::EmitTagNative));
+    rt.add(Box::new(emit::EmitSeqStart));
+    rt.add(Box::new(emit::EmitTagSeqStart));
+    rt.add(Box::new(emit::EmitSeqEnd));
+    rt.add(Box::new(emit::EmitBlockStart));
+    rt.add(Box::new(emit::EmitTagBlockStart));
+    rt.add(Box::new(emit::EmitBlockEnd));
+    rt.add(Box::new(emit::EmitDocStart));
+    rt.add(Box::new(emit::EmitDocEnd));
+    rt.add(Box::new(render::Render));
+    rt.add(Box::new(render::RenderItems));
+    rt.add(Box::new(render::RenderBlockItems));
+    rt.add(Box::new(render::RenderKv));
+    rt.add(Box::new(render::RenderDoc));
+    rt.add(Box::new(render::Saturated));
+    rt.add(Box::new(render::Suppresses));
+    rt.add(Box::new(render::Tag));
+    rt.add(Box::new(null::Null));
+    rt.add(Box::new(list::Cons));
+    rt.add(Box::new(list::Tail));
+    rt.add(Box::new(list::Head));
+    rt.add(Box::new(list::Nil));
+    rt.add(Box::new(list::HeadEmptyErr));
+    rt.add(Box::new(list::TailEmptyErr));
+    rt.add(Box::new(list::NilP));
+    rt.add(Box::new(string::Sym));
+    rt.add(Box::new(string::Str));
+    rt.add(Box::new(string::Join));
+    rt.add(Box::new(string::Match));
+    rt.add(Box::new(string::Matches));
+    rt.add(Box::new(string::Split));
+    rt.add(Box::new(string::NumParse));
+    rt.add(Box::new(string::Fmt));
+    rt.add(Box::new(string::Letters));
+    rt.add(Box::new(string::Dq));
+    rt.add(Box::new(string::Upper));
+    rt.add(Box::new(string::Lower));
+    rt.add(Box::new(string::Replace));
+    rt.add(Box::new(string::Contains));
+    rt.add(Box::new(string::Trim));
+    rt.add(Box::new(force::SeqStrList));
+    rt.add(Box::new(meta::Meta));
+    rt.add(Box::new(meta::RawMeta));
+    rt.add(Box::new(meta::WithMeta));
+    rt.add(Box::new(time::Zdt));
+    rt.add(Box::new(time::ZdtFromEpoch));
+    rt.add(Box::new(time::ZdtFields));
+    rt.add(Box::new(time::ZdtIFields));
+    rt.add(Box::new(time::ZdtParse8601));
+    rt.add(Box::new(time::ZdtFormat8601));
+    rt.add(Box::new(constant::KNil));
+    rt.add(Box::new(constant::KEmptyList));
+    rt.add(Box::new(constant::KEmptyBlock));
+    rt.add(Box::new(version::Requires));
+    rt.add(Box::new(encoding::Base64Encode));
+    rt.add(Box::new(encoding::Base64Decode));
+    rt.add(Box::new(encoding::Sha256Hash));
+    rt.add(Box::new(set::SetEmpty));
+    rt.add(Box::new(set::SetFromList));
+    rt.add(Box::new(set::SetToList));
+    rt.add(Box::new(set::SetAdd));
+    rt.add(Box::new(set::SetRemove));
+    rt.add(Box::new(set::SetContains));
+    rt.add(Box::new(set::SetSize));
+    rt.add(Box::new(set::SetUnion));
+    rt.add(Box::new(set::SetIntersect));
+    rt.add(Box::new(set::SetDiff));
+    rt.add(Box::new(block::IsBlock));
+    rt.add(Box::new(list::IsList));
+    rt.add(Box::new(stream_intrinsic::ProducerNext));
+    rt.add(Box::new(stream_prng::StreamNew));
+    rt.add(Box::new(stream_prng::StreamValue));
+    rt.add(Box::new(stream_prng::StreamAdvance));
+    rt.add(Box::new(stream_prng::StreamFloat));
+    rt.add(Box::new(stream_prng::StreamInt));
+    rt.add(Box::new(stream_prng::StreamSplit));
+    rt.add(Box::new(block::LookupFail));
+    rt.add(Box::new(force::SeqNumList));
+    rt.add(Box::new(force::SeqList));
+    rt.add(Box::new(list::SortNumList));
+    rt.add(Box::new(graph::GraphUnionFind));
+    rt.add(Box::new(graph::GraphTopoSort));
+    rt.add(Box::new(graph::GraphKruskalEdges));
+    rt.add(Box::new(arith::BitAnd));
+    rt.add(Box::new(arith::BitOr));
+    rt.add(Box::new(arith::BitXor));
+    rt.add(Box::new(arith::BitNot));
+    rt.add(Box::new(arith::Shl));
+    rt.add(Box::new(arith::Shr));
+    rt.add(Box::new(arith::PopCount));
+    rt.add(Box::new(arith::Ctz));
+    rt.add(Box::new(arith::Clz));
+    rt.add(Box::new(running::RunningMax));
+    rt.add(Box::new(running::RunningMin));
+    rt.add(Box::new(running::RunningSum));
+    rt.add(Box::new(list::ListNth));
+    rt.add(Box::new(list::ListDrop));
+    rt.add(Box::new(array::ArrayZeros));
+    rt.add(Box::new(array::ArrayFill));
+    rt.add(Box::new(array::ArrayFromFlat));
+    rt.add(Box::new(array::ArrayGet));
+    rt.add(Box::new(array::ArraySet));
+    rt.add(Box::new(array::ArrayShape));
+    rt.add(Box::new(array::ArrayRank));
+    rt.add(Box::new(array::ArrayLength));
+    rt.add(Box::new(array::ArrayToList));
+    rt.add(Box::new(array::ArrayIsArray));
+    rt.add(Box::new(array::ArrayTranspose));
+    rt.add(Box::new(array::ArrayReshape));
+    rt.add(Box::new(array::ArraySlice));
+    rt.add(Box::new(array::ArrayAdd));
+    rt.add(Box::new(array::ArraySub));
+    rt.add(Box::new(array::ArrayMul));
+    rt.add(Box::new(array::ArrayDiv));
+    rt.add(Box::new(array::ArrayIndices));
+    rt.add(Box::new(array::ArrayNeighbours));
+    rt.add(Box::new(io::IoReturn));
+    rt.add(Box::new(io::IoBind));
+    rt.add(Box::new(io::IoAction));
+    rt.add(Box::new(render_to_string::RenderToString));
+    rt.add(Box::new(parse_string::ParseString));
+    rt.add(Box::new(debug::DbgRepr));
+    rt.add(Box::new(expect::Expect));
+    rt.add(Box::new(debug::Dbg));
+    rt.add(Box::new(debug::TraceEntry));
+    rt.add(Box::new(debug::TraceExit));
+    rt.add(Box::new(list::IsNumber));
+    rt.add(Box::new(list::IsString));
+    rt.add(Box::new(list::IsSymbol));
+    rt.add(Box::new(list::IsBool));
+    rt.add(Box::new(list::IsTypeData));
+    rt.add(Box::new(vec::VecOf));
+    rt.add(Box::new(vec::VecLen));
+    rt.add(Box::new(vec::VecNth));
+    rt.add(Box::new(vec::VecSlice));
+    rt.add(Box::new(vec::VecSample));
+    rt.add(Box::new(vec::VecShuffle));
+    rt.add(Box::new(vec::VecToList));
+    rt.add(Box::new(platform::Os));
+    rt.add(Box::new(platform::Arch));
+    rt.add(Box::new(set::SetSample));
+    rt.prepare(source_map);
+    Box::new(rt)
+}
+
+/// What type of render-wrapping to apply to the compiled code
+#[derive(Copy, Debug, Clone, PartialEq, Eq, Default)]
+pub enum RenderType {
+    /// No rendering - calculate only
+    Headless,
+    /// Render a fragment (suitable for -e flag)
+    RenderFragment,
+    /// Render an entire document (source must be a block)
+    #[default]
+    RenderDoc,
+}
+
+impl FromStr for RenderType {
+    type Err = String;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s {
+            "headless" => Ok(RenderType::Headless),
+            "fragment" => Ok(RenderType::RenderFragment),
+            "doc" => Ok(RenderType::RenderDoc),
+            _ => Err("unknown STG render type".to_string()),
+        }
+    }
+}
+
+impl fmt::Display for RenderType {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Headless => write!(f, "headless"),
+            Self::RenderFragment => write!(f, "fragment"),
+            Self::RenderDoc => write!(f, "doc"),
+        }
+    }
+}
+
+/// Settings to control compilation and execution of STG code
+#[derive(Debug, Clone, Default)]
+pub struct StgSettings {
+    /// Generate annotations for stack traces in compiled output
+    pub generate_annotations: bool,
+    /// Trace steps during execution
+    pub trace_steps: bool,
+    /// Whether to generate a top-level render / render-doc call
+    pub render_type: RenderType,
+    /// Suppress thunks and updates (i.e call-by-name)
+    pub suppress_updates: bool,
+    /// Suppress inlining of intrinsic wrappers
+    pub suppress_inlining: bool,
+    /// Suppress optimiser
+    pub suppress_optimiser: bool,
+    /// Limit managed heap to SIZE MiB
+    pub heap_limit_mib: Option<usize>,
+    /// Dump heap to stderr at GC time for debugging
+    pub heap_dump_at_gc: bool,
+    /// Test mode: `__EXPECT` failures return false instead of panicking
+    pub test_mode: bool,
+    /// Prelude binding name → slot index (relative to `INTRINSIC_COUNT`).
+    ///
+    /// When set, `Var::Free(name)` references to prelude names are compiled to
+    /// `Ref::G(intrinsic_count + slot)` rather than `CompileError::FreeVar`.
+    /// Populated from `PreludeBlob.name_to_slot` when the blob path is active.
+    pub prelude_globals: Option<HashMap<String, usize>>,
+    /// Suppress the demand analysis pass (all demands remain at Unknown).
+    pub suppress_demand_analysis: bool,
+    /// Per-user-function demand signatures discovered by the analysis pass.
+    ///
+    /// Maps binding name → per-argument demand vector. Used by the STG
+    /// compiler to apply per-argument demands at user function call sites.
+    pub user_demand_sigs: crate::core::analyse_demand::NamedSignatureTable,
+}
+
+/// Compile core syntax to STG ready for execution
+///
+/// This mutates the STANDARD_RUNTIME with annotation info!
+pub fn compile(
+    settings: &StgSettings,
+    expr: RcExpr,
+    runtime: &dyn Runtime,
+) -> Result<Rc<StgSyn>, CompileError> {
+    let compiler = compiler::Compiler::new(
+        settings.generate_annotations,
+        settings.render_type,
+        settings.suppress_updates,
+        settings.suppress_inlining,
+        settings.suppress_optimiser,
+        runtime.intrinsics(),
+        settings.prelude_globals.clone(),
+    )
+    .with_user_demand_sigs(settings.user_demand_sigs.clone());
+    compiler.compile(expr)
+}

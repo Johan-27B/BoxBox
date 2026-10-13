@@ -1,0 +1,10 @@
+type: tool
+name: write_file
+description: Create or completely replace a file in the local experiment workspace.
+input_schema:
+  type: object
+  properties:
+    file_path: {type: string}
+    content: {type: string}
+  required: [file_path, content]
+  additionalProperties: false

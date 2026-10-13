@@ -1,0 +1,54 @@
+type: agent
+name: perfrace_harness_debugger
+max_context_tokens: 200000
+system_prompt: ./debugger_prompt.md
+system_prompt_type: jinja
+tool_call_mode: openai
+max_iterations: 200
+
+llm_config:
+  model: ${env.LLM_MODEL}
+  base_url: ${env.LLM_BASE_URL}
+  api_key: ${env.LLM_API_KEY}
+  max_tokens: 16000
+  stream: false
+  api_type: openai_responses
+  reasoning:
+    effort: ${env.LLM_REASONING_EFFORT}
+    summary: detailed
+
+sandbox_config:
+  type: local
+  work_dir: ${env.EVOLVE_WORK_DIR}
+
+tools:
+  - name: read_file
+    yaml_path: ./tool_descriptions/read_file.tool.yaml
+    binding: perfrace.evolution.restricted_tools:read_file
+  - name: search_file_content
+    yaml_path: ./tool_descriptions/search_file_content.tool.yaml
+    binding: perfrace.evolution.restricted_tools:search_file_content
+  - name: glob
+    yaml_path: ./tool_descriptions/glob.tool.yaml
+    binding: perfrace.evolution.restricted_tools:glob
+  - name: list_directory
+    yaml_path: ./tool_descriptions/list_directory.tool.yaml
+    binding: perfrace.evolution.restricted_tools:list_directory
+  - name: complete_task
+    yaml_path: ./tool_descriptions/complete_task.tool.yaml
+    binding: nexau.archs.tool.builtin.session_tools:complete_task
+
+stop_tools: [complete_task]
+
+middlewares:
+  - import: nexau.archs.main_sub.execution.middleware.long_tool_output:LongToolOutputMiddleware
+    params:
+      max_output_chars: 10000
+      head_lines: 50
+      tail_lines: 30
+      head_chars: 5000
+      tail_chars: 5000
+      temp_dir: ${env.NEXAU_TOOL_OUTPUT_DIR}
+
+tracers:
+  - import: nexau.archs.tracer.adapters.in_memory:InMemoryTracer

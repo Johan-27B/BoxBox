@@ -1,0 +1,13 @@
+type: tool
+name: replace
+description: Replace an exact string in a previously read file.
+input_schema:
+  type: object
+  properties:
+    file_path: {type: string}
+    instruction: {type: string}
+    old_string: {type: string}
+    new_string: {type: string}
+    expected_replacements: {type: integer, minimum: 1}
+  required: [file_path, instruction, old_string, new_string]
+  additionalProperties: false

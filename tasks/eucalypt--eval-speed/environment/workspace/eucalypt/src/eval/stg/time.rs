@@ -1,0 +1,439 @@
+//! Intrinsics for working with time and date
+
+use std::convert::TryInto;
+
+use chrono::{
+    DateTime, Datelike, FixedOffset, LocalResult, NaiveDate, NaiveDateTime, NaiveTime, Offset,
+    TimeZone, Timelike, Utc,
+};
+use chrono_tz::Tz;
+use indexmap::IndexMap;
+use serde_json::Number;
+
+use crate::{
+    common::sourcemap::Smid,
+    eval::{
+        emit::Emitter,
+        error::ExecutionError,
+        machine::{
+            env::SynClosure,
+            intrinsic::{CallGlobal1, CallGlobal7, IntrinsicMachine, StgIntrinsic},
+        },
+        memory::{
+            array::Array,
+            mutator::MutatorHeapView,
+            syntax::{Ref, StgBuilder},
+        },
+    },
+};
+
+use super::{
+    support::{
+        machine_return_block_pair_closure_list, machine_return_str, machine_return_zdt, num_arg,
+        str_arg, zdt_arg,
+    },
+    tags::DataConstructor,
+};
+
+/// Convert a TZ representation to a FixedOffset
+///
+/// Accepts: numeric offsets (+02:00, -0500, +01:00:00), "Z" for UTC,
+/// and IANA timezone names (e.g. "UTC", "Europe/London") via chrono-tz.
+fn offset_from_tz_str(smid: Smid, tz_str: &str) -> Result<FixedOffset, ExecutionError> {
+    // Try "Z" for UTC
+    if tz_str == "Z" {
+        return FixedOffset::east_opt(0)
+            .ok_or_else(|| ExecutionError::BadTimeZone(smid, tz_str.to_string()));
+    }
+
+    // Try parsing as a numeric offset by constructing a dummy datetime
+    // string and using chrono's built-in parser. We try several formats
+    // to handle +HH:MM, +HHMM, and +HH:MM:SS variants.
+    let dummy_formats = [
+        (
+            "%Y-%m-%dT%H:%M:%S%z",
+            format!("2000-01-01T00:00:00{tz_str}"),
+        ),
+        (
+            "%Y-%m-%dT%H:%M:%S%:z",
+            format!("2000-01-01T00:00:00{tz_str}"),
+        ),
+    ];
+
+    for (fmt, input) in &dummy_formats {
+        if let Ok(dt) = DateTime::parse_from_str(input, fmt) {
+            return Ok(*dt.offset());
+        }
+    }
+
+    // Try IANA timezone names via chrono-tz
+    if let Ok(zone) = tz_str.parse::<Tz>() {
+        return Ok(zone
+            .with_ymd_and_hms(2000, 1, 1, 0, 0, 0)
+            .single()
+            .expect("Y2K date is always valid in any timezone")
+            .offset()
+            .fix());
+    }
+
+    Err(ExecutionError::BadTimeZone(smid, tz_str.to_string()))
+}
+
+/// ZDT(y, m, d, h, M, s, Z) - create a zoned date time
+pub struct Zdt;
+
+impl StgIntrinsic for Zdt {
+    fn name(&self) -> &str {
+        "ZDT"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        _emitter: &mut dyn Emitter,
+        args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        let y = num_arg(machine, view, &args[0])?;
+        let m = num_arg(machine, view, &args[1])?;
+        let d = num_arg(machine, view, &args[2])?;
+        let hour = num_arg(machine, view, &args[3])?;
+        let min = num_arg(machine, view, &args[4])?;
+        let sec = num_arg(machine, view, &args[5])?;
+        let tz = str_arg(machine, view, &args[6])?;
+
+        let smid = machine.annotation();
+        let err = || {
+            ExecutionError::BadDateTimeComponents(
+                smid,
+                y.clone(),
+                m.clone(),
+                d.clone(),
+                hour.clone(),
+                min.clone(),
+                sec.clone(),
+                tz.clone(),
+            )
+        };
+
+        if let (Some(yy), Some(mm), Some(dd), Some(hours), Some(mins), Some(secs)) = (
+            y.as_i64(),
+            m.as_u64(),
+            d.as_u64(),
+            hour.as_u64(),
+            min.as_u64(),
+            sec.as_u64(),
+        ) {
+            let date = NaiveDate::from_ymd_opt(
+                yy.try_into().ok().ok_or_else(err)?,
+                mm.try_into().ok().ok_or_else(err)?,
+                dd.try_into().ok().ok_or_else(err)?,
+            )
+            .ok_or_else(err)?;
+
+            let time = NaiveTime::from_hms_opt(
+                hours.try_into().ok().ok_or_else(err)?,
+                mins.try_into().ok().ok_or_else(err)?,
+                secs.try_into().ok().ok_or_else(err)?,
+            )
+            .ok_or_else(err)?;
+
+            let datetime = NaiveDateTime::new(date, time);
+            let offset = offset_from_tz_str(smid, &tz)?;
+            if let LocalResult::Single(zdt) = offset.from_local_datetime(&datetime) {
+                machine_return_zdt(machine, view, zdt)
+            } else {
+                Err(err())
+            }
+        } else {
+            Err(err())
+        }
+    }
+}
+
+impl CallGlobal7 for Zdt {}
+
+/// ZDT.FIELDS - convert ZDT to (sym, val) pairs (which can be
+/// converted to block)
+///
+/// Timezone is always rendered as colon-less string e.g. "+0100"
+pub struct ZdtFields;
+
+impl StgIntrinsic for ZdtFields {
+    fn name(&self) -> &str {
+        "ZDT.FIELDS"
+    }
+
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        _emitter: &mut dyn Emitter,
+        args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        let dt = zdt_arg(machine, view, &args[0])?;
+        let y = dt.year();
+        let m = dt.month();
+        let d = dt.day();
+        let hour = dt.hour();
+        let min = dt.minute();
+        let sec = (dt.second() as f64) + (dt.timestamp_subsec_millis() as f64) / 1000f64;
+        let tz = dt.offset().to_string().replace(':', "");
+
+        let mut fields = IndexMap::new();
+        fields.insert(
+            "y".to_string(),
+            SynClosure::new(
+                view.data(
+                    DataConstructor::BoxedNumber.tag(),
+                    Array::from_slice(&view, &[Ref::num(y)]),
+                )?
+                .as_ptr(),
+                machine.root_env(),
+            ),
+        );
+        fields.insert(
+            "m".to_string(),
+            SynClosure::new(
+                view.data(
+                    DataConstructor::BoxedNumber.tag(),
+                    Array::from_slice(&view, &[Ref::num(m)]),
+                )?
+                .as_ptr(),
+                machine.root_env(),
+            ),
+        );
+        fields.insert(
+            "d".to_string(),
+            SynClosure::new(
+                view.data(
+                    DataConstructor::BoxedNumber.tag(),
+                    Array::from_slice(&view, &[Ref::num(d)]),
+                )?
+                .as_ptr(),
+                machine.root_env(),
+            ),
+        );
+        fields.insert(
+            "H".to_string(),
+            SynClosure::new(
+                view.data(
+                    DataConstructor::BoxedNumber.tag(),
+                    Array::from_slice(&view, &[Ref::num(hour)]),
+                )?
+                .as_ptr(),
+                machine.root_env(),
+            ),
+        );
+        fields.insert(
+            "M".to_string(),
+            SynClosure::new(
+                view.data(
+                    DataConstructor::BoxedNumber.tag(),
+                    Array::from_slice(&view, &[Ref::num(min)]),
+                )?
+                .as_ptr(),
+                machine.root_env(),
+            ),
+        );
+        fields.insert(
+            "S".to_string(),
+            SynClosure::new(
+                view.data(
+                    DataConstructor::BoxedNumber.tag(),
+                    Array::from_slice(
+                        &view,
+                        &[Ref::num(
+                            Number::from_f64(sec).expect("seconds must be finite"),
+                        )],
+                    ),
+                )?
+                .as_ptr(),
+                machine.root_env(),
+            ),
+        );
+        fields.insert(
+            "Z".to_string(),
+            SynClosure::new(
+                view.data(
+                    DataConstructor::BoxedString.tag(),
+                    Array::from_slice(&view, &[view.str_ref(tz)?]),
+                )?
+                .as_ptr(),
+                machine.root_env(),
+            ),
+        );
+
+        machine_return_block_pair_closure_list(machine, view, fields)
+    }
+}
+
+impl CallGlobal1 for ZdtFields {}
+
+/// ZDT.FROM_EPOCH - convert a unix timestamp to a zoned date time
+pub struct ZdtFromEpoch;
+
+impl StgIntrinsic for ZdtFromEpoch {
+    fn name(&self) -> &str {
+        "ZDT.FROM_EPOCH"
+    }
+
+    /// Simply compose ZDT.FROM_EPOCH and ZDT.FIELDS
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        _emitter: &mut dyn Emitter,
+        args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        let unix = num_arg(machine, view, &args[0])?;
+        if let Some(ts) = unix.as_i64() {
+            let zdt = DateTime::from(
+                Utc.timestamp_opt(ts, 0)
+                    .single()
+                    .expect("timestamp with zero nanoseconds is always valid"),
+            );
+            machine_return_zdt(machine, view, zdt)
+        } else {
+            Err(ExecutionError::BadTimestamp(machine.annotation(), unix))
+        }
+    }
+}
+
+impl CallGlobal1 for ZdtFromEpoch {}
+
+/// IFIELDS - compatibility with old API - epoch to fields
+pub struct ZdtIFields;
+
+impl StgIntrinsic for ZdtIFields {
+    fn name(&self) -> &str {
+        "IFIELDS"
+    }
+
+    /// The STG wrapper for calling the intrinsic
+    fn wrapper(&self, _annotation: Smid) -> super::syntax::LambdaForm {
+        use super::syntax::dsl::*;
+        lambda(
+            1,
+            force(ZdtFromEpoch.global(lref(0)), ZdtFields.global(lref(0))),
+        )
+    }
+}
+
+impl CallGlobal1 for ZdtIFields {}
+
+/// ZDT.PARSE - parse an ISO8601 date
+pub struct ZdtParse8601;
+
+fn zdt_from_str(repr: &str) -> Option<DateTime<FixedOffset>> {
+    // UTC offset (0) is always valid
+    let utc_offset = FixedOffset::east_opt(0).expect("UTC offset is always valid");
+
+    // first try parsing a full datetime
+    DateTime::parse_from_rfc3339(repr)
+        .or_else(|_| DateTime::parse_from_str(repr, "%Y%m%dT%H%M%S"))
+        .or_else(|_| {
+            repr.parse::<NaiveDateTime>()
+                .map(|dt| DateTime::from_naive_utc_and_offset(dt, utc_offset))
+        })
+        .or_else(|_| {
+            repr.parse::<NaiveDate>().map(|d| {
+                DateTime::from_naive_utc_and_offset(
+                    d.and_hms_opt(0, 0, 0).expect("midnight is always valid"),
+                    utc_offset,
+                )
+            })
+        })
+        .or_else(|_| {
+            NaiveDateTime::parse_from_str(repr, "%Y%m%dT%H%M%S")
+                .map(|dt| DateTime::from_naive_utc_and_offset(dt, utc_offset))
+        })
+        .or_else(|_| {
+            NaiveDateTime::parse_from_str(repr, "%Y%m%dT%H%M")
+                .map(|dt| DateTime::from_naive_utc_and_offset(dt, utc_offset))
+        })
+        .or_else(|_| {
+            NaiveDate::parse_from_str(repr, "%Y%m%d").map(|d| {
+                DateTime::from_naive_utc_and_offset(
+                    d.and_hms_opt(0, 0, 0).expect("midnight is always valid"),
+                    utc_offset,
+                )
+            })
+        })
+        .ok()
+}
+
+impl StgIntrinsic for ZdtParse8601 {
+    fn name(&self) -> &str {
+        "ZDT.PARSE"
+    }
+
+    /// Simply compose ZDT.FROM_EPOCH and ZDT.FIELDS
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        _emitter: &mut dyn Emitter,
+        args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        let smid = machine.annotation();
+        let repr = str_arg(machine, view, &args[0])?;
+        if let Some(zdt) = zdt_from_str(&repr) {
+            machine_return_zdt(machine, view, zdt)
+        } else {
+            Err(ExecutionError::BadDateTimeString(smid, repr))
+        }
+    }
+}
+
+impl CallGlobal1 for ZdtParse8601 {}
+
+/// ZDT.FORMAT - format date as ISO8601
+pub struct ZdtFormat8601;
+
+impl StgIntrinsic for ZdtFormat8601 {
+    fn name(&self) -> &str {
+        "ZDT.FORMAT"
+    }
+
+    /// Simply compose ZDT.FROM_EPOCH and ZDT.FIELDS
+    fn execute(
+        &self,
+        machine: &mut dyn IntrinsicMachine,
+        view: MutatorHeapView<'_>,
+        _emitter: &mut dyn Emitter,
+        args: &[Ref],
+    ) -> Result<(), ExecutionError> {
+        let zdt = zdt_arg(machine, view, &args[0])?;
+        let repr = zdt.to_rfc3339();
+        machine_return_str(machine, view, repr)
+    }
+}
+
+impl CallGlobal1 for ZdtFormat8601 {}
+
+#[cfg(test)]
+pub mod tests {
+    use super::*;
+    use chrono::FixedOffset;
+
+    #[test]
+    pub fn test_tz_parse() {
+        assert_eq!(
+            offset_from_tz_str(Smid::default(), "-02:00").unwrap(),
+            FixedOffset::west_opt(2 * 60 * 60).unwrap()
+        );
+        assert_eq!(
+            offset_from_tz_str(Smid::default(), "+02:00").unwrap(),
+            FixedOffset::east_opt(2 * 60 * 60).unwrap()
+        );
+        assert_eq!(
+            offset_from_tz_str(Smid::default(), "UTC").unwrap(),
+            FixedOffset::east_opt(0).unwrap()
+        );
+        assert_eq!(
+            offset_from_tz_str(Smid::default(), "Z").unwrap(),
+            FixedOffset::east_opt(0).unwrap()
+        );
+    }
+}

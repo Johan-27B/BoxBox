@@ -1,0 +1,405 @@
+{
+  "snapshots": [
+    {
+      "id": "h00",
+      "parent": null,
+      "path": "h00",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "445056315c95868eff4ab7f7b08e064e5671aea59f51ca4d72ce70c53fddbd5f",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "47a95f8039d69d0a2065cc318f4474381dbf49f76d0bc382e96a93290c5f1a51",
+        "terminus_boxbox/terminus_boxbox.py": "3dd85b29b0cf9cbd79edaef38baf0620d1b74a1c3a7c3822ed9e9899c3d41397",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "374e8722f600cd6c6bdce752b327668bc1ac6f54322a0fb686b508f9bba12a07",
+        "terminus_boxbox/terminus_kira.py": "73f51dccd5d2fd8bede9bd8cf24114fdaebfab166faacb5174508504aed1209b"
+      },
+      "tree_sha256": "24f41032bf43ae7899dcd40cabb5b68d3eb23e1c1fb51a2717d69f291eca0594"
+    },
+    {
+      "id": "h01",
+      "parent": "h00",
+      "path": "h01",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "445056315c95868eff4ab7f7b08e064e5671aea59f51ca4d72ce70c53fddbd5f",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "47a95f8039d69d0a2065cc318f4474381dbf49f76d0bc382e96a93290c5f1a51",
+        "terminus_boxbox/terminus_boxbox.py": "bedc753ff1fa7fd10b71c089eabe31c1b8ea380873e1f13a8367f354a36d57e3",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "0c9cce4c4cca2ca4be3b120c8fdcf2bd115875215ef521bee9827216acadd544",
+        "terminus_boxbox/terminus_kira.py": "73f51dccd5d2fd8bede9bd8cf24114fdaebfab166faacb5174508504aed1209b"
+      },
+      "tree_sha256": "e6dc6cf0a3e81fc226fbf59e22c6e0f7b46cc59c18c7f75f243683bdbcef2dda"
+    },
+    {
+      "id": "h02",
+      "parent": "h01",
+      "path": "h02",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "445056315c95868eff4ab7f7b08e064e5671aea59f51ca4d72ce70c53fddbd5f",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "47a95f8039d69d0a2065cc318f4474381dbf49f76d0bc382e96a93290c5f1a51",
+        "terminus_boxbox/terminus_boxbox.py": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "326105b43be85dac2049e7f0b62e64fd87025f64115e41096b6acc42f1be7961",
+        "terminus_boxbox/terminus_kira.py": "73f51dccd5d2fd8bede9bd8cf24114fdaebfab166faacb5174508504aed1209b"
+      },
+      "tree_sha256": "9edbc676c0ec2350004d66502922319d9acee31e4246fa098018f04cae2b35f0"
+    },
+    {
+      "id": "h03",
+      "parent": "h02",
+      "path": "h03",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "445056315c95868eff4ab7f7b08e064e5671aea59f51ca4d72ce70c53fddbd5f",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "47a95f8039d69d0a2065cc318f4474381dbf49f76d0bc382e96a93290c5f1a51",
+        "terminus_boxbox/terminus_boxbox.py": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "326105b43be85dac2049e7f0b62e64fd87025f64115e41096b6acc42f1be7961",
+        "terminus_boxbox/terminus_kira.py": "b1b93b3f5c7ef8adb00ee4fd862e01e0b1603b0458f4cc3d901e464868f0581d"
+      },
+      "tree_sha256": "c353e485f0556278cba1ba39a8bb4e67f5cf70f9c0395a28ed22de68ee9e62e2"
+    },
+    {
+      "id": "h04",
+      "parent": "h03",
+      "path": "h04",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "445056315c95868eff4ab7f7b08e064e5671aea59f51ca4d72ce70c53fddbd5f",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "47a95f8039d69d0a2065cc318f4474381dbf49f76d0bc382e96a93290c5f1a51",
+        "terminus_boxbox/terminus_boxbox.py": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "326105b43be85dac2049e7f0b62e64fd87025f64115e41096b6acc42f1be7961",
+        "terminus_boxbox/terminus_kira.py": "388e4f3e0efc1de1856013921f05eb219f2913f437ff0e2d17dd6b57895eeaf6"
+      },
+      "tree_sha256": "a9eec5dbb0089e41d738a32338e254c2e32be661aca033e8a8d2594f42aedb4d"
+    },
+    {
+      "id": "h05",
+      "parent": "h04",
+      "path": "h05",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "d5f8cce9fe557b97cbafc1911fd315c03bd88723543c77ae41eec4beda4cb110",
+        "terminus_boxbox/terminus_boxbox.py": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "761a3da30be912282e74ef2b86a2e5cef4b76eb784ffeb046e10498238ea3edb",
+        "terminus_boxbox/terminus_kira.py": "d1bada0956bfc1766d1d5668fe1d237e90bffbecc0a2a0135b9d9718ddc8f32e"
+      },
+      "tree_sha256": "4995483fd0297f41c3fa526d3193016f32883cdeb3db2484b7c2198ec4b721cb"
+    },
+    {
+      "id": "h06",
+      "parent": "h05",
+      "path": "h06",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "3172e07cc840dc0c5463f02a1862ec6b16139c7b1b3aec2b09daea89d2039ecb",
+        "terminus_boxbox/terminus_boxbox.py": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "a41a6dbf596b3b88ecee995b01bc2c47b7d872b3fb6a5106402159f5d5f8e9b5",
+        "terminus_boxbox/terminus_kira.py": "d1bada0956bfc1766d1d5668fe1d237e90bffbecc0a2a0135b9d9718ddc8f32e"
+      },
+      "tree_sha256": "59f61f9aa01f44bb3c96b241b85a0a3283097a198ead56c5def8be8a49ce33af"
+    },
+    {
+      "id": "h07",
+      "parent": "h06",
+      "path": "h07",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+        "terminus_boxbox/terminus_boxbox.py": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "30277c3f1bf174c6feedbdf592046759367647102f3f1179a30ea3eaaebc3c31",
+        "terminus_boxbox/terminus_kira.py": "158c474aa3b99fdaf436cfd9f46855e0f5e6b30c034f57e187a4a5e89ec0ff8f"
+      },
+      "tree_sha256": "bbb16805cb482433b9dd056fb5e119e3191326d95981a9be98abf95c3a3a7232"
+    },
+    {
+      "id": "h08",
+      "parent": "h07",
+      "path": "h08",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+        "terminus_boxbox/terminus_boxbox.py": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "30277c3f1bf174c6feedbdf592046759367647102f3f1179a30ea3eaaebc3c31",
+        "terminus_boxbox/terminus_kira.py": "db4f727d51739ba4593c8571ee078c1c3dfdfc48a5a0653137403a3a8899b740"
+      },
+      "tree_sha256": "6f0df013619e0d8b91ff716cd87d10fb0d86b22220b89db9887e3a6ff9bce73f"
+    },
+    {
+      "id": "h09",
+      "parent": "h08",
+      "path": "h09",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+        "terminus_boxbox/terminus_boxbox.py": "1f583d65cbe947e5944b8f3031d2a023bb68b28ebd244d99da6e815a156d5113",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "30277c3f1bf174c6feedbdf592046759367647102f3f1179a30ea3eaaebc3c31",
+        "terminus_boxbox/terminus_kira.py": "db4f727d51739ba4593c8571ee078c1c3dfdfc48a5a0653137403a3a8899b740"
+      },
+      "tree_sha256": "2813508931f465f4b9f21980e4e263c006da373b659f6cc10d1a72cbcb3816e6"
+    },
+    {
+      "id": "h10",
+      "parent": "h09",
+      "path": "h10",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+        "terminus_boxbox/terminus_boxbox.py": "acd1a81ab9f297ab54224c948cc46403e526c0ee66eca5cd15341a9eb803fdfa",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "30277c3f1bf174c6feedbdf592046759367647102f3f1179a30ea3eaaebc3c31",
+        "terminus_boxbox/terminus_kira.py": "db4f727d51739ba4593c8571ee078c1c3dfdfc48a5a0653137403a3a8899b740"
+      },
+      "tree_sha256": "82c7692d8385528f270cd403cc54e3dc8f7f218563a12297efb496f100904fb5"
+    },
+    {
+      "id": "h11",
+      "parent": "h10",
+      "path": "h11",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+        "terminus_boxbox/terminus_boxbox.py": "342a57bce5bb2c51e34adead179920d36c19629feb96780cc27d382a0a3fc8f2",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "30277c3f1bf174c6feedbdf592046759367647102f3f1179a30ea3eaaebc3c31",
+        "terminus_boxbox/terminus_kira.py": "ae39c6e62d3baa3e7de86d6967f3b37c0091ebe65188e7cdbe3cbfafc69d37bd"
+      },
+      "tree_sha256": "da5b0f211ac66eb9bb66841e17535e15e5f8853d9327ebda31093c1bc2bd30c2"
+    },
+    {
+      "id": "h12",
+      "parent": "h11",
+      "path": "h12",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+        "terminus_boxbox/terminus_boxbox.py": "342a57bce5bb2c51e34adead179920d36c19629feb96780cc27d382a0a3fc8f2",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "efe0fdb7036cd177e365484150e5a6f1e761d050ded4c08fec94296bc2011aba",
+        "terminus_boxbox/terminus_kira.py": "ae39c6e62d3baa3e7de86d6967f3b37c0091ebe65188e7cdbe3cbfafc69d37bd"
+      },
+      "tree_sha256": "c980c967584812f92438a83a5675d9dc2753e1e40cc4f8d56b47ff15d81910ce"
+    },
+    {
+      "id": "h13",
+      "parent": "h12",
+      "path": "h13",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+        "terminus_boxbox/terminus_boxbox.py": "342a57bce5bb2c51e34adead179920d36c19629feb96780cc27d382a0a3fc8f2",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "efe0fdb7036cd177e365484150e5a6f1e761d050ded4c08fec94296bc2011aba",
+        "terminus_boxbox/terminus_kira.py": "87b1fe093b57e29151af808c8459e93096c57cd673310d28f980be6771eb4c2c"
+      },
+      "tree_sha256": "dfac30fcdac0614806ac76ba677112f84d140815a6ecdd5ef7ca7ec270de438d"
+    },
+    {
+      "id": "h14",
+      "parent": "h13",
+      "path": "h14",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+        "terminus_boxbox/terminus_boxbox.py": "342a57bce5bb2c51e34adead179920d36c19629feb96780cc27d382a0a3fc8f2",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "efe0fdb7036cd177e365484150e5a6f1e761d050ded4c08fec94296bc2011aba",
+        "terminus_boxbox/terminus_kira.py": "2b6b4f45e38cec98b0f4f2b03f0c8b7a5b3a688b681ba643eb8235c15bb845fc"
+      },
+      "tree_sha256": "24c0a1b3644021573fea37d8788ef9773a78cf26599e14a7b34e3d218991f790"
+    },
+    {
+      "id": "h15",
+      "parent": "h14",
+      "path": "h15",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+        "terminus_boxbox/terminus_boxbox.py": "9c6873e57e4f68b027c8b47c78f6d0fd37d844e025092265a277498a40c2d526",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "efe0fdb7036cd177e365484150e5a6f1e761d050ded4c08fec94296bc2011aba",
+        "terminus_boxbox/terminus_kira.py": "d4d0438f2154cb0ae815d137edddff30a2aa0135e0f578af6116a446fe678983"
+      },
+      "tree_sha256": "2cbba1cb203a2ad90797513f68ef681b8bd49bcc3c9698f2b384c70c4d8033aa"
+    },
+    {
+      "id": "h16",
+      "parent": "h15",
+      "path": "h16",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+        "terminus_boxbox/terminus_boxbox.py": "9c6873e57e4f68b027c8b47c78f6d0fd37d844e025092265a277498a40c2d526",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "efe0fdb7036cd177e365484150e5a6f1e761d050ded4c08fec94296bc2011aba",
+        "terminus_boxbox/terminus_kira.py": "2b3900652615803ea1b8cebb0bc53b62f16aa105a5eae92a582727fe2204c45c"
+      },
+      "tree_sha256": "706534c345d43090a6f770084bb7ffd60bcd9b10ac46335253cfabcd8bc782f3"
+    },
+    {
+      "id": "h17",
+      "parent": "h16",
+      "path": "h17",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "1985ba4c4fa8509147b4d9b85aecd3ac585ba0f8b604bf125e8a49fbec596dd5",
+        "terminus_boxbox/terminus_boxbox.py": "9c6873e57e4f68b027c8b47c78f6d0fd37d844e025092265a277498a40c2d526",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "8110860e6fc0d4d0065efd82e7021f70c67de209eee21706ebd9ee6fcbfd218c",
+        "terminus_boxbox/terminus_kira.py": "b49bd5df630ad2bdc747179fe94ad0ac47322cc467f7538b6a7e5b107fd508d7"
+      },
+      "tree_sha256": "54820988d97e0f858a0356b638d60a2424c30f257d803c7887e3b8bdd781f750"
+    },
+    {
+      "id": "h18",
+      "parent": "h17",
+      "path": "h18",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+        "terminus_boxbox/terminus_boxbox.py": "9c6873e57e4f68b027c8b47c78f6d0fd37d844e025092265a277498a40c2d526",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "ea8aea6c30a97ea35cf409b54da2102ef45c36fc6c5ef1b45c41853c04fba536",
+        "terminus_boxbox/terminus_kira.py": "e2ce725a9391c8e5c5ba33d0f1544c24186953d7c8d928c1515873439bda2b7a"
+      },
+      "tree_sha256": "e090a01447aa15294c1bda6301ca4c3263281204d68a6daf12d6ea1cc48ddb57"
+    },
+    {
+      "id": "h19",
+      "parent": "h18",
+      "path": "h19",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+        "terminus_boxbox/terminus_boxbox.py": "614562111099cb05f37cb14d058a7630e3b60cf5b2f410df7245548238ca2d2a",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "ea8aea6c30a97ea35cf409b54da2102ef45c36fc6c5ef1b45c41853c04fba536",
+        "terminus_boxbox/terminus_kira.py": "ed17234786754d4b6525723d27260943fc82e1f44501c8f3d9f9a074c2f47095"
+      },
+      "tree_sha256": "22745c6a2b4dce84bbf204a0e42eb38b88585a7c1a17c3ac562678139f394607"
+    },
+    {
+      "id": "h20",
+      "parent": "h19",
+      "path": "h20",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+        "terminus_boxbox/terminus_boxbox.py": "614562111099cb05f37cb14d058a7630e3b60cf5b2f410df7245548238ca2d2a",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "ea8aea6c30a97ea35cf409b54da2102ef45c36fc6c5ef1b45c41853c04fba536",
+        "terminus_boxbox/terminus_kira.py": "0214db6a60bdfc624e307e733ed8e0e3d533d4473d7915109fa1412075405183"
+      },
+      "tree_sha256": "7b7221a20115b2efa6a4b7475bead2c68bb588c57a60d2d1a1bd477cfc9b6f71"
+    },
+    {
+      "id": "h21",
+      "parent": "h20",
+      "path": "h21",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+        "terminus_boxbox/terminus_boxbox.py": "614562111099cb05f37cb14d058a7630e3b60cf5b2f410df7245548238ca2d2a",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "ea8aea6c30a97ea35cf409b54da2102ef45c36fc6c5ef1b45c41853c04fba536",
+        "terminus_boxbox/terminus_kira.py": "4049bb87e6f0c1caef6202c5a336eb49d92f48e2a7ac544aaf6401d745fc16bc"
+      },
+      "tree_sha256": "c748ec9194373c3f8065ae7d838a3060db99acee42447d4427051926b4dbf05d"
+    },
+    {
+      "id": "h22",
+      "parent": "h21",
+      "path": "h22",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+        "terminus_boxbox/terminus_boxbox.py": "614562111099cb05f37cb14d058a7630e3b60cf5b2f410df7245548238ca2d2a",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "ea8aea6c30a97ea35cf409b54da2102ef45c36fc6c5ef1b45c41853c04fba536",
+        "terminus_boxbox/terminus_kira.py": "3abad83b3dd36584d4bbfbf2382bae96fa0e6be64ce9c2c36b0e3a43ca0754e7"
+      },
+      "tree_sha256": "fa2698c0e0b063a2034e9b534d8a834d81c6f0100d007b105d5272aa11f2bce2"
+    },
+    {
+      "id": "h23",
+      "parent": "h22",
+      "path": "h23",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+        "terminus_boxbox/terminus_boxbox.py": "614562111099cb05f37cb14d058a7630e3b60cf5b2f410df7245548238ca2d2a",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "55f38cf505378a61fbe6955b8a94f4fdff450c8aecbb08a577c3a678ab0e3049",
+        "terminus_boxbox/terminus_kira.py": "3abad83b3dd36584d4bbfbf2382bae96fa0e6be64ce9c2c36b0e3a43ca0754e7"
+      },
+      "tree_sha256": "ad0b9561e6cb363ab13e8e86165c27f4a3b7528c42c2e384937a0279dca0ff18"
+    },
+    {
+      "id": "h24",
+      "parent": "h23",
+      "path": "h24",
+      "files": {
+        "pyproject.toml": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+        "terminus_boxbox/__init__.py": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+        "terminus_boxbox/caching.py": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+        "terminus_boxbox/materiality.py": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+        "terminus_boxbox/prompt-templates/terminus-boxbox.txt": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+        "terminus_boxbox/terminus_boxbox.py": "d3fe04121cf8e18e6ac562549bde76ad7745f7cc981dc859584ad0b3633fd82b",
+        "terminus_boxbox/skills/autoresearch/SKILL.md": "55f38cf505378a61fbe6955b8a94f4fdff450c8aecbb08a577c3a678ab0e3049",
+        "terminus_boxbox/terminus_kira.py": "3abad83b3dd36584d4bbfbf2382bae96fa0e6be64ce9c2c36b0e3a43ca0754e7"
+      },
+      "tree_sha256": "abb9004cea9552c3650ca7518988598595fb2d3a74327f40ad7e31d40efeb850"
+    }
+  ],
+  "selected_harness": "h24"
+}

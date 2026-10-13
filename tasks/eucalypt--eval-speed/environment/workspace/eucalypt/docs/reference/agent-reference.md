@@ -1,0 +1,1335 @@
+# Agent Reference
+
+Dense, example-heavy reference for AI coding agents working with
+Eucalypt. All content verified against source. See the
+[guide chapters](../guide/blocks-and-declarations.md) for narrative
+explanations.
+
+---
+
+## 1. Syntax Reference
+
+### 1.1 Primitives
+
+| Type | Syntax | Examples |
+|------|--------|----------|
+| Integer | digits | `42`, `-7`, `0` |
+| Float | digits with `.` | `3.14`, `-0.5` |
+| String | `"..."` | `"hello"` |
+| Raw string | `r"..."` | `r"C:\path"`, `r"^\d+"` |
+| C-string | `c"..."` | `c"line\nbreak"`, `c"tab\there"` |
+| T-string (ZDT) | `t"..."` | `t"2024-03-15"`, `t"2024-03-15T14:30:00Z"` |
+| Symbol | `:name` | `:key`, `:active` |
+| Boolean | literals | `true`, `false` |
+| Null | literal | `null` |
+
+**String escape sequences (c-strings only):** `\n` newline, `\t` tab,
+`\r` carriage return, `\\` backslash, `\"` quote, `\{` `\}` literal
+braces, `\xHH` hex byte, `\uHHHH` unicode, `\UHHHHHHHH` extended
+unicode.
+
+**String interpolation** (all string types except t-strings): embed
+expressions with `{expr}`. Literal braces via `{{` and `}}`. Format
+specifiers: `{value:%.2f}`, `{n:%06d}`.
+
+Raw strings treat backslashes literally but still support `{}`
+interpolation.
+
+### 1.2 Collections
+
+```eu,notest
+# List (commas required)
+[1, 2, 3]
+[]
+[1, "two", :three, true]
+
+# Block (commas optional)
+{ a: 1 b: 2 c: 3 }
+{ a: 1, b: 2, c: 3 }
+```
+
+### 1.3 Declarations
+
+| Form | Syntax | Notes |
+|------|--------|-------|
+| Property | `name: expr` | Defines a named value, rendered in output |
+| Function | `f(x, y): expr` | Not rendered in output |
+| List destructure | `f([a, b]): expr` | Single param, list destructured |
+| Block destructure | `f({x y}): expr` | Single param, block destructured |
+| Cons destructure | `f([h : t]): expr` | Single param, head/tail split |
+| Juxtaposed list | `f[a, b]: expr` | Sugar for `f([a, b]): expr` |
+| Juxtaposed block | `f{x y}: expr` | Sugar for `f({x y}): expr` |
+| Binary operator | `(l op r): expr` | Symbolic name required |
+| Prefix operator | `(op x): expr` | Unary prefix |
+| Postfix operator | `(x op): expr` | Unary postfix |
+
+**Top-level unit**: the file itself is an implicit block without braces.
+
+### 1.4 Comments
+
+```eu,notest
+# Line comment (to end of line)
+x: 42  # inline comment
+```
+
+### 1.5 Metadata Annotations
+
+Placed between a leading backtick and the declaration:
+
+```eu,notest
+# Documentation shorthand (string = doc metadata)
+` "Adds two numbers"
+add(x, y): x + y
+
+# Structured metadata
+` { doc: "Deep merge operator"
+    associates: :left
+    precedence: :append }
+(l << r): deep-merge(l, r)
+
+# Suppress from output
+` :suppress
+helper(x): x + 1
+
+# Export target (any bare symbol is a target shortcut)
+` :my-output
+output: { result: 42 }
+
+# Target using the declaration's own name
+` :target
+report: { total: 42 }
+
+# Mark as main (default) target
+` :main
+main: { result: 42 }
+
+# Mark as unit-internal (invisible to importers and output)
+` :internal
+helper(x): x + 1
+
+# Structured form of internal visibility
+` { export: :internal }
+another-helper(x): x * 2
+```
+
+**Declaration visibility (`export:`)**: controls whether a declaration
+appears in rendered output and is visible to importers:
+
+| Value | Rendered | Visible to importers | Shorthand |
+|-------|----------|---------------------|-----------|
+| `:normal` (default) | yes | yes | — |
+| `:suppress` | **no** | yes | `` ` :suppress `` |
+| `:internal` | **no** | **no** | `` ` :internal `` |
+
+`:internal` makes a binding completely private to its unit — it stays
+accessible to sibling declarations within the same file but is invisible
+to any importing unit and absent from rendered output. Two units with
+same-named internal helpers do not conflict.
+
+**Unit-level metadata**: if the first item in a file is an expression
+(not a declaration), it becomes metadata for the entire unit:
+
+```eu,notest
+{ import: "helpers.eu" }
+result: helper(42)
+```
+
+Unit metadata keys:
+
+| Key | Value | Effect |
+|-----|-------|--------|
+| `import` | string or list | Import files/resources |
+| `requires` | semver string | Fail at load time if version doesn't match |
+| `prelude` | string path | Use an alternative prelude |
+| `doc` | string | Unit documentation |
+
+```eu,notest
+# Version pinning — checked at load time, before evaluation
+{ requires: ">=0.8"
+  import: "helpers.eu" }
+result: helper(42)
+
+# Alternative prelude
+{ prelude: "my-prelude.eu" }
+x: custom-fn(1)
+```
+
+**Trace metadata**: annotate declarations to trace entry arguments
+and/or exit values to stderr during evaluation:
+
+```eu,notest
+# Lazy entry trace — shows <thunk> for unevaluated args
+` :trace
+f(x, y): some-pipeline x y
+# stderr: → f(x: <thunk>, y: <thunk>)
+
+# Strict entry trace — forces args to WHNF before printing
+` { trace: :strict }
+f(x, y): some-pipeline x y
+# stderr: → f(x: 42, y: [1, 2, 3])
+
+# Entry + exit trace (lazy)
+` { trace: :exit }
+f(x, y): some-pipeline x y
+# stderr: → f(x: <thunk>, y: <thunk>)
+# stderr: ← f: <thunk>
+
+# Entry + exit trace (strict) — forces both args and result
+` { trace: :strict-exit }
+f(x, y): some-pipeline x y
+# stderr: → f(x: 42, y: [1, 2, 3])
+# stderr: ← f: 3
+```
+
+Trace output goes to stderr and does not affect the program's result.
+Lazy mode (`:trace`, `:exit`) never forces evaluation — it peeks at
+values that have already been evaluated. Strict mode (`:strict`,
+`:strict-exit`) forces arguments/results to WHNF, which changes
+evaluation order.
+
+**Deprecation metadata**: mark declarations as deprecated to generate
+compile-time warnings:
+
+```eu,notest
+# Bare deprecation
+` :deprecated
+old-fn(x): x + 1
+
+# With message
+` { deprecated: "use new-fn instead" }
+old-fn(x): x + 1
+
+# With replacement pointer (enables LSP quick-fix)
+` { deprecated: "use new-fn instead"
+    replaced-by: "new-fn" }
+old-fn(x): x + 1
+```
+
+Referencing a deprecated declaration emits a warning on stderr.
+Under `eu check --strict`, deprecation warnings become errors.
+Deprecated declarations still work — deprecation is advisory.
+
+**Type annotations** (optional, advisory): add `type:` alongside `doc:`
+to annotate declarations for the type checker (`eu check`):
+
+```eu,notest
+` { doc: "`double(x)` - double a number."
+    type: "number -> number" }
+double(x): x * 2
+
+` { doc: "`map(f, xs)` - apply f to each element."
+    type: "(a -> b) -> [a] -> [b]" }
+map: __MAP
+```
+
+**Type aliases**: define reusable type names in unit metadata or via
+`type-def:` / `result-def:` on a declaration:
+
+```eu,notest
+# Named aliases in unit metadata
+{ types: { Point: "{x: number, y: number}"
+           Person: "{name: string, age: number, email: string | null, ..}" } }
+
+# Alias using binding name (shorthand — `:type-def` or `type-def: true`)
+` :type-def
+origin: { x: 0, y: 0 }
+# Registers alias `origin` = the binding's type
+
+# Alias with an explicit name
+` { type-def: "Point" }
+origin: { x: 0, y: 0 }
+# Registers alias `Point` = the binding's type
+
+# Return-type alias for a constructor function
+` { result-def: "Count"
+    type: "string → number" }
+char-count(s): str.length(s)
+# Registers alias `Count` = the function's return type (number)
+# Equivalent shorthand: `:result-def` uses the binding name as alias name
+```
+
+`type-def: true` (or the bare `` ` :type-def `` shorthand) uses the binding's
+own name as the alias name; `type-def: "Name"` uses an explicit name.
+`result-def` is identical in shape but registers an alias for the function's
+*return type* rather than the full function type. `result-def` on a
+non-function binding emits a warning and is skipped.
+
+**Common type forms in annotations**:
+
+| Syntax             | Meaning                                |
+|--------------------|----------------------------------------|
+| `number`, `string`, `symbol`, `bool`, `null`, `datetime` | primitives |
+| `any`              | gradual/unknown — no type errors       |
+| `[T]`              | list of T                              |
+| `NonEmpty([T])`    | non-empty list of T                    |
+| `(A, B)`           | tuple                                  |
+| `{{k: T, ..}}`     | open record (at least k: T)            |
+| `{{k: T, ..r}}`    | named row variable (extra fields in r) |
+| `{{..r, ..s}}`     | row concatenation (union of r and s)   |
+| `{{k: T}}`         | closed record                          |
+| `block`            | any block (no known shape)             |
+| `Dict(T)`          | homogeneous block — all values type T  |
+| `"value"`          | literal string — subtype of `string`; c-string escapes for the quotes: `c"\"value\""` |
+| `:name`            | literal symbol — subtype of `symbol`   |
+| `A -> B`           | function                               |
+| `A \| B`           | union                                  |
+| `T?`               | partial — sugar for `T \| ExecutionError` |
+| `ExecutionError`   | the type of a raised runtime error     |
+| `a`, `b`           | type variable (kind `*`)               |
+| `m a`              | constructor application (`m` of kind `* -> *` applied to `a`) |
+| `forall a. T`      | explicit quantification over kind-`*` variable |
+| `forall (m :: * -> *) a. T` | explicit quantification with kind annotation |
+| `IO(T)`            | IO action producing T                  |
+| `Lens(a, b)`       | lens                                   |
+| `Traversal(a, b)`  | traversal                              |
+
+**User-defined monads**: `monad({ bind(m,f): ..., return(v): ... })`
+derives the standard combinators (`map`, `then`, `and-then`, `join`,
+`sequence`, `map-m`, `filter-m`) and annotates them with
+`forall (m :: * -> *)` types.  The type checker understands them
+polymorphically, so passing the wrong type triggers a warning:
+
+```eu,notest
+my-for: monad({bind(m, f): m mapcat(f), return(v): [v]})
+[1, 2, 3] my-for.map(true)   # warning: expected a → b, found bool
+```
+
+**Important**: record braces (`{`) in type strings trigger eucalypt
+string interpolation. Always escape with `{{` and `}}`:
+`"{{name: string, ..}} -> string"` not `"{name: string, ..} -> string"`.
+Types without braces (`"number -> number"`, `"IO(T)"`) need no escaping.
+Literal string types (`"value"`) escape their quotes with c-string escapes:
+`c"\"value\""`. Mind `|`/`->` precedence — bracket a union in argument
+position: `c"(\"a\" | \"b\") -> bool"`.
+
+**Partial functions**: functions that may raise a runtime error use the
+`T?` postfix sugar — equivalent to `T | ExecutionError`.  Several
+prelude functions are partial by nature:
+
+```
+nth      : number → [a] → a?         # out-of-range index
+parse-as : symbol → string → any?    # invalid input format
+lookup   : symbol → Dict(a) → a?     # key not found
+```
+
+A partial result flowing into `any` (unannotated code) is **silent** —
+a warning fires only when the receiving position is explicitly annotated
+as total:
+
+```eu,notest
+` { type: "number" }
+result: [1, 2, 3] nth(0)   # warning: expected number, found number?
+```
+
+**Flow-sensitive narrowing**: when a type-predicate test (`number?`,
+`string?`, `bool?`, `null?`, `list?`, `block?`, `symbol?`) on an
+annotated variable is used as the condition of `if`, `and`, `or`,
+`cond`, or a structural wrapper (e.g. `then(t,f,c): if(c,t,f)`), the
+checker narrows the variable's type in each branch.  Non-structural
+wrappers (e.g. `my-if(c,t,_f): t`) are not recognised as branchers
+and do not trigger narrowing.
+
+**LSP alias navigation**: alias names written inside `type:` strings
+support go-to-definition, hover (shows the alias name and resolved type), and
+rename.  This works for plain, unescaped type strings only — escaped or
+interpolated strings (`"{{...}}"`) degrade gracefully with no crash.  Rename
+updates plain-string references; any interpolated references that still mention
+the old name will produce an "unknown alias" type warning after the rename.
+
+See [Type Checking](../guide/type-checking.md) for the full guide.
+
+### 1.6 Function Application
+
+```eu,notest
+# Standard call (NO whitespace before paren)
+f(x, y)
+
+# Catenation / pipeline (single argument, becomes LAST param)
+x f                    # = f(x)
+x f g h                # = h(g(f(x)))
+[1,2,3] map(inc)       # map(inc, [1,2,3])
+
+# Partial application (all functions are curried)
+add(1)                 # returns a function that adds 1
+[1,2,3] map(+ 10)     # section: adds 10 to each
+
+# Sections (operator with gaps filled by implicit params)
+(+ 1)                  # function: _ + 1
+(* 2)                  # function: _ * 2
+(> 3)                  # function: _ > 3
+(/)                    # function: _ / _ (two params)
+```
+
+### 1.7 Lookup and Generalised Lookup
+
+```eu,notest
+# Simple property lookup (dot, precedence 90)
+block.key
+config.db.host
+
+# Generalised lookup (evaluate RHS in block scope)
+{ a: 3 b: 4 }.(a + b)        # 7
+{ a: 3 b: 4 }.[a, b]         # [3, 4]
+{ a: 3 b: 4 }."{a} and {b}"  # "3 and 4"
+```
+
+**Warning:** `.` binds very tightly (precedence 90). `list head.name`
+parses as `list (head.name)`, not `(list head).name`. Use parentheses:
+`(list head).name`.
+
+### 1.8 Anaphora (Implicit Parameters)
+
+| Type | Numbered | Unnumbered | Scope |
+|------|----------|------------|-------|
+| Expression | `_0`, `_1`, `_2` | `_` (each `_` = new param) | Expression |
+| Block | `•0`, `•1`, `•2` | `•` (each `•` = new param) | Block |
+| String | `{0}`, `{1}`, `{2}` | `{}` (each `{}` = new param) | String literal |
+
+```eu,notest
+# Expression anaphora
+[1,2,3] map(_0 * _0)          # square: [1,4,9]
+[1,2,3] filter(_ > 1)         # [2,3]
+
+# Block anaphora (• = bullet, Option-8 on Mac)
+{ x: • y: • }                 # two-param function returning block
+[[1,2],[3,4]] map({ x: • y: • } uncurry)
+
+# Pseudo-lambda via block anaphora + generalised lookup
+{ x: • y: • }.(x + y)         # anonymous two-param function
+
+# String anaphora
+[1,2,3] map("item: {}")       # ["item: 1", "item: 2", "item: 3"]
+"{1},{0}"                      # two-param function, reversed order
+```
+
+**Important:** anaphora cannot be nested. For complex cases, use named
+functions.
+
+### 1.9 Imports
+
+```eu,notest
+# Unit-level import (available everywhere in file)
+{ import: "lib.eu" }
+
+# Named import (access as namespace)
+{ import: "cfg=config.yaml" }
+host: cfg.host
+
+# Multiple imports — MUST be in one block, NOT separate blocks
+{ import: ["helpers.eu", "cfg=config.eu"] }
+
+# WRONG: { import: "a.eu" }
+#        { import: "b.eu" }   ← this is a separate block, not a second import
+
+# Format override
+{ import: "data=yaml@records.txt" }
+
+# Scoped import (on specific declaration)
+` { import: "math.eu" }
+calculations: { result: advanced-calc(10) }
+
+# Git import
+{ import: { git: "https://github.com/user/lib"
+            commit: "abc123def456"
+            import: "helpers.eu" } }
+
+# Streaming imports (lazy, for large files)
+{ import: "events=jsonl-stream@events.jsonl" }
+{ import: "rows=csv-stream@big.csv" }
+{ import: "lines=text-stream@log.txt" }
+```
+
+**Import resolution order**: relative paths are resolved by searching:
+1. The directory containing the importing `.eu` file (source-relative)
+2. The directories on the lib path (`-L` flags and CWD)
+
+This means a file at `lib/utils.eu` that imports `"helpers/misc.eu"` will find
+`lib/helpers/misc.eu` without needing `-L lib` on the command line. This works
+transitively, so `lib/helpers/misc.eu` can in turn import `"sub/detail.eu"` and
+it will resolve as `lib/helpers/sub/detail.eu`.
+
+### 1.10 Quoted Identifiers
+
+Single quotes turn any character sequence into a normal identifier:
+
+```eu,notest
+home: {
+  '.bashrc': false
+  'notes.txt': true
+}
+z: home.'notes.txt'
+```
+
+---
+
+## 2. Operator Precedence Table
+
+All values verified against `src/core/metadata.rs` (`named_precedence`)
+and `lib/prelude.eu` operator metadata.
+
+From highest (tightest) to lowest binding:
+
+| Prec | Name | Assoc | Operators | Description |
+|------|------|-------|-----------|-------------|
+| 95 | -- | prefix | `↑` | Head (tight prefix) |
+| 90 | lookup | left | `.` (built-in) | Property lookup |
+| 90 | lookup | left | `~` | Safe key lookup (null-propagating) |
+| 90 | call | left | (built-in) | Function call |
+| 88 | bool-unary | prefix | `!`, `¬` | Boolean negation |
+| 88 | bool-unary | postfix | `✓` | Not-null check (true if not null) |
+| 88 | -- | -- | `∘`, `;` | Composition (actual prec 88 from prelude) |
+| 85 | exp | right | `^` | Power |
+| 85 | exp | -- | `!!` (nth) | Indexing |
+| 80 | prod | left | `*`, `/`, `÷`, `%` | Multiplication, floor division, precise division, floor modulo |
+| 75 | sum | left | `+`, `-` | Addition, subtraction |
+| 60 | shift | -- | (shift ops) | Reserved |
+| 55 | bitwise | -- | (bitwise ops) | Reserved |
+| 50 | cmp | left | `<`, `>`, `<=`, `>=` | Comparison |
+| 45 | append | left | `++` | List concatenation |
+| 45 | append | left | `<<` | Deep merge |
+| 42 | map | left | `<$>` | Functor map |
+| 40 | eq | left | `=`, `!=` | Equality |
+| 35 | bool-prod | left | `&&`, `∧` | Logical AND |
+| 30 | bool-sum | left | `\|\|`, `∨` | Logical OR |
+| 20 | cat | left | *(catenation)* | Juxtaposition / pipeline |
+| 15 | clause | left | `=>`, `⇒` | Cond clause builder (`condition => result`) |
+| 10 | apply | left | `@` | Function application |
+| 5 | meta | left | `//`, `//<<`, `//=`, `//=>`, `//=?`, `//=?>`, `//!` | Metadata and assertions |
+
+**Named precedence levels** for use in operator metadata: `:lookup`,
+`:call`, `:bool-unary`, `:exp`, `:prod`, `:sum`, `:shift`, `:bitwise`,
+`:cmp`, `:append`, `:map`, `:eq`, `:bool-prod`, `:bool-sum`, `:cat`,
+`:apply`, `:meta`.
+
+**User-defined operators** default to left-associative, precedence 50
+(`:cmp` level). Set custom values via metadata:
+
+```eu,notest
+` { associates: :right precedence: :sum }
+(x +++ y): x + y
+```
+
+**Composition operators** `∘` and `;` are defined at precedence 88 in
+the prelude (between bool-unary and exp):
+- `f ∘ g` — compose right-to-left (`g` then `f`), right-associative
+- `f ; g` — compose left-to-right (`f` then `g`), left-associative
+
+---
+
+## 3. Top 30 Prelude Functions
+
+All signatures verified against `lib/prelude.eu`. Pipeline style shown
+where idiomatic (catenated argument is always the **last** parameter).
+
+### 3.1 List Functions
+
+#### `map(f, l)` — transform each element
+
+```
+[1, 2, 3] map(inc)           # [2, 3, 4]
+[1, 2, 3] map(* 10)          # [10, 20, 30]
+["a","b"] map(str.to-upper)  # ["A", "B"]
+```
+
+#### `filter(p?, l)` — keep elements satisfying predicate
+
+```
+[1,2,3,4,5] filter(> 3)      # [4, 5]
+[1,2,3,4,5] filter(pos?)     # [1, 2, 3, 4, 5]
+```
+
+#### `foldl(op, i, l)` — left fold
+
+```
+foldl(+, 0, [1,2,3,4,5])     # 15
+[1,2,3] foldl(+, 0)          # ERROR: use foldl(+, 0, [1,2,3])
+```
+
+Note: `foldl` takes 3 args. In pipeline: the list is the last arg, so
+`[1,2,3,4,5] foldl(+, 0)` does NOT work — you must call
+`foldl(+, 0, [1,2,3,4,5])` directly, or partially apply:
+
+```
+sum: foldl(+, 0)
+[1,2,3,4,5] sum              # 15
+```
+
+#### `foldr(op, i, l)` — right fold
+
+```
+foldr(cons, [], [1,2,3])      # [1, 2, 3] (identity)
+foldr(++, [], [[1,2],[3,4]])  # [1, 2, 3, 4]
+```
+
+#### `head(xs)` — first element (panics if empty)
+
+```
+[10, 20, 30] head            # 10
+```
+
+The type checker warns if `xs` could be empty (`List(T)` or `List(Never)`).
+Use `nil?` narrowing or annotate as `NonEmpty([T])` to suppress.  On a
+`Tuple([A, B, ...])` literal, `head` synthesises the precise type `A`.
+
+#### `tail(xs)` — all but first (panics if empty)
+
+```
+[10, 20, 30] tail            # [20, 30]
+```
+
+On a `Tuple([A, B, C])`, `tail` synthesises `Tuple([B, C])`.
+
+#### `cons(h, t)` — prepend element to list
+
+```
+cons(0, [1, 2, 3])           # [0, 1, 2, 3]
+```
+
+`cons` and `‖` return `NonEmpty([a])` — the result is guaranteed non-empty.
+
+#### `reverse(l)` — reverse a list
+
+```
+[1, 2, 3] reverse            # [3, 2, 1]
+```
+
+#### `count(l)` — number of elements
+
+```
+[10, 20, 30] count           # 3
+```
+
+#### `zip(l1, l2)` — pair elements from two lists
+
+```
+zip([:a,:b,:c], [1,2,3])     # [[:a,1], [:b,2], [:c,3]]
+```
+
+#### `concat(ls)` — flatten one level of nesting
+
+```
+concat([[1,2], [3], [4,5]])   # [1, 2, 3, 4, 5]
+```
+
+#### `mapcat(f, l)` — map then concatenate (flatMap)
+
+```
+["ab","cd"] mapcat(str.letters)  # ["a","b","c","d"]
+```
+
+#### `take(n, l)` — first n elements
+
+```
+[1,2,3,4,5] take(3)          # [1, 2, 3]
+```
+
+#### `drop(n, l)` — remove first n elements
+
+```
+[1,2,3,4,5] drop(3)          # [4, 5]
+```
+
+#### `any(p?, l)` — true if any element satisfies p?
+
+```
+[1, 2, 3] any(> 2)           # true
+[1, 2, 3] any(> 5)           # false
+```
+
+#### `all(p?, l)` — true if all elements satisfy p?
+
+```
+[2, 4, 6] all(> 0)           # true
+[2, 4, 6] all(> 3)           # false
+```
+
+### 3.2 Block Functions
+
+#### `keys(b)` — list of keys (as symbols)
+
+```
+{ a: 1 b: 2 c: 3 } keys     # [:a, :b, :c]
+```
+
+#### `values(b)` — list of values
+
+```
+{ a: 1 b: 2 c: 3 } values   # [1, 2, 3]
+```
+
+#### `elements(b)` — list of [key, value] pairs
+
+```
+{ a: 1 b: 2 } elements       # [[:a, 1], [:b, 2]]
+```
+
+#### `merge(b1, b2)` — shallow merge (b2 overrides b1)
+
+```
+merge({ a: 1 }, { b: 2 })    # { a: 1 b: 2 }
+{ a: 1 } { a: 2 }            # { a: 2 } (catenation = merge)
+```
+
+#### `has(s, b)` — does block have key s? (s is a symbol)
+
+```
+{ a: 1 b: 2 } has(:a)        # true
+{ a: 1 b: 2 } has(:z)        # false
+```
+
+#### `lookup(s, b)` — look up key s (panics if missing)
+
+```
+{ a: 1 b: 2 } lookup(:b)     # 2
+```
+
+#### `lookup-or(s, d, b)` — look up key s with default d
+
+```
+{ a: 1 } lookup-or(:z, 99)   # 99
+{ a: 1 } lookup-or(:a, 99)   # 1
+```
+
+#### `deep-find(k, b)` — find all values for key k at any depth
+
+```
+{ a: { x: 1 } b: { x: 2 } } deep-find(:x)    # [1, 2]
+```
+
+#### `deep-query(pattern, b)` — query with dot-separated glob pattern
+
+Patterns: bare `foo` = `**.foo`; `*` = one level; `**` = any depth.
+
+```
+{ a: { b: { c: 1 } } } deep-query("a.b.c")    # [1]
+{ a: { x: 1 } b: { x: 2 } } deep-query("*.x") # [1, 2]
+```
+
+#### `select(ks, b)` — sub-block with only listed keys
+
+```
+{ a: 1 b: 2 c: 3 } select([:a, :c])   # { a: 1 c: 3 }
+{ a: 1 b: 2 } select([])               # {}
+{ a: 1 b: 2 } select([:z])             # {}
+```
+
+#### `dissoc(ks, b)` — sub-block with listed keys removed
+
+```
+{ a: 1 b: 2 c: 3 } dissoc([:a, :c])   # { b: 2 }
+{ a: 1 b: 2 } dissoc([])               # { a: 1 b: 2 }
+{ a: 1 b: 2 } dissoc([:z])             # { a: 1 b: 2 }
+{ a: 1 } dissoc([:a])                  # {}
+```
+
+### 3.3 String Functions (str namespace)
+
+#### `str.split-on(re, s)` — split string on regex
+
+```
+"one-two-three" str.split-on("-")      # ["one", "two", "three"]
+"a.b.c" str.split-on("[.]")           # ["a", "b", "c"]
+```
+
+#### `str.join-on(sep, l)` — join list with separator
+
+```
+["a", "b", "c"] str.join-on(", ")     # "a, b, c"
+```
+
+#### `str.to-upper(s)` — convert to upper case
+
+```
+"hello" str.to-upper                   # "HELLO"
+```
+
+#### `str.to-lower(s)` — convert to lower case
+
+```
+"GOODBYE" str.to-lower                 # "goodbye"
+```
+
+#### `str.matches?(re, s)` — does regex match full string?
+
+```
+"hello" str.matches?("^h.*o$")        # true
+"hello" str.matches?("^H")            # false
+```
+
+### 3.4 Combinators
+
+See also: `identity(v)`, `const(k, _)`, `compose(f, g, x)`,
+`flip(f, x, y)`, `complement(p?)`, `curry(f, x, y)`,
+`uncurry(f, l)`, `cond(l, d)`.
+
+`cond` takes a list of clauses built with `=>` / `⇒` (precedence 15)
+and a default value.  Each clause is `condition => result`; the first
+true clause wins:
+
+```eu,notest
+classify(n): cond[n < 0 => "negative", n > 100 => "huge", "normal"]
+```
+
+Flow-sensitive narrowing applies inside each `cond` clause when the
+condition is a type-predicate test on an annotated variable.
+
+### 3.5 Type Predicates
+
+```eu,notest
+42 number?          # true
+"hi" string?        # true
+:foo symbol?        # true
+true bool?          # true
+{} block?           # true
+[] list?            # true
+42 string?          # false
+```
+
+All predicates take one argument and return a boolean.
+
+### 3.6 Command-line Argument Parsing
+
+#### `parse-args(defaults, args)` — structured CLI argument parsing
+
+Parse `args` (a list of strings, typically `io.args`) against `defaults`:
+
+```eu,notest
+` :suppress
+defaults: {
+  ` { short: :v  doc: "Verbose"  flag: true }
+  verbose: false
+  ` { short: :o  doc: "Output file" }
+  output: "out.yaml"
+  ` { doc: "Repeat count" }
+  count: 1
+}
+
+main: io.args parse-args(defaults)
+```
+
+Returns defaults block with parsed values overridden, plus `args` key for positional arguments.
+
+**Metadata keys:** `short` (symbol, short flag), `doc` (string, help text), `flag` (bool, toggle).
+
+**Supported forms:** `--key value`, `--key=value`, `--flag`, `-x`, `-xy` (combined shorts), positionals, `--help`.
+
+See `docs/reference/prelude/args.md` for full documentation.
+
+---
+
+## 4. Pipeline Patterns and Idioms
+
+### 4.1 Basic Pipeline
+
+Read left to right: data flows through transformations.
+
+```eu,notest
+[1, 2, 3, 4, 5]
+  filter(> 2)
+  map(* 10)
+  reverse
+# Result: [50, 40, 30]
+```
+
+### 4.2 Pipeline with Named Stages
+
+Use `:suppress` to hide intermediate data values from output. Note: `:suppress` is only needed on data declarations that would otherwise appear in rendered output. Functions do not need `:suppress` — they are not rendered.
+
+```eu,notest
+` :suppress
+raw-data: [
+  { name: "alice" score: 85 }
+  { name: "bob" score: 92 }
+  { name: "charlie" score: 78 }
+]
+
+result: raw-data
+  filter(_.score >= 90)
+  map(_.name)
+  map(str.to-upper)
+```
+
+### 4.3 Conditional Pipeline
+
+Use `then(true-val, false-val)` at the end of a pipeline:
+
+```eu,notest
+[1, 2, 3] count (> 2) then("many", "few")   # "many"
+```
+
+Or use `when(p?, f, x)` to conditionally transform:
+
+```eu,notest
+5 when(> 3, * 10)   # 50 (condition met, apply * 10)
+2 when(> 3, * 10)   # 2  (condition not met, pass through)
+```
+
+### 4.4 Configuration Layering with Deep Merge
+
+```eu,notest
+base: {
+  server: { host: "0.0.0.0" port: 8080 workers: 4 }
+  logging: { level: "info" format: "json" }
+}
+
+production: base << {
+  server: { workers: 16 }
+  logging: { level: "warn" }
+}
+
+development: base << {
+  server: { host: "localhost" }
+  logging: { level: "debug" format: "text" }
+}
+```
+
+### 4.5 Building Blocks from Lists
+
+```eu,notest
+# Zip keys and values into a block
+zip-kv([:x, :y, :z], [1, 2, 3])
+# Result: { x: 1 y: 2 z: 3 }
+
+# Reconstruct from element pairs
+[[:a, 1], [:b, 2]] block
+# Result: { a: 1 b: 2 }
+
+# Merge a list of blocks
+[{a: 1}, {b: 2}, {c: 3}] merge-all
+# Result: { a: 1 b: 2 c: 3 }
+```
+
+### 4.6 Transforming Block Values
+
+```eu,notest
+# Apply function to all values
+{ a: 1 b: 2 c: 3 } map-values(* 10)
+# Result: { a: 10 b: 20 c: 30 }
+
+# Transform keys
+{ a: 1 b: 2 } map-keys(sym ∘ str.prefix("x-") ∘ str.of)
+# Result: { x-a: 1 x-b: 2 }
+```
+
+### 4.7 Nested Block Modification
+
+```eu,notest
+config: { server: { db: { port: 5432 } } }
+
+# Set a nested value
+config alter([:server, :db, :port], 3306)
+
+# Apply a function to a nested value
+config update([:server, :db, :port], inc)
+
+# Shallow merge into a nested block (replaces nested blocks)
+config merge-at([:server, :db], { host: "10.0.0.1" })
+
+# Deep merge into a nested block (preserves nested blocks)
+config deep-merge-at([:server, :db], { host: "10.0.0.1" })
+```
+
+### 4.8 Grouping and Sorting
+
+```eu,notest
+# Sort numbers
+[5, 3, 1, 4, 2] qsort(<)           # [1, 2, 3, 4, 5]
+[30, 10, 20] sort-nums              # [10, 20, 30]
+
+# Sort by extracted key
+people sort-by-num(_.age)
+
+# Group by key function
+items group-by(_.category)
+```
+
+### 4.9 Composition
+
+```eu,notest
+# Right-to-left composition (g then f)
+shout: str.to-upper ∘ str.suffix("!")
+"hello" shout   # "HELLO!"
+
+# Left-to-right composition (f then g)
+process: filter(> 0) ; map(* 2)
+[-1, 2, -3, 4] process   # [4, 8]
+```
+
+### 4.10 Handling Data from External Sources
+
+```eu,notest
+# CSV (values are always strings, use num to convert)
+{ import: "rows=transactions.csv" }
+total: rows map(_.amount num) foldl(+, 0)
+
+# Command-line arguments
+name: io.args head-or("World")
+greeting: "Hello, {name}!"
+
+# Environment variables
+home: io.env lookup-or(:HOME, "/tmp")
+```
+
+### 4.11 Infinite Lists
+
+```eu,notest
+# Infinite repetition
+repeat(:x) take(4)                   # [:x, :x, :x, :x]
+
+# Infinite sequence of integers
+ints-from(1) take(5)                 # [1, 2, 3, 4, 5]
+
+# Range (finite)
+range(1, 6)                          # [1, 2, 3, 4, 5]
+
+# Infinite iteration
+iterate(* 2, 1) take(6)             # [1, 2, 4, 8, 16, 32]
+```
+
+---
+
+## 5. Common Pitfalls
+
+### 5.1 Catenation Applies the LAST Argument
+
+When using pipeline style, the catenated value becomes the **last**
+parameter. `[1,2,3] map(inc)` means `map(inc, [1,2,3])` because the
+list is the last argument.
+
+For `foldl(op, init, list)`, you cannot write
+`[1,2,3] foldl(+, 0)` — you need either `foldl(+, 0, [1,2,3])` or
+define a partial: `sum: foldl(+, 0)` then `[1,2,3] sum`.
+
+### 5.2 Dot Binds Tighter Than Catenation
+
+`.` has precedence 90 vs catenation at 20. So:
+
+```eu,notest
+list head.name    # WRONG: parses as list (head.name)
+(list head).name  # RIGHT: get head, then lookup .name
+```
+
+The `↑` prefix operator (precedence 95) binds even tighter: `↑xs.name`
+= `(↑xs).name`.
+
+### 5.3 No Whitespace Before Parentheses in Calls
+
+```eu,notest
+f(x)    # function call
+f (x)   # catenation: applies f to (x) as pipeline
+```
+
+### 5.4 map vs mapcat
+
+- `map(f, l)` — applies `f` to each element, preserving list structure
+- `mapcat(f, l)` — applies `f` (which must return a list) and
+  concatenates all results
+
+```eu,notest
+["ab","cd"] map(str.letters)     # [["a","b"], ["c","d"]]
+["ab","cd"] mapcat(str.letters)  # ["a", "b", "c", "d"]
+```
+
+### 5.5 Simple Lookup vs Generalised Lookup
+
+**Simple lookup** (`.name`): Key lookup restricted to the block's
+own bindings. Outer scope is never consulted.
+
+```eu,notest
+{ x: 1 }.x              # => 1 (key found)
+{ x: 1 }.y              # => key error (even if y exists in outer scope)
+```
+
+**Generalised lookup** (`.{ block }`, `.(expr)`, `."string"`,
+`.[list]`): RHS evaluated in the block's scope. Block bindings
+shadow outer scope; names not in the block fall through to outer
+scope.
+
+```eu,notest
+y: 5
+{ x: 1 }.(x + y)        # => 6 (x from block, y from outer)
+{ x: 1 }.{ sum: x + y } # => { sum: 6 }
+```
+
+**Runtime lookup**: `lookup(:key, block)` / `block lookup(:key)` —
+dynamic key lookup using a symbol value. Use when the key is
+computed or stored in a variable.
+
+**Monadic blocks in lookup position** use implicit return and see
+the LHS bindings:
+
+```eu,notest
+{ x: 1 }.{ :let y: x + 10 }.y   # => 11
+```
+
+### 5.6 merge vs deep-merge (<<)
+
+- `merge(a, b)` — shallow merge; nested blocks in `b` completely
+  replace those in `a`
+- `deep-merge(a, b)` / `a << b` — recursively merges nested blocks,
+  but lists are still replaced entirely
+
+### 5.7 has Takes a Symbol, Not a String
+
+```eu,notest
+{ a: 1 } has(:a)       # true
+{ a: 1 } has("a")      # WRONG: "a" is a string, not symbol :a
+```
+
+Use `sym("a")` to convert a string to a symbol if needed.
+
+### 5.8 deep-find Takes a Symbol, Not a String
+
+```eu,notest
+{ a: { x: 1 } } deep-find(:x)     # [1] — correct
+{ a: { x: 1 } } deep-find("x")    # WRONG — takes a symbol
+```
+
+`deep-find`, `deep-find-first`, and `deep-find-paths` take a symbol key,
+matching the rest of the prelude (`has(:key)`, `lookup-or(:key, ...)`).
+
+### 5.9 Self-Reference Creates Infinite Recursion
+
+```eu,notest
+name: "foo"
+x: { name: name }    # INFINITE RECURSION: inner name refers to itself
+```
+
+The inner `name` shadows the outer one. Use a different name or
+generalised lookup.
+
+### 5.10 Anaphora Scope Limits
+
+- Expression anaphora (`_`, `_0`) do not cross commas, catenation
+  boundaries, or function argument lists
+- Block anaphora (`•`, `•0`) are scoped to the enclosing block
+- String anaphora (`{}`, `{0}`) are scoped to the enclosing string
+- None of the anaphora types can be nested
+
+### 5.11 Functions That Do NOT Exist
+
+The following are commonly assumed but are **not** in the prelude:
+
+- `str.trim` — does not exist
+- `flatten` — use `concat` (flattens one level)
+- `unique` — does not exist in prelude
+- `even?` / `odd?` — do not exist (use `x % 2 = 0`)
+- `round` / `ceil` — use `floor` and `ceiling` (or bracket notation `⌊n⌋` and `⌈n⌉`)
+- `select(ks, b)` — **exists**: `{ a: 1, b: 2, c: 3 } select([:a, :c])` → `{ a: 1, c: 3 }`
+- `dissoc` — does not exist (use `filter-items` with `by-key`)
+
+These **do exist** and are commonly available:
+
+- `str.replace(pattern, replacement, s)` — replaces all regex matches
+- `str.contains?(pattern, s)` — true if `s` contains a match for regex `pattern`
+- `str.starts-with?(re, s)` — true if `s` starts with regex match
+- `str.ends-with?(re, s)` — true if `s` ends with regex match
+- `abs(n)` — absolute value
+- `str.to-upper(s)` / `str.to-lower(s)` — case conversion (not `str.upper` / `str.lower`)
+
+### 5.12 str.split-on Uses Regex, Not Literal Strings
+
+```eu,notest
+"a.b.c" str.split-on(".")     # WRONG: "." matches any char
+"a.b.c" str.split-on("[.]")   # RIGHT: escaped dot in regex
+```
+
+All `str.match`, `str.split`, `str.matches?` functions use regex
+patterns.
+
+### 5.13 `if` With Anaphora Does Not Create a Rule Function
+
+```eu,notest
+# WRONG: _ creates an anaphoric function, if evaluates it as a boolean
+data deep-transform(if(_ symbol?, :replaced, null))
+
+# RIGHT: use a named function as the rule
+replace-syms(v): if(v symbol?, :replaced, null)
+data deep-transform(replace-syms)
+```
+
+`if` evaluates its first argument as a condition. `_ symbol?` in
+that position creates a function, not a boolean. Use a named
+function or `when` instead.
+
+### 5.14 `keys` Returns Symbols
+
+Block keys are symbols. `keys` returns a list of symbols — do NOT
+`map(sym)` over them:
+
+```eu,notest
+{a: 1, b: 2} keys         # [:a, :b] — already symbols
+{a: 1, b: 2} keys map(sym)  # WRONG: sym expects a string
+```
+
+### 5.15 Use `deep-transform` for Recursive Rewrites
+
+`deep-transform(rule, data)` applies `rule` at each node. Return a
+value to replace, or `null` to recurse into children. Eliminates
+hand-rolled recursive `if(block?, ..., if(list?, ...))` dispatch:
+
+```eu,notest
+# Replace all symbols matching a set
+rename(v): if(v ∈ ks, prefix(v), null)
+data deep-transform(rename)
+```
+
+### 5.16 Use `map-elements` and `bimap` for Block Transforms
+
+`map-elements(f, blk)` applies `f` to each `[key, value]` pair and
+rebuilds the block. Combine with `bimap` for point-free transforms:
+
+```eu,notest
+blk map-elements(bimap(rename-key, transform-value))
+```
+
+---
+
+## 6. Quick CLI Reference
+
+```sh
+eu file.eu                  # Evaluate, output YAML
+eu -j file.eu               # Output JSON
+eu -x toml file.eu          # Output TOML
+eu -x text file.eu          # Output plain text
+eu -e 'expression'          # Evaluate inline expression
+eu data.yaml transform.eu   # Merge inputs (left to right)
+eu name=data.json app.eu    # Named input
+eu -t target file.eu        # Render specific target
+eu list-targets file.eu     # List available targets
+eu test file.eu             # Run embedded tests
+eu fmt file.eu              # Format source
+eu fmt --write file.eu      # Format in place
+eu -o output.json file.eu   # Write to file (format inferred)
+eu -Q file.eu               # Suppress prelude
+eu --seed 42 file.eu        # Deterministic random
+eu -e 'io.args' -- arg1 arg2  # Pass arguments
+```
+
+---
+
+## 7. Complete str Namespace Reference
+
+All functions verified against `lib/prelude.eu`:
+
+| Function | Signature | Description |
+|----------|-----------|-------------|
+| `str.of` | `of(e)` | Convert any value to string |
+| `str.split` | `split(s, re)` | Split string `s` on regex `re` |
+| `str.split-on` | `split-on(re, s)` | Split `s` on regex `re` (pipeline-friendly) |
+| `str.join` | `join(l, sep)` | Join list `l` with separator `sep` |
+| `str.join-on` | `join-on(sep, l)` | Join `l` with `sep` (pipeline-friendly) |
+| `str.match` | `match(s, re)` | Match `s` against regex, return [full, groups...] |
+| `str.match-with` | `match-with(re, s)` | Match `s` against `re` (pipeline-friendly) |
+| `str.extract` | `extract(re, s)` | Extract first capture group or error |
+| `str.extract-or` | `extract-or(re, d, s)` | Extract first capture group or default `d` |
+| `str.matches` | `matches(s, re)` | All matches of `re` in `s` |
+| `str.matches-of` | `matches-of(re, s)` | All matches (pipeline-friendly) |
+| `str.matches?` | `matches?(re, s)` | True if `re` matches full string `s` |
+| `str.letters` | `letters(s)` | List of individual characters |
+| `str.len` | `len(s)` | String length in characters |
+| `str.fmt` | `fmt(x, spec)` | Printf-style format |
+| `str.to-upper` | `to-upper(s)` | Convert to upper case |
+| `str.to-lower` | `to-lower(s)` | Convert to lower case |
+| `str.prefix` | `prefix(b, a)` | Prepend `b` onto `a` |
+| `str.suffix` | `suffix(b, a)` | Append `b` onto `a` |
+| `str.base64-encode` | `base64-encode(s)` | Base64 encode |
+| `str.base64-decode` | `base64-decode(s)` | Base64 decode |
+| `str.sha256` | `sha256(s)` | SHA-256 hash (lowercase hex) |
+
+---
+
+## 8. Assertion and Test Operators
+
+All at precedence 5 (`:meta`).
+
+**Expectations** (return boolean; panic in normal mode, return `false` in test mode):
+
+| Operator | Description |
+|----------|-------------|
+| `e //= v` | Expect `e` equals `v`; returns `true` on success |
+| `e //=? f` | Expect `f(e)` is `true`; returns `true` on success |
+| `e //!` | Expect `e` is `true`; returns `true` on success |
+
+**Assertions** (return `e`; panic in normal mode, return `false` in test mode):
+
+| Operator | Description |
+|----------|-------------|
+| `e //=> v` | Assert `e` equals `v`; returns `e` on success |
+| `e //=?> f` | Assert `f(e)` is `true`; returns `e` on success |
+
+Assertions are useful in pipelines — they validate a value and pass
+it through:
+
+```eu,notest
+data //=?> non-nil? map(process) //=?> (count > 0)
+```
+
+All expectation and assertion operators use the same unified
+`__EXPECT` BIF. On failure, they emit a diagnostic showing the
+expected and actual values.
+
+**Metadata operators:**
+
+| Operator | Description |
+|----------|-------------|
+| `e // m` | Attach metadata block `m` to value `e` |
+| `e //<< m` | Merge `m` into existing metadata of `e` |
+
+**Debug intrinsics** (low-level BIFs for diagnostics and test infrastructure):
+
+| BIF | Signature | Description |
+|-----|-----------|-------------|
+| `__DBG_REPR(v)` | `unk → str` | Render any eucalypt value as a compact human-readable string (e.g. `42`, `"hello"`, `:foo`, `true`, `null`, `[]`, `{block}`) |
+| `__EXPECT(actual, repr, pass, ret)` | `unk × str × bool × unk → unk` | Unified expectation/assertion: returns `ret` on success; on failure emits diagnostic and panics (normal) or returns `false` (test mode) |
+| `__DBG(label, v)` | `str × unk → unk` | Print debug output to stderr; return `v` transparently |
+
+---
+
+## 9. Debug Tracing
+
+**Operators and functions for inspecting values at runtime.**
+
+| Form | Description |
+|------|-------------|
+| `▶ v` | Print `v` to stderr and return it transparently. Prefix operator, precedence 85. |
+| `v dbg{}` | Print `v` to stderr and return it transparently. |
+| `v dbg{label: "x"}` | Print `x: <repr>` to stderr and return `v` transparently. |
+
+Output format: `▶ <repr>` or `▶ label: <repr>`.
+
+`▶` is intentionally prominent — the Unicode triangle is hard to overlook
+in a code review.
+
+## 10. Version Requirements
+
+**Declare a minimum eucalypt version at the top of any `.eu` file that depends
+on features introduced in a specific release.**
+
+```eu
+_ : eu.requires(">=0.8")
+```
+
+`eu.requires` takes a semver constraint string.  It returns `null` on success
+and raises `VersionRequirementFailed` on failure.  Because `eu.requires`
+returns `null` it must be assigned to `_` (a discard binding) — a bare
+expression at the top level cannot reference `eu` directly.
+
+### Constraint syntax
+
+Uses [semver constraint syntax](https://docs.rs/semver/latest/semver/#requirements):
+
+| Constraint | Meaning |
+|------------|---------|
+| `">=0.8"` | Version 0.8.0 or later |
+| `"^0.8"` | Compatible with 0.8 (i.e. 0.8.x) |
+| `">=0.8, <1.0"` | 0.8.x up to but not including 1.0 |
+
+### Convention
+
+- Every shipped library file (`lib/lens.eu`, `lib/state.eu`, `lib/markup.eu`)
+  uses `_ : eu.requires(">=0.8")` near the top.
+- Place the declaration after any unit-level metadata block or file-level doc
+  string, before the first binding definition.
+- Build metadata (`+N`) is ignored by the version check — `">=0.8"` matches
+  `0.8.0+1685`.

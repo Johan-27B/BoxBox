@@ -1,0 +1,97 @@
+[workspace]
+members = [".", "xtask"]
+exclude = ["fuzz"]
+
+[package]
+name = "eucalypt"
+version = "0.10.1"
+authors = ["gmorpheme <github@gmorpheme.net>"]
+edition = "2021"
+
+[features]
+default = []
+# Enable comprehensive GC metrics collection in release builds
+# WARNING: May impact performance - only enable for monitoring/debugging
+gc-telemetry = []
+
+[build-dependencies]
+sha2 = "0.10"
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3"
+similar = "2"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
+criterion = "0.8"
+proptest = "1"
+tempfile = "3"
+walkdir = "2"
+regex = "1"
+
+[dependencies]
+regex = "1.6.0"
+matches = "0.1.9"
+codespan = "0.11.1"
+codespan-reporting = "0.11.1"
+serde_json = "1.0.85"
+yaml-rust = { git = "https://github.com/curvelogic/yaml-rust", rev = "e3a9b432c43fcf9a19f1836657091caf7ae3b15f" }
+unicode-general-category = "1"
+unicode-bidi-mirroring = "0.4.0"
+itertools = "0.10.5"
+thiserror = "1.0.37"
+url = "2.3.1"
+pretty = "0.11.3"
+indexmap = { version = "1.9.1", features = ["serde"] }
+petgraph = "0.6.2"
+csv = "1.1.6"
+lazy_static = "1.4.0"
+chrono = { version = "0.4.22", features = ["serde"] }
+postcard = { version = "1", features = ["alloc"] }
+bitflags = "1.3.2"
+quick-xml = "0.25.0"
+chrono-tz = "0.6.3"
+toml = { version = "0.5.9", features = ["preserve_order"] }
+html5ever = "0.26.0"
+lru = "0.8.1"
+uuid = { version = "1.1.2", features = ["serde"] }
+bitmaps = "3.2.0"
+pretty-hex = "0.3.0"
+edn-format = "3.2.3"
+ordered-float = "2.10.0"
+semver = "1"
+base64 = "0.22"
+sha2 = "0.10"
+rowan = "0.15.3"
+ndarray = "0.16"
+serde = { version = "1", features = ["derive"] }
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+ctrlc = "3"
+clap = { version = "4.5", features = ["derive"] }
+dirs = "4.0.0"
+webbrowser = "0.8.0"
+lsp-server = "0.7"
+lsp-types = "0.95"
+uuid = { version = "1.1.2", features = ["v4"] }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+getrandom = { version = "0.2", features = ["js"] }
+wasm-bindgen = "0.2"
+serde = { version = "1", features = ["derive"] }
+web-time = "1.1"
+
+[lib]
+# cdylib is required for WASM targets (produces the .wasm file usable from JS).
+# It is harmless on native platforms — it produces an additional shared library
+# that is simply not deployed. Cargo does not support target-conditional crate-type,
+# so we include both types unconditionally.
+crate-type = ["cdylib", "rlib"]
+
+[[bench]]
+harness = false
+name = "benches"
+
+[profile.release]
+debug = true

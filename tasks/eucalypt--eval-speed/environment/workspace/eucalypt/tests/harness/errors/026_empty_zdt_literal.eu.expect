@@ -1,0 +1,2 @@
+exit: 1
+stderr: "date/time literal cannot be empty"

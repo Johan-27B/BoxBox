@@ -1,0 +1,488 @@
+name: eucalypt build
+
+on:
+  push:
+    branches: [master, integration/**]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      narrative:
+        description: 'Reason for build'
+        required: false
+
+concurrency:
+  group: ${{ github.ref == 'refs/heads/master' && format('{0}-{1}', github.workflow, github.sha) || format('{0}-{1}', github.workflow, github.ref) }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Check
+        run: cargo check
+      - name: Check formatting
+        run: cargo fmt --all -- --check
+      - name: Run clippy
+        run: cargo clippy --all-targets -- -D warnings
+
+  audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install cargo-audit
+        run: cargo install cargo-audit
+      - name: Run cargo audit
+        run: cargo audit
+
+  test:
+    name: Test Suite
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/integration/')) && fromJSON('["ubuntu-latest", "macos-latest", "windows-latest"]') || fromJSON('["ubuntu-latest", "windows-latest"]') }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-registry-
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Run tests
+        run: cargo test
+      - name: Test doc examples
+        if: runner.os == 'Linux'
+        run: |
+          cargo build --release
+          python3 scripts/test-doc-examples.py --eu ./target/release/eu --timeout 30
+
+
+  docs-freshness:
+    name: Prelude docs freshness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build release binary
+        run: cargo build --release
+      - name: Regenerate prelude docs
+        run: |
+          mkdir -p /tmp/prelude-docs/
+          cp -r docs/reference/prelude/supplements /tmp/prelude-docs/supplements
+          ./target/release/eu doc --prelude --output-dir /tmp/prelude-docs/
+      - name: Check docs are up to date
+        run: |
+          diff -r /tmp/prelude-docs/ docs/reference/prelude/ --exclude=supplements || {
+            echo "Prelude docs are stale. Run: eu doc --prelude --output-dir docs/reference/prelude/"
+            exit 1
+          }
+
+  test-gc-verified:
+    name: GC-verified harness (x86-64)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build release binary
+        run: cargo build --release
+      - name: Run harness under GC verification
+        run: ./target/release/eu test --allow-io tests/harness
+        env:
+          EU_GC_VERIFY: "2"
+          EU_GC_STRESS: "1"
+          EU_GC_POISON: "1"
+
+  test-source-prelude:
+    name: Source-prelude harness (x86-64)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build release binary
+        run: cargo build --release
+      - name: Run harness with source prelude
+        run: ./target/release/eu test --allow-io tests/harness
+        env:
+          EU_SOURCE_PRELUDE: "1"
+
+  test-aarch64-sequential:
+    name: Sequential harness (aarch64 release)
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: aarch64-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            aarch64-cargo-registry-
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build release binary
+        run: cargo build --release
+      - name: Run sequential harness with release binary (GC stress)
+        run: target/release/eu test --allow-io tests/harness
+        env:
+          EU_GC_STRESS: "1"
+
+  asan:
+    name: AddressSanitizer
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rust-src
+      - name: Build with ASAN
+        run: RUSTFLAGS="-Zsanitizer=address" cargo +nightly build --release --target x86_64-unknown-linux-gnu -Zbuild-std
+      - name: Run harness with ASAN
+        run: ASAN_OPTIONS=detect_leaks=0 ./target/x86_64-unknown-linux-gnu/release/eu test --allow-io tests/harness
+        env:
+          EU_GC_STRESS: "1"
+
+  wasm:
+    name: WASM Compilation Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+          components: clippy
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+      - name: Build library for WASM
+        run: cargo build --target wasm32-unknown-unknown --lib
+      - name: Clippy for WASM
+        run: cargo clippy --target wasm32-unknown-unknown --lib -- -D warnings
+      - name: wasm-pack build
+        run: wasm-pack build --target web
+      - name: Install wasm-bindgen-cli
+        run: cargo install wasm-bindgen-cli --version 0.2.108
+      - name: Run WASM smoke tests in Node.js
+        run: CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_RUNNER=wasm-bindgen-test-runner cargo test --target wasm32-unknown-unknown --lib wasm_tests
+
+  release-candidate-linux:
+    needs: [lint, test, audit, wasm]
+    name: Release Linux x86_64
+    runs-on: ubuntu-22.04
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-registry-
+      - uses: dtolnay/rust-toolchain@stable
+      - name: build and install temporary eu
+        run: cargo install --path . --target-dir /tmp/eu-install
+      - name: prepare build files for new version
+        run: |
+          export OSTYPE=$(uname)
+          export HOSTTYPE=$(uname -m)
+
+          eu build.eu -t build-meta > build-meta.yaml.new
+          mv -f build-meta.yaml.new build-meta.yaml
+
+          cargo run --package xtask -- prelude-compile
+
+          echo "TAG_NAME=$(eu build.eu -t version)" >> $GITHUB_ENV
+      - name: Build release
+        run: cargo build --all --release
+      - run: |
+          strip target/release/eu
+          mv target/release/eu target/release/eu_amd64
+      - name: run final test with release binary
+        run: |
+          target/release/eu_amd64 version
+          target/release/eu_amd64 test --allow-io tests/harness
+      - name: Generate release notes
+        run: |
+          # Fetch tags created by GitHub releases
+          git fetch --tags origin
+          # Find the last *published* (non-draft) release tag
+          PREV_TAG=$(gh release list --limit 100 --json tagName,isDraft --jq '[.[] | select(.isDraft == false)][0].tagName' 2>/dev/null || echo "")
+          if [ -z "$PREV_TAG" ] || ! git rev-parse "$PREV_TAG" >/dev/null 2>&1; then
+            echo "No resolvable previous release tag, using recent log"
+            RANGE="HEAD"
+            LOG_ARGS="-20"
+          else
+            echo "Generating changelog since $PREV_TAG"
+            RANGE="${PREV_TAG}..HEAD"
+            LOG_ARGS=""
+          fi
+          echo "# Release Notes" > CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          git log $LOG_ARGS --no-merges --pretty=format:'%s' "$RANGE" \
+            | grep -v '^docs: ' \
+            | grep -v '^chore: update.*submodule' \
+            | sed 's/^/- /' >> CHANGELOG.md
+          echo ""
+          echo "Generated CHANGELOG.md:"
+          cat CHANGELOG.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload changelog
+        uses: actions/upload-artifact@v4
+        with:
+          name: CHANGELOG.md
+          path: CHANGELOG.md
+      - name: Upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: eu_amd64
+          path: target/release/eu_amd64
+
+
+  release-candidate-macos:
+    needs: [lint, test, audit, wasm]
+    name: Release MacOS
+    runs-on: macos-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-registry-
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build and install temporary eu
+        run: cargo install --path . --target-dir /tmp/eu-install
+      - name: Prepare build files for new version
+        run: |
+          export OSTYPE=$(uname)
+          export HOSTTYPE=$(uname -m)
+
+          eu build.eu -t build-meta > build-meta.yaml.new
+          mv -f build-meta.yaml.new build-meta.yaml
+
+          cargo run --package xtask -- prelude-compile
+
+          echo "TAG_NAME=$(eu build.eu -t version)" >> $GITHUB_ENV
+      - name: Build release
+        run: cargo build --all --release
+      - run: |
+          strip target/release/eu
+          mv target/release/eu target/release/eu_darwin
+      - name: Run final test with release binary
+        run: |
+          target/release/eu_darwin version
+          target/release/eu_darwin test --allow-io tests/harness
+      - name: Upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: eu_darwin
+          path: target/release/eu_darwin
+
+  release-candidate-linux-arm:
+    needs: [lint, test, audit, wasm]
+    name: Release Linux aarch64
+    runs-on: ubuntu-22.04-arm
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-arm-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-arm-cargo-registry-
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build and install temporary eu
+        run: cargo install --path . --target-dir /tmp/eu-install
+      - name: Prepare build files for new version
+        run: |
+          export OSTYPE=$(uname)
+          export HOSTTYPE=$(uname -m)
+
+          eu build.eu -t build-meta > build-meta.yaml.new
+          mv -f build-meta.yaml.new build-meta.yaml
+
+          cargo run --package xtask -- prelude-compile
+
+          echo "TAG_NAME=$(eu build.eu -t version)" >> $GITHUB_ENV
+      - name: Build release
+        run: cargo build --all --release
+      - run: |
+          strip target/release/eu
+          mv target/release/eu target/release/eu_aarch64
+      - name: Run final test with release binary
+        run: |
+          target/release/eu_aarch64 version
+          target/release/eu_aarch64 test --allow-io tests/harness
+      - name: Upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: eu_aarch64
+          path: target/release/eu_aarch64
+
+  release-candidate-windows:
+    needs: [lint, test, audit]
+    name: Release Windows
+    runs-on: windows-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-registry-
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build and install temporary eu
+        run: cargo install --path . --target-dir C:\eu-install
+      - name: Prepare build files for new version
+        shell: pwsh
+        run: |
+          $env:OSTYPE = "Windows"
+          $env:HOSTTYPE = "x86_64"
+          eu build.eu -t build-meta > build-meta.yaml.new
+          Move-Item -Force build-meta.yaml.new build-meta.yaml
+          cargo run --package xtask -- prelude-compile
+          $tag = eu build.eu -t version
+          echo "TAG_NAME=$tag" >> $env:GITHUB_ENV
+      - name: Build release
+        run: cargo build --all --release
+      - name: Rename binary
+        run: |
+          copy target\release\eu.exe target\release\eu_windows_amd64.exe
+      - name: Run final test with release binary
+        run: |
+          target\release\eu_windows_amd64.exe version
+          target\release\eu_windows_amd64.exe test --allow-io tests/harness
+      - name: Upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: eu_windows_amd64.exe
+          path: target/release/eu_windows_amd64.exe
+
+  prepare-release:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    needs:
+      - release-candidate-linux
+      - release-candidate-linux-arm
+      - release-candidate-macos
+      - release-candidate-windows
+    steps:
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: eu_darwin
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: eu_amd64
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: eu_aarch64
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: eu_windows_amd64.exe
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: CHANGELOG.md
+
+      - name: Prepare release packages
+        run: |
+          mkdir eucalypt-x86_64-linux
+          cp eu_amd64 eucalypt-x86_64-linux/eu
+          tar -cvzf eucalypt-x86_64-linux.tgz eucalypt-x86_64-linux
+
+          mkdir eucalypt-aarch64-linux
+          cp eu_aarch64 eucalypt-aarch64-linux/eu
+          tar -cvzf eucalypt-aarch64-linux.tgz eucalypt-aarch64-linux
+
+          mkdir eucalypt-aarch64-osx
+          cp eu_darwin eucalypt-aarch64-osx/eu
+          tar -cvzf eucalypt-aarch64-osx.tgz eucalypt-aarch64-osx
+
+      - name: Generate SHA256SUMS
+        run: |
+          sha256sum *.tgz eu_windows_amd64.exe > SHA256SUMS
+
+      - name: Query binary for version number
+        run: |
+          chmod +x eu_amd64
+          FULL_VERSION=$(./eu_amd64 -e eu.build.version -x text)
+          # Strip +build metadata for the release tag (semver build metadata
+          # is not suitable for GitHub release tags — '+' breaks download URLs
+          # and build numbers don't distinguish semantic versions).
+          RELEASE_TAG="${FULL_VERSION%%+*}"
+          echo "RELEASE_VERSION=$FULL_VERSION" >> $GITHUB_ENV
+          echo "RELEASE_TAG=$RELEASE_TAG" >> $GITHUB_ENV
+
+      - name: Check for existing release
+        id: check_release
+        run: |
+          # Use the GitHub API directly to check release status.
+          # gh release view can fail silently in CI with default GITHUB_TOKEN.
+          HTTP_CODE=$(curl -s -o /tmp/release_response.json -w "%{http_code}" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/tags/$RELEASE_TAG")
+          if [ "$HTTP_CODE" = "200" ]; then
+            IS_DRAFT=$(cat /tmp/release_response.json | jq -r '.draft')
+            if [ "$IS_DRAFT" = "false" ]; then
+              echo "skip=true" >> $GITHUB_OUTPUT
+              echo "::warning::Release $RELEASE_TAG is already published — skipping draft creation to avoid overwriting release notes."
+            else
+              echo "skip=false" >> $GITHUB_OUTPUT
+              echo "Draft release for $RELEASE_TAG exists — will update it."
+            fi
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "No existing release for $RELEASE_TAG (HTTP $HTTP_CODE) — will create draft."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create release
+        if: steps.check_release.outputs.skip != 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          draft: true
+          prerelease: false
+          body_path: CHANGELOG.md
+          files: |
+            eucalypt-x86_64-linux.tgz
+            eucalypt-aarch64-linux.tgz
+            eucalypt-aarch64-osx.tgz
+            eu_windows_amd64.exe
+            SHA256SUMS
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

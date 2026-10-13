@@ -1,0 +1,10 @@
+# Use --settings or PERFRACE_SETTINGS. Keep the filled-in file untracked.
+api_gateway:
+  base_url: ${env:LLM_BASE_URL}
+  api_key: ${env:LLM_API_KEY}
+models:
+  filter: REPLACE_WITH_MODEL_ID
+  pair_verification: REPLACE_WITH_MODEL_ID
+  candidate: REPLACE_WITH_MODEL_ID
+# Optional operator-specific override; otherwise use the packaged reference rates.
+# cost_models_file: /absolute/path/to/cost-models.toml

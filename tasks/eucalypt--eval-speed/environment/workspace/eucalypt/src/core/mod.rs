@@ -1,0 +1,25 @@
+//! The core expression representation and various processing phases
+#![allow(clippy::result_large_err)]
+pub mod analyse;
+pub mod analyse_demand;
+pub mod anaphora;
+pub mod binding;
+pub mod cook;
+pub mod demand;
+pub mod dependency;
+pub mod desugar;
+pub mod doc;
+pub mod error;
+pub mod export;
+#[macro_use]
+pub mod expr;
+pub mod inline;
+pub mod metadata;
+pub mod reflatten;
+pub mod rt;
+pub mod simplify;
+pub mod target;
+pub mod transform;
+pub mod typecheck;
+pub mod unit;
+pub mod verify;

@@ -1,0 +1,14 @@
+[project]
+name = "terminus-boxbox-runtime"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic",
+    "harbor",
+    "litellm",
+    "orjson",
+    "tenacity",
+]
+
+[tool.setuptools]
+packages = ["terminus_boxbox"]

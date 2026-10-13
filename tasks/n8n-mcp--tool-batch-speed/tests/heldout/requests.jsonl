@@ -1,0 +1,40 @@
+{"jsonrpc":"2.0","id":1000,"method":"tools/call","params":{"name":"search_nodes","arguments":{"query":"calendar webhook automation","mode":"AND","limit":15}}}
+{"jsonrpc":"2.0","id":1001,"method":"tools/call","params":{"name":"search_nodes","arguments":{"query":"vector database retrieval","mode":"FUZZY","limit":12}}}
+{"jsonrpc":"2.0","id":1002,"method":"tools/call","params":{"name":"search_nodes","arguments":{"query":"invoice approval workflow","mode":"OR","limit":25}}}
+{"jsonrpc":"2.0","id":1003,"method":"tools/call","params":{"name":"search_nodes","arguments":{"query":"pdf extraction pipeline","mode":"AND","limit":8}}}
+{"jsonrpc":"2.0","id":1004,"method":"tools/call","params":{"name":"search_nodes","arguments":{"query":"customer support triage","mode":"FUZZY","limit":18}}}
+{"jsonrpc":"2.0","id":1005,"method":"tools/call","params":{"name":"search_nodes","arguments":{"query":"warehouse inventory sync","mode":"OR","limit":14}}}
+{"jsonrpc":"2.0","id":1006,"method":"tools/call","params":{"name":"search_nodes","arguments":{"query":"github release notification","mode":"AND","limit":16}}}
+{"jsonrpc":"2.0","id":1007,"method":"tools/call","params":{"name":"search_nodes","arguments":{"query":"postgres backup schedule","mode":"FUZZY","limit":10}}}
+{"jsonrpc":"2.0","id":1008,"method":"tools/call","params":{"name":"search_nodes","arguments":{"query":"email attachment processing","mode":"OR","limit":22}}}
+{"jsonrpc":"2.0","id":1009,"method":"tools/call","params":{"name":"search_nodes","arguments":{"query":"crm lead enrichment","mode":"AND","limit":20}}}
+{"jsonrpc":"2.0","id":1010,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.webhook","detail":"standard","mode":"info"}}}
+{"jsonrpc":"2.0","id":1011,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.httpRequest","detail":"full","mode":"info"}}}
+{"jsonrpc":"2.0","id":1012,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.googleSheets","detail":"standard","mode":"info"}}}
+{"jsonrpc":"2.0","id":1013,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.postgres","detail":"full","mode":"info"}}}
+{"jsonrpc":"2.0","id":1014,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.slack","detail":"standard","mode":"info"}}}
+{"jsonrpc":"2.0","id":1015,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.github","detail":"full","mode":"info"}}}
+{"jsonrpc":"2.0","id":1016,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.notion","detail":"standard","mode":"info"}}}
+{"jsonrpc":"2.0","id":1017,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.stripe","detail":"full","mode":"info"}}}
+{"jsonrpc":"2.0","id":1018,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-langchain.agent","detail":"standard","mode":"info"}}}
+{"jsonrpc":"2.0","id":1019,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-langchain.vectorStoreQdrant","detail":"full","mode":"info"}}}
+{"jsonrpc":"2.0","id":1020,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.webhook","mode":"docs"}}}
+{"jsonrpc":"2.0","id":1021,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.httpRequest","mode":"docs"}}}
+{"jsonrpc":"2.0","id":1022,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.googleSheets","mode":"docs"}}}
+{"jsonrpc":"2.0","id":1023,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.postgres","mode":"docs"}}}
+{"jsonrpc":"2.0","id":1024,"method":"tools/call","params":{"name":"get_node","arguments":{"nodeType":"nodes-base.slack","mode":"docs"}}}
+{"jsonrpc":"2.0","id":1025,"method":"tools/call","params":{"name":"validate_node","arguments":{"nodeType":"nodes-base.github","config":{}}}}
+{"jsonrpc":"2.0","id":1026,"method":"tools/call","params":{"name":"validate_node","arguments":{"nodeType":"nodes-base.notion","config":{}}}}
+{"jsonrpc":"2.0","id":1027,"method":"tools/call","params":{"name":"validate_node","arguments":{"nodeType":"nodes-base.stripe","config":{}}}}
+{"jsonrpc":"2.0","id":1028,"method":"tools/call","params":{"name":"validate_node","arguments":{"nodeType":"nodes-langchain.agent","config":{}}}}
+{"jsonrpc":"2.0","id":1029,"method":"tools/call","params":{"name":"validate_node","arguments":{"nodeType":"nodes-langchain.vectorStoreQdrant","config":{}}}}
+{"jsonrpc":"2.0","id":1030,"method":"tools/call","params":{"name":"validate_workflow","arguments":{"workflow":{"nodes":[{"id":"trigger","name":"Trigger","type":"nodes-base.manualTrigger","typeVersion":1,"position":[0,0],"parameters":{}},{"id":"target","name":"Target 0","type":"nodes-base.webhook","typeVersion":1,"position":[240,0],"parameters":{}}],"connections":{"Trigger":{"main":[[{"node":"Target 0","type":"main","index":0}]]}}}}}}
+{"jsonrpc":"2.0","id":1031,"method":"tools/call","params":{"name":"validate_workflow","arguments":{"workflow":{"nodes":[{"id":"trigger","name":"Trigger","type":"nodes-base.manualTrigger","typeVersion":1,"position":[0,0],"parameters":{}},{"id":"target","name":"Target 1","type":"nodes-base.httpRequest","typeVersion":1,"position":[240,0],"parameters":{}}],"connections":{"Trigger":{"main":[[{"node":"Target 1","type":"main","index":0}]]}}}}}}
+{"jsonrpc":"2.0","id":1032,"method":"tools/call","params":{"name":"validate_workflow","arguments":{"workflow":{"nodes":[{"id":"trigger","name":"Trigger","type":"nodes-base.manualTrigger","typeVersion":1,"position":[0,0],"parameters":{}},{"id":"target","name":"Target 2","type":"nodes-base.googleSheets","typeVersion":1,"position":[240,0],"parameters":{}}],"connections":{"Trigger":{"main":[[{"node":"Target 2","type":"main","index":0}]]}}}}}}
+{"jsonrpc":"2.0","id":1033,"method":"tools/call","params":{"name":"validate_workflow","arguments":{"workflow":{"nodes":[{"id":"trigger","name":"Trigger","type":"nodes-base.manualTrigger","typeVersion":1,"position":[0,0],"parameters":{}},{"id":"target","name":"Target 3","type":"nodes-base.postgres","typeVersion":1,"position":[240,0],"parameters":{}}],"connections":{"Trigger":{"main":[[{"node":"Target 3","type":"main","index":0}]]}}}}}}
+{"jsonrpc":"2.0","id":1034,"method":"tools/call","params":{"name":"validate_workflow","arguments":{"workflow":{"nodes":[{"id":"trigger","name":"Trigger","type":"nodes-base.manualTrigger","typeVersion":1,"position":[0,0],"parameters":{}},{"id":"target","name":"Target 4","type":"nodes-base.slack","typeVersion":1,"position":[240,0],"parameters":{}}],"connections":{"Trigger":{"main":[[{"node":"Target 4","type":"main","index":0}]]}}}}}}
+{"jsonrpc":"2.0","id":1035,"method":"tools/call","params":{"name":"search_templates","arguments":{"query":"incident response","limit":7}}}
+{"jsonrpc":"2.0","id":1036,"method":"tools/call","params":{"name":"search_templates","arguments":{"query":"document ingestion","limit":7}}}
+{"jsonrpc":"2.0","id":1037,"method":"tools/call","params":{"name":"search_templates","arguments":{"query":"customer onboarding","limit":7}}}
+{"jsonrpc":"2.0","id":1038,"method":"tools/call","params":{"name":"search_templates","arguments":{"query":"database synchronization","limit":7}}}
+{"jsonrpc":"2.0","id":1039,"method":"tools/call","params":{"name":"search_templates","arguments":{"query":"weekly reporting","limit":7}}}

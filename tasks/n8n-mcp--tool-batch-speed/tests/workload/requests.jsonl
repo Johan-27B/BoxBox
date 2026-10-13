@@ -1,0 +1,200 @@
+{"jsonrpc": "2.0", "id": 100, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "webhook", "mode": "OR", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 101, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "google sheets", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 102, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "http request", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 103, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "postgres", "mode": "AND", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 104, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "slack", "mode": "FUZZY", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 105, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "openai", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 106, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "gmail", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 107, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "airtable", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 108, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "notion", "mode": "AND", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 109, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "salesforce", "mode": "FUZZY", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 110, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "stripe", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 111, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "sendgrid", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 112, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "twilio", "mode": "OR", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 113, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "hubspot", "mode": "AND", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 114, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "zendesk", "mode": "FUZZY", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 115, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "github", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 116, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "gitlab", "mode": "OR", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 117, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "jira", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 118, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "trello", "mode": "AND", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 119, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "monday", "mode": "FUZZY", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 120, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "aws s3", "mode": "OR", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 121, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "google drive", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 122, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "dropbox", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 123, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "onedrive", "mode": "AND", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 124, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "ftp", "mode": "FUZZY", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 125, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "mysql", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 126, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "mongodb", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 127, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "redis", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 128, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "elasticsearch", "mode": "AND", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 129, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "supabase", "mode": "FUZZY", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 130, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "discord", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 131, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "telegram", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 132, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "signal", "mode": "OR", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 133, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "whatsapp", "mode": "AND", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 134, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "microsoft teams", "mode": "FUZZY", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 135, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "shopify", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 136, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "woocommerce", "mode": "OR", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 137, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "wordpress", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 138, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "magento", "mode": "AND", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 139, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "bigcommerce", "mode": "FUZZY", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 140, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "linkedin", "mode": "OR", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 141, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "twitter", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 142, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "facebook", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 143, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "instagram", "mode": "AND", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 144, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "tiktok", "mode": "FUZZY", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 145, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "csv", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 146, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "xml", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 147, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "json", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 148, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "yaml", "mode": "AND", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 149, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "toml", "mode": "FUZZY", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 150, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "cron trigger", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 151, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "manual trigger", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 152, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "schedule", "mode": "OR", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 153, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "wait", "mode": "AND", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 154, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "loop", "mode": "FUZZY", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 155, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "if condition", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 156, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "switch", "mode": "OR", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 157, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "merge", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 158, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "set", "mode": "AND", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 159, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "code", "mode": "FUZZY", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 160, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "date time", "mode": "OR", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 161, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "crypto hash", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 162, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "compression", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 163, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "spreadsheet", "mode": "AND", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 164, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "email send", "mode": "FUZZY", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 165, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "email read", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 166, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "html extract", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 167, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "url shortener", "mode": "OR", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 168, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "authentication oauth", "mode": "AND", "limit": 10}}}
+{"jsonrpc": "2.0", "id": 169, "method": "tools/call", "params": {"name": "search_nodes", "arguments": {"query": "api key", "mode": "FUZZY", "limit": 20}}}
+{"jsonrpc": "2.0", "id": 170, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.webhook", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 171, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.httpRequest", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 172, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.set", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 173, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.if", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 174, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.switch", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 175, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.merge", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 176, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.code", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 177, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.function", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 178, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.functionItem", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 179, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.wait", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 180, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.scheduleTrigger", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 181, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.cron", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 182, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.emailSend", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 183, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.emailReadImap", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 184, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.googleSheets", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 185, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.googleDrive", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 186, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.gmail", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 187, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.googleCalendar", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 188, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.slack", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 189, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.discord", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 190, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.telegram", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 191, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.postgres", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 192, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.mysql", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 193, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.mongoDb", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 194, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.redis", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 195, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.elasticSearch", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 196, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.airtable", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 197, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.notion", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 198, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.hubspot", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 199, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.jira", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 200, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.github", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 201, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.gitlab", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 202, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.trello", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 203, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.zendesk", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 204, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.stripe", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 205, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.paypal", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 206, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.shopify", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 207, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.awsS3", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 208, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.dropbox", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 209, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-langchain.agent", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 210, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-langchain.chainLlm", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 211, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-langchain.embeddingsOpenAi", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 212, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-langchain.vectorStoreQdrant", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 213, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.webhook", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 214, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.httpRequest", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 215, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.set", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 216, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.if", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 217, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.switch", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 218, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.merge", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 219, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.code", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 220, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.function", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 221, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.functionItem", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 222, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.wait", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 223, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.scheduleTrigger", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 224, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.cron", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 225, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.emailSend", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 226, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.emailReadImap", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 227, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.googleSheets", "detail": "full", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 228, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.googleDrive", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 229, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.gmail", "detail": "standard", "mode": "info"}}}
+{"jsonrpc": "2.0", "id": 230, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.webhook", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 231, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.if", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 232, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.code", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 233, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.wait", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 234, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.emailSend", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 235, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.googleDrive", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 236, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.slack", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 237, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.postgres", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 238, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.redis", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 239, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.notion", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 240, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.github", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 241, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.zendesk", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 242, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.shopify", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 243, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-langchain.agent", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 244, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-langchain.vectorStoreQdrant", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 245, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.set", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 246, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.merge", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 247, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.functionItem", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 248, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.cron", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 249, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.googleSheets", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 250, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.googleCalendar", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 251, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.telegram", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 252, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.mongoDb", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 253, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.airtable", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 254, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.jira", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 255, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.trello", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 256, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.paypal", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 257, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.dropbox", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 258, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-langchain.embeddingsOpenAi", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 259, "method": "tools/call", "params": {"name": "get_node", "arguments": {"nodeType": "nodes-base.httpRequest", "mode": "docs"}}}
+{"jsonrpc": "2.0", "id": 260, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.webhook", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 261, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.httpRequest", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 262, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.set", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 263, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.if", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 264, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.switch", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 265, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.merge", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 266, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.code", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 267, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.function", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 268, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.functionItem", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 269, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.wait", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 270, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.scheduleTrigger", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 271, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.cron", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 272, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.emailSend", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 273, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.emailReadImap", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 274, "method": "tools/call", "params": {"name": "validate_node", "arguments": {"nodeType": "nodes-base.googleSheets", "config": {"authentication": "oAuth2"}}}}
+{"jsonrpc": "2.0", "id": 275, "method": "tools/call", "params": {"name": "validate_workflow", "arguments": {"workflow": {"nodes": [{"id": "1", "name": "Trigger", "type": "nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0], "parameters": {}}, {"id": "2", "name": "Node", "type": "nodes-base.webhook", "typeVersion": 1, "position": [200, 0], "parameters": {}}], "connections": {"Trigger": {"main": [[{"node": "Node", "type": "main", "index": 0}]]}}}}}}
+{"jsonrpc": "2.0", "id": 276, "method": "tools/call", "params": {"name": "validate_workflow", "arguments": {"workflow": {"nodes": [{"id": "1", "name": "Trigger", "type": "nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0], "parameters": {}}, {"id": "2", "name": "Node", "type": "nodes-base.httpRequest", "typeVersion": 1, "position": [200, 0], "parameters": {}}], "connections": {"Trigger": {"main": [[{"node": "Node", "type": "main", "index": 0}]]}}}}}}
+{"jsonrpc": "2.0", "id": 277, "method": "tools/call", "params": {"name": "validate_workflow", "arguments": {"workflow": {"nodes": [{"id": "1", "name": "Trigger", "type": "nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0], "parameters": {}}, {"id": "2", "name": "Node", "type": "nodes-base.set", "typeVersion": 1, "position": [200, 0], "parameters": {}}], "connections": {"Trigger": {"main": [[{"node": "Node", "type": "main", "index": 0}]]}}}}}}
+{"jsonrpc": "2.0", "id": 278, "method": "tools/call", "params": {"name": "validate_workflow", "arguments": {"workflow": {"nodes": [{"id": "1", "name": "Trigger", "type": "nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0], "parameters": {}}, {"id": "2", "name": "Node", "type": "nodes-base.if", "typeVersion": 1, "position": [200, 0], "parameters": {}}], "connections": {"Trigger": {"main": [[{"node": "Node", "type": "main", "index": 0}]]}}}}}}
+{"jsonrpc": "2.0", "id": 279, "method": "tools/call", "params": {"name": "validate_workflow", "arguments": {"workflow": {"nodes": [{"id": "1", "name": "Trigger", "type": "nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0], "parameters": {}}, {"id": "2", "name": "Node", "type": "nodes-base.switch", "typeVersion": 1, "position": [200, 0], "parameters": {}}], "connections": {"Trigger": {"main": [[{"node": "Node", "type": "main", "index": 0}]]}}}}}}
+{"jsonrpc": "2.0", "id": 280, "method": "tools/call", "params": {"name": "validate_workflow", "arguments": {"workflow": {"nodes": [{"id": "1", "name": "Trigger", "type": "nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0], "parameters": {}}, {"id": "2", "name": "Node", "type": "nodes-base.merge", "typeVersion": 1, "position": [200, 0], "parameters": {}}], "connections": {"Trigger": {"main": [[{"node": "Node", "type": "main", "index": 0}]]}}}}}}
+{"jsonrpc": "2.0", "id": 281, "method": "tools/call", "params": {"name": "validate_workflow", "arguments": {"workflow": {"nodes": [{"id": "1", "name": "Trigger", "type": "nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0], "parameters": {}}, {"id": "2", "name": "Node", "type": "nodes-base.code", "typeVersion": 1, "position": [200, 0], "parameters": {}}], "connections": {"Trigger": {"main": [[{"node": "Node", "type": "main", "index": 0}]]}}}}}}
+{"jsonrpc": "2.0", "id": 282, "method": "tools/call", "params": {"name": "validate_workflow", "arguments": {"workflow": {"nodes": [{"id": "1", "name": "Trigger", "type": "nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0], "parameters": {}}, {"id": "2", "name": "Node", "type": "nodes-base.function", "typeVersion": 1, "position": [200, 0], "parameters": {}}], "connections": {"Trigger": {"main": [[{"node": "Node", "type": "main", "index": 0}]]}}}}}}
+{"jsonrpc": "2.0", "id": 283, "method": "tools/call", "params": {"name": "validate_workflow", "arguments": {"workflow": {"nodes": [{"id": "1", "name": "Trigger", "type": "nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0], "parameters": {}}, {"id": "2", "name": "Node", "type": "nodes-base.functionItem", "typeVersion": 1, "position": [200, 0], "parameters": {}}], "connections": {"Trigger": {"main": [[{"node": "Node", "type": "main", "index": 0}]]}}}}}}
+{"jsonrpc": "2.0", "id": 284, "method": "tools/call", "params": {"name": "validate_workflow", "arguments": {"workflow": {"nodes": [{"id": "1", "name": "Trigger", "type": "nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0], "parameters": {}}, {"id": "2", "name": "Node", "type": "nodes-base.wait", "typeVersion": 1, "position": [200, 0], "parameters": {}}], "connections": {"Trigger": {"main": [[{"node": "Node", "type": "main", "index": 0}]]}}}}}}
+{"jsonrpc": "2.0", "id": 285, "method": "tools/call", "params": {"name": "search_templates", "arguments": {"query": "chatbot", "limit": 5}}}
+{"jsonrpc": "2.0", "id": 286, "method": "tools/call", "params": {"name": "search_templates", "arguments": {"query": "rag", "limit": 5}}}
+{"jsonrpc": "2.0", "id": 287, "method": "tools/call", "params": {"name": "search_templates", "arguments": {"query": "webhook to slack", "limit": 5}}}
+{"jsonrpc": "2.0", "id": 288, "method": "tools/call", "params": {"name": "search_templates", "arguments": {"query": "csv to database", "limit": 5}}}
+{"jsonrpc": "2.0", "id": 289, "method": "tools/call", "params": {"name": "search_templates", "arguments": {"query": "email digest", "limit": 5}}}
+{"jsonrpc": "2.0", "id": 290, "method": "tools/call", "params": {"name": "search_templates", "arguments": {"query": "form submission", "limit": 5}}}
+{"jsonrpc": "2.0", "id": 291, "method": "tools/call", "params": {"name": "search_templates", "arguments": {"query": "twitter monitor", "limit": 5}}}
+{"jsonrpc": "2.0", "id": 292, "method": "tools/call", "params": {"name": "search_templates", "arguments": {"query": "cron scheduler backup", "limit": 5}}}
+{"jsonrpc": "2.0", "id": 293, "method": "tools/call", "params": {"name": "search_templates", "arguments": {"query": "openai agent", "limit": 5}}}
+{"jsonrpc": "2.0", "id": 294, "method": "tools/call", "params": {"name": "search_templates", "arguments": {"query": "notion sync", "limit": 5}}}
+{"jsonrpc": "2.0", "id": 295, "method": "tools/call", "params": {"name": "get_template", "arguments": {"templateId": 1}}}
+{"jsonrpc": "2.0", "id": 296, "method": "tools/call", "params": {"name": "get_template", "arguments": {"templateId": 2}}}
+{"jsonrpc": "2.0", "id": 297, "method": "tools/call", "params": {"name": "get_template", "arguments": {"templateId": 3}}}
+{"jsonrpc": "2.0", "id": 298, "method": "tools/call", "params": {"name": "get_template", "arguments": {"templateId": 4}}}
+{"jsonrpc": "2.0", "id": 299, "method": "tools/call", "params": {"name": "get_template", "arguments": {"templateId": 5}}}

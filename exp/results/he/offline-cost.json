@@ -1,0 +1,5052 @@
+{
+  "currency": "USD",
+  "lower_bound": true,
+  "scope": "Training and validation, including within-campaign retries and reruns.",
+  "training_cost_usd": 200.3376285,
+  "validation_cost_usd": 1176.1226766,
+  "total_cost_usd": 1376.4603051,
+  "missing_training_usage_records": 41,
+  "validation_usage_coverage": "Recorded usage only; completeness not established.",
+  "sessions": [
+    {
+      "session_id": "session-0001",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 37884876,
+      "cached_input_tokens": 37709040,
+      "output_tokens": 80762,
+      "cost_usd": 4.431312
+    },
+    {
+      "session_id": "session-0002",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 281847,
+      "cached_input_tokens": 256560,
+      "output_tokens": 9143,
+      "cost_usd": 0.105801
+    },
+    {
+      "session_id": "session-0003",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2130160,
+      "cached_input_tokens": 2045077,
+      "output_tokens": 27531,
+      "cost_usd": 0.4547767
+    },
+    {
+      "session_id": "session-0004",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 7985172,
+      "cached_input_tokens": 7891934,
+      "output_tokens": 51877,
+      "cost_usd": 1.1936934
+    },
+    {
+      "session_id": "session-0005",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 1802808,
+      "cached_input_tokens": 1661865,
+      "output_tokens": 23921,
+      "cost_usd": 0.4506555
+    },
+    {
+      "session_id": "session-0006",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 31398242,
+      "cached_input_tokens": 31174656,
+      "output_tokens": 65129,
+      "cost_usd": 3.7318256
+    },
+    {
+      "session_id": "session-0007",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 1752577,
+      "cached_input_tokens": 1637117,
+      "output_tokens": 24050,
+      "cost_usd": 0.4234717
+    },
+    {
+      "session_id": "session-0008",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2936398,
+      "cached_input_tokens": 2833074,
+      "output_tokens": 19297,
+      "cost_usd": 0.5024134
+    },
+    {
+      "session_id": "session-0009",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 6144743,
+      "cached_input_tokens": 6010399,
+      "output_tokens": 65711,
+      "cost_usd": 1.1296499
+    },
+    {
+      "session_id": "session-0010",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 531751,
+      "cached_input_tokens": 494761,
+      "output_tokens": 16710,
+      "cost_usd": 0.1867261
+    },
+    {
+      "session_id": "session-0011",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 257168,
+      "cached_input_tokens": 226955,
+      "output_tokens": 9269,
+      "cost_usd": 0.1085225
+    },
+    {
+      "session_id": "session-0012",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 10432758,
+      "cached_input_tokens": 10348304,
+      "output_tokens": 48281,
+      "cost_usd": 1.4089704
+    },
+    {
+      "session_id": "session-0013",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 21027623,
+      "cached_input_tokens": 20900985,
+      "output_tokens": 87431,
+      "cost_usd": 2.7413225
+    },
+    {
+      "session_id": "session-0014",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 885681,
+      "cached_input_tokens": 839827,
+      "output_tokens": 17155,
+      "cost_usd": 0.2327667
+    },
+    {
+      "session_id": "session-0015",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 932129,
+      "cached_input_tokens": 875211,
+      "output_tokens": 14664,
+      "cost_usd": 0.2324231
+    },
+    {
+      "session_id": "session-0016",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 17754749,
+      "cached_input_tokens": 17598570,
+      "output_tokens": 88556,
+      "cost_usd": 2.447372
+    },
+    {
+      "session_id": "session-0017",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 5580864,
+      "cached_input_tokens": 5485013,
+      "output_tokens": 43106,
+      "cost_usd": 0.9029883
+    },
+    {
+      "session_id": "session-0018",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 4630997,
+      "cached_input_tokens": 4528027,
+      "output_tokens": 61637,
+      "cost_usd": 0.9255947
+    },
+    {
+      "session_id": "session-0019",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 7614423,
+      "cached_input_tokens": 7469471,
+      "output_tokens": 60675,
+      "cost_usd": 1.2559491
+    },
+    {
+      "session_id": "session-0020",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 7492592,
+      "cached_input_tokens": 7340487,
+      "output_tokens": 42357,
+      "cost_usd": 1.1402957
+    },
+    {
+      "session_id": "session-0021",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 305798,
+      "cached_input_tokens": 271267,
+      "output_tokens": 11148,
+      "cost_usd": 0.1285457
+    },
+    {
+      "session_id": "session-0022",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2876027,
+      "cached_input_tokens": 2711958,
+      "output_tokens": 46182,
+      "cost_usd": 0.7123568
+    },
+    {
+      "session_id": "session-0023",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 34059819,
+      "cached_input_tokens": 33896289,
+      "output_tokens": 75785,
+      "cost_usd": 4.0078689
+    },
+    {
+      "session_id": "session-0024",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 7689269,
+      "cached_input_tokens": 7559517,
+      "output_tokens": 61930,
+      "cost_usd": 1.2572837
+    },
+    {
+      "session_id": "session-0025",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 7669520,
+      "cached_input_tokens": 7536880,
+      "output_tokens": 64720,
+      "cost_usd": 1.274648
+    },
+    {
+      "session_id": "session-0026",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 3010071,
+      "cached_input_tokens": 2837692,
+      "output_tokens": 43622,
+      "cost_usd": 0.7178802
+    },
+    {
+      "session_id": "session-0027",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 8295273,
+      "cached_input_tokens": 8197197,
+      "output_tokens": 46097,
+      "cost_usd": 1.1943777
+    },
+    {
+      "session_id": "session-0028",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 3695499,
+      "cached_input_tokens": 3617914,
+      "output_tokens": 29385,
+      "cost_usd": 0.6156864
+    },
+    {
+      "session_id": "session-0029",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 3661539,
+      "cached_input_tokens": 3573986,
+      "output_tokens": 32277,
+      "cost_usd": 0.6386136
+    },
+    {
+      "session_id": "session-0030",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 12436370,
+      "cached_input_tokens": 12307055,
+      "output_tokens": 66383,
+      "cost_usd": 1.7583185
+    },
+    {
+      "session_id": "session-0031",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2220944,
+      "cached_input_tokens": 2101384,
+      "output_tokens": 28370,
+      "cost_usd": 0.4999184
+    },
+    {
+      "session_id": "session-0032",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 407775,
+      "cached_input_tokens": 377805,
+      "output_tokens": 12025,
+      "cost_usd": 0.1399005
+    },
+    {
+      "session_id": "session-0033",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 11881968,
+      "cached_input_tokens": 11710504,
+      "output_tokens": 129006,
+      "cost_usd": 2.1165504
+    },
+    {
+      "session_id": "session-0034",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 4207191,
+      "cached_input_tokens": 4090530,
+      "output_tokens": 57958,
+      "cost_usd": 0.873462
+    },
+    {
+      "session_id": "session-0035",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 5623676,
+      "cached_input_tokens": 5417379,
+      "output_tokens": 54514,
+      "cost_usd": 1.0751189
+    },
+    {
+      "session_id": "session-0036",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 726948,
+      "cached_input_tokens": 709126,
+      "output_tokens": 16288,
+      "cost_usd": 0.1864626
+    },
+    {
+      "session_id": "session-0037",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 36096186,
+      "cached_input_tokens": 35924312,
+      "output_tokens": 84056,
+      "cost_usd": 4.2686412
+    },
+    {
+      "session_id": "session-0038",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 6934393,
+      "cached_input_tokens": 6648373,
+      "output_tokens": 47519,
+      "cost_usd": 1.2359713
+    },
+    {
+      "session_id": "session-0039",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 9975363,
+      "cached_input_tokens": 9817479,
+      "output_tokens": 54587,
+      "cost_usd": 1.4671539
+    },
+    {
+      "session_id": "session-0040",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 12809792,
+      "cached_input_tokens": 12644955,
+      "output_tokens": 55027,
+      "cost_usd": 1.7594945
+    },
+    {
+      "session_id": "session-0041",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 3008550,
+      "cached_input_tokens": 2930993,
+      "output_tokens": 35079,
+      "cost_usd": 0.5811303
+    },
+    {
+      "session_id": "session-0042",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 16338746,
+      "cached_input_tokens": 16257804,
+      "output_tokens": 33343,
+      "cost_usd": 1.9067804
+    },
+    {
+      "session_id": "session-0043",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 5778901,
+      "cached_input_tokens": 5671052,
+      "output_tokens": 44046,
+      "cost_usd": 0.9392302
+    },
+    {
+      "session_id": "session-0044",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 10602167,
+      "cached_input_tokens": 10451252,
+      "output_tokens": 105073,
+      "cost_usd": 1.8264782
+    },
+    {
+      "session_id": "session-0045",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 11819201,
+      "cached_input_tokens": 11612706,
+      "output_tokens": 139411,
+      "cost_usd": 2.2042316
+    },
+    {
+      "session_id": "session-0046",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 9363450,
+      "cached_input_tokens": 9183461,
+      "output_tokens": 121896,
+      "cost_usd": 1.8297111
+    },
+    {
+      "session_id": "session-0047",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 40567059,
+      "cached_input_tokens": 40376126,
+      "output_tokens": 98245,
+      "cost_usd": 4.8180156
+    },
+    {
+      "session_id": "session-0048",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 5842772,
+      "cached_input_tokens": 5581572,
+      "output_tokens": 65798,
+      "cost_usd": 1.2141452
+    },
+    {
+      "session_id": "session-0049",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 3073018,
+      "cached_input_tokens": 2957206,
+      "output_tokens": 32451,
+      "cost_usd": 0.6062386
+    },
+    {
+      "session_id": "session-0050",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 5688707,
+      "cached_input_tokens": 5576384,
+      "output_tokens": 25567,
+      "cost_usd": 0.8233634
+    },
+    {
+      "session_id": "session-0051",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 5152182,
+      "cached_input_tokens": 4964594,
+      "output_tokens": 41714,
+      "cost_usd": 0.9343314
+    },
+    {
+      "session_id": "session-0052",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2201097,
+      "cached_input_tokens": 2082225,
+      "output_tokens": 22942,
+      "cost_usd": 0.4647465
+    },
+    {
+      "session_id": "session-0053",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 26232396,
+      "cached_input_tokens": 26098130,
+      "output_tokens": 69800,
+      "cost_usd": 3.162879
+    },
+    {
+      "session_id": "session-0054",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 4954667,
+      "cached_input_tokens": 4868461,
+      "output_tokens": 23162,
+      "cost_usd": 0.7120241
+    },
+    {
+      "session_id": "session-0055",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 4540108,
+      "cached_input_tokens": 4463068,
+      "output_tokens": 39348,
+      "cost_usd": 0.7594348
+    },
+    {
+      "session_id": "session-0056",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 1892617,
+      "cached_input_tokens": 1826631,
+      "output_tokens": 18739,
+      "cost_usd": 0.3610831
+    },
+    {
+      "session_id": "session-0057",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 22743963,
+      "cached_input_tokens": 22607065,
+      "output_tokens": 100618,
+      "cost_usd": 3.0013125
+    },
+    {
+      "session_id": "session-0058",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2268977,
+      "cached_input_tokens": 2191067,
+      "output_tokens": 52725,
+      "cost_usd": 0.6133667
+    },
+    {
+      "session_id": "session-0059",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 10607753,
+      "cached_input_tokens": 10509178,
+      "output_tokens": 60025,
+      "cost_usd": 1.5096428
+    },
+    {
+      "session_id": "session-0060",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2732310,
+      "cached_input_tokens": 2669039,
+      "output_tokens": 33749,
+      "cost_usd": 0.5326689
+    },
+    {
+      "session_id": "session-0061",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 14877240,
+      "cached_input_tokens": 14757863,
+      "output_tokens": 72466,
+      "cost_usd": 2.0299593
+    },
+    {
+      "session_id": "session-0062",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 12279674,
+      "cached_input_tokens": 12096835,
+      "output_tokens": 40948,
+      "cost_usd": 1.6382105
+    },
+    {
+      "session_id": "session-0063",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 527966,
+      "cached_input_tokens": 493134,
+      "output_tokens": 13458,
+      "cost_usd": 0.1648934
+    },
+    {
+      "session_id": "session-0064",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 5189828,
+      "cached_input_tokens": 5087084,
+      "output_tokens": 101674,
+      "cost_usd": 1.2214964
+    },
+    {
+      "session_id": "session-0065",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 17013852,
+      "cached_input_tokens": 16746652,
+      "output_tokens": 109234,
+      "cost_usd": 2.5972692
+    },
+    {
+      "session_id": "session-0066",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 1331276,
+      "cached_input_tokens": 1306709,
+      "output_tokens": 13952,
+      "cost_usd": 0.2389499
+    },
+    {
+      "session_id": "session-0067",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 4622382,
+      "cached_input_tokens": 4558772,
+      "output_tokens": 22781,
+      "cost_usd": 0.6561732
+    },
+    {
+      "session_id": "session-0068",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 263301,
+      "cached_input_tokens": 239714,
+      "output_tokens": 6341,
+      "cost_usd": 0.0856044
+    },
+    {
+      "session_id": "session-0069",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 40072521,
+      "cached_input_tokens": 39859906,
+      "output_tokens": 109861,
+      "cost_usd": 4.8577716
+    },
+    {
+      "session_id": "session-0070",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 14949374,
+      "cached_input_tokens": 14750775,
+      "output_tokens": 78941,
+      "cost_usd": 2.1473225
+    },
+    {
+      "session_id": "session-0071",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 7402232,
+      "cached_input_tokens": 7268397,
+      "output_tokens": 41139,
+      "cost_usd": 1.1075087
+    },
+    {
+      "session_id": "session-0072",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 3580482,
+      "cached_input_tokens": 3412180,
+      "output_tokens": 20816,
+      "cost_usd": 0.634416
+    },
+    {
+      "session_id": "session-0073",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 6741386,
+      "cached_input_tokens": 6506423,
+      "output_tokens": 39517,
+      "cost_usd": 1.1227073
+    },
+    {
+      "session_id": "session-0074",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 9771151,
+      "cached_input_tokens": 9495487,
+      "output_tokens": 97207,
+      "cost_usd": 1.8084547
+    },
+    {
+      "session_id": "session-0075",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 3585632,
+      "cached_input_tokens": 3411252,
+      "output_tokens": 42663,
+      "cost_usd": 0.7714832
+    },
+    {
+      "session_id": "session-0076",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 7715852,
+      "cached_input_tokens": 7575538,
+      "output_tokens": 75916,
+      "cost_usd": 1.3533638
+    },
+    {
+      "session_id": "session-0077",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 26366634,
+      "cached_input_tokens": 26177558,
+      "output_tokens": 96084,
+      "cost_usd": 3.3833358
+    },
+    {
+      "session_id": "session-0078",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 6472564,
+      "cached_input_tokens": 6350607,
+      "output_tokens": 71965,
+      "cost_usd": 1.1888077
+    },
+    {
+      "session_id": "session-0079",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 351486,
+      "cached_input_tokens": 279256,
+      "output_tokens": 10523,
+      "cost_usd": 0.1632936
+    },
+    {
+      "session_id": "session-0080",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 706389,
+      "cached_input_tokens": 642355,
+      "output_tokens": 9575,
+      "cost_usd": 0.1857195
+    },
+    {
+      "session_id": "session-0081",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1223346,
+      "cached_input_tokens": 1143834,
+      "output_tokens": 11026,
+      "cost_usd": 0.2600514
+    },
+    {
+      "session_id": "session-0082",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1236383,
+      "cached_input_tokens": 1158730,
+      "output_tokens": 11808,
+      "cost_usd": 0.264374
+    },
+    {
+      "session_id": "session-0083",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1200795,
+      "cached_input_tokens": 1118624,
+      "output_tokens": 10119,
+      "cost_usd": 0.2547474
+    },
+    {
+      "session_id": "session-0084",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 700188,
+      "cached_input_tokens": 624448,
+      "output_tokens": 8612,
+      "cost_usd": 0.1898568
+    },
+    {
+      "session_id": "session-0085",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 698545,
+      "cached_input_tokens": 635996,
+      "output_tokens": 10416,
+      "cost_usd": 0.1886446
+    },
+    {
+      "session_id": "session-0086",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 529680,
+      "cached_input_tokens": 460683,
+      "output_tokens": 11236,
+      "cost_usd": 0.1824813
+    },
+    {
+      "session_id": "session-0087",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 261618,
+      "cached_input_tokens": 230731,
+      "output_tokens": 8244,
+      "cost_usd": 0.1034241
+    },
+    {
+      "session_id": "session-0088",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1659230,
+      "cached_input_tokens": 1555738,
+      "output_tokens": 14188,
+      "cost_usd": 0.3441938
+    },
+    {
+      "session_id": "session-0089",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 542150,
+      "cached_input_tokens": 463857,
+      "output_tokens": 9434,
+      "cost_usd": 0.1812827
+    },
+    {
+      "session_id": "session-0090",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1044826,
+      "cached_input_tokens": 967099,
+      "output_tokens": 10761,
+      "cost_usd": 0.2390029
+    },
+    {
+      "session_id": "session-0091",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1212522,
+      "cached_input_tokens": 1122296,
+      "output_tokens": 8789,
+      "cost_usd": 0.2551896
+    },
+    {
+      "session_id": "session-0092",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1514209,
+      "cached_input_tokens": 1424531,
+      "output_tokens": 11672,
+      "cost_usd": 0.3021631
+    },
+    {
+      "session_id": "session-0093",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1060631,
+      "cached_input_tokens": 966016,
+      "output_tokens": 10438,
+      "cost_usd": 0.2538446
+    },
+    {
+      "session_id": "session-0094",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1096620,
+      "cached_input_tokens": 996623,
+      "output_tokens": 11905,
+      "cost_usd": 0.2710893
+    },
+    {
+      "session_id": "session-0095",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 360512,
+      "cached_input_tokens": 300338,
+      "output_tokens": 6890,
+      "cost_usd": 0.1315478
+    },
+    {
+      "session_id": "session-0096",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 891239,
+      "cached_input_tokens": 811716,
+      "output_tokens": 10356,
+      "cost_usd": 0.2228306
+    },
+    {
+      "session_id": "session-0097",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1261528,
+      "cached_input_tokens": 1169846,
+      "output_tokens": 9697,
+      "cost_usd": 0.2668486
+    },
+    {
+      "session_id": "session-0098",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1531774,
+      "cached_input_tokens": 1432037,
+      "output_tokens": 10759,
+      "cost_usd": 0.3074947
+    },
+    {
+      "session_id": "session-0099",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 2344382,
+      "cached_input_tokens": 2244194,
+      "output_tokens": 14417,
+      "cost_usd": 0.4111094
+    },
+    {
+      "session_id": "session-0100",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1085568,
+      "cached_input_tokens": 1005311,
+      "output_tokens": 12702,
+      "cost_usd": 0.2570001
+    },
+    {
+      "session_id": "session-0101",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 532985,
+      "cached_input_tokens": 468507,
+      "output_tokens": 7862,
+      "cost_usd": 0.1585007
+    },
+    {
+      "session_id": "session-0102",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 743647,
+      "cached_input_tokens": 664331,
+      "output_tokens": 9007,
+      "cost_usd": 0.1997911
+    },
+    {
+      "session_id": "session-0103",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 427442,
+      "cached_input_tokens": 363480,
+      "output_tokens": 9606,
+      "cost_usd": 0.157946
+    },
+    {
+      "session_id": "session-0104",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 3338509,
+      "cached_input_tokens": 3237692,
+      "output_tokens": 18065,
+      "cost_usd": 0.5329762
+    },
+    {
+      "session_id": "session-0105",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 2031856,
+      "cached_input_tokens": 1935953,
+      "output_tokens": 13665,
+      "cost_usd": 0.3714883
+    },
+    {
+      "session_id": "session-0106",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 949421,
+      "cached_input_tokens": 865046,
+      "output_tokens": 11626,
+      "cost_usd": 0.2406356
+    },
+    {
+      "session_id": "session-0107",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1176119,
+      "cached_input_tokens": 1078671,
+      "output_tokens": 11163,
+      "cost_usd": 0.2722931
+    },
+    {
+      "session_id": "session-0108",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 850245,
+      "cached_input_tokens": 779819,
+      "output_tokens": 9028,
+      "cost_usd": 0.2025759
+    },
+    {
+      "session_id": "session-0109",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1292116,
+      "cached_input_tokens": 1213109,
+      "output_tokens": 14157,
+      "cost_usd": 0.2852599
+    },
+    {
+      "session_id": "session-0110",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 444783,
+      "cached_input_tokens": 396038,
+      "output_tokens": 10295,
+      "cost_usd": 0.1501188
+    },
+    {
+      "session_id": "session-0111",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1826691,
+      "cached_input_tokens": 1724421,
+      "output_tokens": 13407,
+      "cost_usd": 0.3551541
+    },
+    {
+      "session_id": "session-0112",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1415360,
+      "cached_input_tokens": 1318887,
+      "output_tokens": 12762,
+      "cost_usd": 0.3049337
+    },
+    {
+      "session_id": "session-0113",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 898261,
+      "cached_input_tokens": 826429,
+      "output_tokens": 7708,
+      "cost_usd": 0.2007229
+    },
+    {
+      "session_id": "session-0114",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 855037,
+      "cached_input_tokens": 784958,
+      "output_tokens": 8637,
+      "cost_usd": 0.2003968
+    },
+    {
+      "session_id": "session-0115",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 997592,
+      "cached_input_tokens": 909099,
+      "output_tokens": 10463,
+      "cost_usd": 0.2421809
+    },
+    {
+      "session_id": "session-0116",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 570803,
+      "cached_input_tokens": 509397,
+      "output_tokens": 8870,
+      "cost_usd": 0.1655657
+    },
+    {
+      "session_id": "session-0117",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1245429,
+      "cached_input_tokens": 1160309,
+      "output_tokens": 10323,
+      "cost_usd": 0.2630889
+    },
+    {
+      "session_id": "session-0118",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 574102,
+      "cached_input_tokens": 522997,
+      "output_tokens": 8212,
+      "cost_usd": 0.1526767
+    },
+    {
+      "session_id": "session-0119",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 816642,
+      "cached_input_tokens": 711968,
+      "output_tokens": 9440,
+      "cost_usd": 0.2325108
+    },
+    {
+      "session_id": "session-0120",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 444194,
+      "cached_input_tokens": 374167,
+      "output_tokens": 9218,
+      "cost_usd": 0.1627517
+    },
+    {
+      "session_id": "session-0121",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1109009,
+      "cached_input_tokens": 1027016,
+      "output_tokens": 10857,
+      "cost_usd": 0.2498366
+    },
+    {
+      "session_id": "session-0122",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1253395,
+      "cached_input_tokens": 1171515,
+      "output_tokens": 8959,
+      "cost_usd": 0.2527855
+    },
+    {
+      "session_id": "session-0123",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 708217,
+      "cached_input_tokens": 611341,
+      "output_tokens": 8976,
+      "cost_usd": 0.2118661
+    },
+    {
+      "session_id": "session-0124",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 873191,
+      "cached_input_tokens": 793820,
+      "output_tokens": 9525,
+      "cost_usd": 0.215903
+    },
+    {
+      "session_id": "session-0125",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 695572,
+      "cached_input_tokens": 620427,
+      "output_tokens": 10273,
+      "cost_usd": 0.1988257
+    },
+    {
+      "session_id": "session-0126",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 916433,
+      "cached_input_tokens": 803607,
+      "output_tokens": 11220,
+      "cost_usd": 0.2605067
+    },
+    {
+      "session_id": "session-0127",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1231593,
+      "cached_input_tokens": 1148490,
+      "output_tokens": 9490,
+      "cost_usd": 0.254892
+    },
+    {
+      "session_id": "session-0128",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 469000,
+      "cached_input_tokens": 406545,
+      "output_tokens": 9356,
+      "cost_usd": 0.1592455
+    },
+    {
+      "session_id": "session-0129",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 567266,
+      "cached_input_tokens": 499402,
+      "output_tokens": 8272,
+      "cost_usd": 0.1674362
+    },
+    {
+      "session_id": "session-0130",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1564550,
+      "cached_input_tokens": 1476079,
+      "output_tokens": 10482,
+      "cost_usd": 0.2989709
+    },
+    {
+      "session_id": "session-0131",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 954537,
+      "cached_input_tokens": 833696,
+      "output_tokens": 9914,
+      "cost_usd": 0.2636946
+    },
+    {
+      "session_id": "session-0132",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 3525288,
+      "cached_input_tokens": 3381938,
+      "output_tokens": 11741,
+      "cost_usd": 0.5519898
+    },
+    {
+      "session_id": "session-0133",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1984941,
+      "cached_input_tokens": 1875331,
+      "output_tokens": 10348,
+      "cost_usd": 0.3592311
+    },
+    {
+      "session_id": "session-0134",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1223466,
+      "cached_input_tokens": 1150867,
+      "output_tokens": 10473,
+      "cost_usd": 0.2505237
+    },
+    {
+      "session_id": "session-0135",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1361830,
+      "cached_input_tokens": 1286774,
+      "output_tokens": 15085,
+      "cost_usd": 0.2942434
+    },
+    {
+      "session_id": "session-0136",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1682456,
+      "cached_input_tokens": 1593301,
+      "output_tokens": 12041,
+      "cost_usd": 0.3207311
+    },
+    {
+      "session_id": "session-0137",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 474786,
+      "cached_input_tokens": 403081,
+      "output_tokens": 9848,
+      "cost_usd": 0.1711011
+    },
+    {
+      "session_id": "session-0138",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 362096,
+      "cached_input_tokens": 296014,
+      "output_tokens": 8293,
+      "cost_usd": 0.1454414
+    },
+    {
+      "session_id": "session-0139",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1856962,
+      "cached_input_tokens": 1751942,
+      "output_tokens": 9565,
+      "cost_usd": 0.3376042
+    },
+    {
+      "session_id": "session-0140",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 634554,
+      "cached_input_tokens": 567737,
+      "output_tokens": 10130,
+      "cost_usd": 0.1843707
+    },
+    {
+      "session_id": "session-0141",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 409757,
+      "cached_input_tokens": 334316,
+      "output_tokens": 10321,
+      "cost_usd": 0.1707986
+    },
+    {
+      "session_id": "session-0142",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1226365,
+      "cached_input_tokens": 1111231,
+      "output_tokens": 6479,
+      "cost_usd": 0.2651311
+    },
+    {
+      "session_id": "session-0143",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 2920293,
+      "cached_input_tokens": 2771885,
+      "output_tokens": 13635,
+      "cost_usd": 0.5074065
+    },
+    {
+      "session_id": "session-0144",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1046785,
+      "cached_input_tokens": 967139,
+      "output_tokens": 10547,
+      "cost_usd": 0.2396419
+    },
+    {
+      "session_id": "session-0145",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1586160,
+      "cached_input_tokens": 1483762,
+      "output_tokens": 10675,
+      "cost_usd": 0.3148242
+    },
+    {
+      "session_id": "session-0146",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 853235,
+      "cached_input_tokens": 792787,
+      "output_tokens": 9378,
+      "cost_usd": 0.1959947
+    },
+    {
+      "session_id": "session-0147",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1235110,
+      "cached_input_tokens": 1138528,
+      "output_tokens": 11295,
+      "cost_usd": 0.2782048
+    },
+    {
+      "session_id": "session-0148",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 442442,
+      "cached_input_tokens": 365188,
+      "output_tokens": 9069,
+      "cost_usd": 0.1681868
+    },
+    {
+      "session_id": "session-0149",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 591492,
+      "cached_input_tokens": 512180,
+      "output_tokens": 10176,
+      "cost_usd": 0.191586
+    },
+    {
+      "session_id": "session-0150",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 510919,
+      "cached_input_tokens": 429848,
+      "output_tokens": 9240,
+      "cost_usd": 0.1794958
+    },
+    {
+      "session_id": "session-0151",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1120576,
+      "cached_input_tokens": 1020607,
+      "output_tokens": 9856,
+      "cost_usd": 0.2611657
+    },
+    {
+      "session_id": "session-0152",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 410822,
+      "cached_input_tokens": 339060,
+      "output_tokens": 9968,
+      "cost_usd": 0.165476
+    },
+    {
+      "session_id": "session-0153",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 2047686,
+      "cached_input_tokens": 1942826,
+      "output_tokens": 10391,
+      "cost_usd": 0.3614886
+    },
+    {
+      "session_id": "session-0154",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1050784,
+      "cached_input_tokens": 977208,
+      "output_tokens": 9626,
+      "cost_usd": 0.2290528
+    },
+    {
+      "session_id": "session-0155",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 538402,
+      "cached_input_tokens": 477377,
+      "output_tokens": 10675,
+      "cost_usd": 0.1728127
+    },
+    {
+      "session_id": "session-0156",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1412707,
+      "cached_input_tokens": 1313323,
+      "output_tokens": 11345,
+      "cost_usd": 0.2987863
+    },
+    {
+      "session_id": "session-0157",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1324518,
+      "cached_input_tokens": 1220906,
+      "output_tokens": 12177,
+      "cost_usd": 0.2987646
+    },
+    {
+      "session_id": "session-0158",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 2042709,
+      "cached_input_tokens": 1940743,
+      "output_tokens": 9070,
+      "cost_usd": 0.3504603
+    },
+    {
+      "session_id": "session-0159",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1095894,
+      "cached_input_tokens": 997765,
+      "output_tokens": 11000,
+      "cost_usd": 0.2639055
+    },
+    {
+      "session_id": "session-0160",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 2568853,
+      "cached_input_tokens": 2454655,
+      "output_tokens": 12427,
+      "cost_usd": 0.4342255
+    },
+    {
+      "session_id": "session-0161",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 610737,
+      "cached_input_tokens": 532957,
+      "output_tokens": 10621,
+      "cost_usd": 0.1948017
+    },
+    {
+      "session_id": "session-0162",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 739658,
+      "cached_input_tokens": 673373,
+      "output_tokens": 9049,
+      "cost_usd": 0.1879163
+    },
+    {
+      "session_id": "session-0163",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 870443,
+      "cached_input_tokens": 766630,
+      "output_tokens": 11199,
+      "cost_usd": 0.24767
+    },
+    {
+      "session_id": "session-0164",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 892201,
+      "cached_input_tokens": 819993,
+      "output_tokens": 9898,
+      "cost_usd": 0.2135953
+    },
+    {
+      "session_id": "session-0165",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1633701,
+      "cached_input_tokens": 1546005,
+      "output_tokens": 10258,
+      "cost_usd": 0.3038445
+    },
+    {
+      "session_id": "session-0166",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 426839,
+      "cached_input_tokens": 375290,
+      "output_tokens": 7085,
+      "cost_usd": 0.131588
+    },
+    {
+      "session_id": "session-0167",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1258174,
+      "cached_input_tokens": 1180402,
+      "output_tokens": 9845,
+      "cost_usd": 0.2548822
+    },
+    {
+      "session_id": "session-0168",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1085005,
+      "cached_input_tokens": 1027398,
+      "output_tokens": 11046,
+      "cost_usd": 0.2266228
+    },
+    {
+      "session_id": "session-0169",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 306540,
+      "cached_input_tokens": 260598,
+      "output_tokens": 8706,
+      "cost_usd": 0.1242378
+    },
+    {
+      "session_id": "session-0170",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 292931,
+      "cached_input_tokens": 247674,
+      "output_tokens": 8739,
+      "cost_usd": 0.1224584
+    },
+    {
+      "session_id": "session-0171",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 378303,
+      "cached_input_tokens": 346035,
+      "output_tokens": 8150,
+      "cost_usd": 0.1157715
+    },
+    {
+      "session_id": "session-0172",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 168938,
+      "cached_input_tokens": 129616,
+      "output_tokens": 7140,
+      "cost_usd": 0.0951236
+    },
+    {
+      "session_id": "session-0173",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 376595,
+      "cached_input_tokens": 335795,
+      "output_tokens": 8442,
+      "cost_usd": 0.1250315
+    },
+    {
+      "session_id": "session-0174",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1394327,
+      "cached_input_tokens": 1319517,
+      "output_tokens": 15544,
+      "cost_usd": 0.3000257
+    },
+    {
+      "session_id": "session-0175",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1445357,
+      "cached_input_tokens": 1356886,
+      "output_tokens": 9708,
+      "cost_usd": 0.2824076
+    },
+    {
+      "session_id": "session-0176",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1240112,
+      "cached_input_tokens": 1161620,
+      "output_tokens": 12635,
+      "cost_usd": 0.270464
+    },
+    {
+      "session_id": "session-0177",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1027013,
+      "cached_input_tokens": 926585,
+      "output_tokens": 11132,
+      "cost_usd": 0.2598785
+    },
+    {
+      "session_id": "session-0178",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 355084,
+      "cached_input_tokens": 305260,
+      "output_tokens": 9565,
+      "cost_usd": 0.13774
+    },
+    {
+      "session_id": "session-0179",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 743984,
+      "cached_input_tokens": 684161,
+      "output_tokens": 10954,
+      "cost_usd": 0.1939631
+    },
+    {
+      "session_id": "session-0180",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 929342,
+      "cached_input_tokens": 845628,
+      "output_tokens": 11136,
+      "cost_usd": 0.2350928
+    },
+    {
+      "session_id": "session-0181",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 949123,
+      "cached_input_tokens": 873960,
+      "output_tokens": 8621,
+      "cost_usd": 0.214285
+    },
+    {
+      "session_id": "session-0182",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1039206,
+      "cached_input_tokens": 967987,
+      "output_tokens": 14940,
+      "cost_usd": 0.2576577
+    },
+    {
+      "session_id": "session-0183",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 884995,
+      "cached_input_tokens": 810222,
+      "output_tokens": 9500,
+      "cost_usd": 0.2127952
+    },
+    {
+      "session_id": "session-0184",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 447984,
+      "cached_input_tokens": 365092,
+      "output_tokens": 10835,
+      "cost_usd": 0.1844112
+    },
+    {
+      "session_id": "session-0185",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1174177,
+      "cached_input_tokens": 1087541,
+      "output_tokens": 12347,
+      "cost_usd": 0.2694721
+    },
+    {
+      "session_id": "session-0186",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1224268,
+      "cached_input_tokens": 1148203,
+      "output_tokens": 11886,
+      "cost_usd": 0.2622013
+    },
+    {
+      "session_id": "session-0187",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 807091,
+      "cached_input_tokens": 719308,
+      "output_tokens": 10124,
+      "cost_usd": 0.2204578
+    },
+    {
+      "session_id": "session-0188",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 194563,
+      "cached_input_tokens": 144359,
+      "output_tokens": 7951,
+      "cost_usd": 0.1123459
+    },
+    {
+      "session_id": "session-0189",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 910411,
+      "cached_input_tokens": 824571,
+      "output_tokens": 9587,
+      "cost_usd": 0.2258191
+    },
+    {
+      "session_id": "session-0190",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1251190,
+      "cached_input_tokens": 1157245,
+      "output_tokens": 11125,
+      "cost_usd": 0.2764195
+    },
+    {
+      "session_id": "session-0191",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 358360,
+      "cached_input_tokens": 298897,
+      "output_tokens": 7469,
+      "cost_usd": 0.1341667
+    },
+    {
+      "session_id": "session-0192",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 1436314,
+      "cached_input_tokens": 1340722,
+      "output_tokens": 11736,
+      "cost_usd": 0.3000802
+    },
+    {
+      "session_id": "session-0193",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 546262,
+      "cached_input_tokens": 493474,
+      "output_tokens": 7187,
+      "cost_usd": 0.1452574
+    },
+    {
+      "session_id": "session-0194",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 414333,
+      "cached_input_tokens": 362841,
+      "output_tokens": 8916,
+      "cost_usd": 0.1412721
+    },
+    {
+      "session_id": "session-0195",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 746398,
+      "cached_input_tokens": 651230,
+      "output_tokens": 12507,
+      "cost_usd": 0.235333
+    },
+    {
+      "session_id": "session-0196",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 594471,
+      "cached_input_tokens": 524508,
+      "output_tokens": 11484,
+      "cost_usd": 0.1913178
+    },
+    {
+      "session_id": "session-0197",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 580528,
+      "cached_input_tokens": 510027,
+      "output_tokens": 6671,
+      "cost_usd": 0.1615297
+    },
+    {
+      "session_id": "session-0198",
+      "group": "group-01",
+      "phase": "debug",
+      "input_tokens": 462014,
+      "cached_input_tokens": 409476,
+      "output_tokens": 8700,
+      "cost_usd": 0.1456856
+    },
+    {
+      "session_id": "session-0199",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1136362,
+      "cached_input_tokens": 1070868,
+      "output_tokens": 14498,
+      "cost_usd": 0.2595688
+    },
+    {
+      "session_id": "session-0200",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1615302,
+      "cached_input_tokens": 1533729,
+      "output_tokens": 20448,
+      "cost_usd": 0.3576339
+    },
+    {
+      "session_id": "session-0201",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 2869917,
+      "cached_input_tokens": 2777547,
+      "output_tokens": 21192,
+      "cost_usd": 0.4972767
+    },
+    {
+      "session_id": "session-0202",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 2109128,
+      "cached_input_tokens": 2011228,
+      "output_tokens": 14744,
+      "cost_usd": 0.3874868
+    },
+    {
+      "session_id": "session-0203",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1429333,
+      "cached_input_tokens": 1352313,
+      "output_tokens": 17068,
+      "cost_usd": 0.3146593
+    },
+    {
+      "session_id": "session-0204",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 947550,
+      "cached_input_tokens": 887716,
+      "output_tokens": 9257,
+      "cost_usd": 0.2041476
+    },
+    {
+      "session_id": "session-0205",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 2596294,
+      "cached_input_tokens": 2470240,
+      "output_tokens": 13810,
+      "cost_usd": 0.455938
+    },
+    {
+      "session_id": "session-0206",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1553124,
+      "cached_input_tokens": 1472254,
+      "output_tokens": 14266,
+      "cost_usd": 0.3136914
+    },
+    {
+      "session_id": "session-0207",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 3311890,
+      "cached_input_tokens": 3196508,
+      "output_tokens": 21515,
+      "cost_usd": 0.5641228
+    },
+    {
+      "session_id": "session-0208",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1436426,
+      "cached_input_tokens": 1368932,
+      "output_tokens": 12933,
+      "cost_usd": 0.2819852
+    },
+    {
+      "session_id": "session-0209",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 2094612,
+      "cached_input_tokens": 2011839,
+      "output_tokens": 16398,
+      "cost_usd": 0.3823449
+    },
+    {
+      "session_id": "session-0210",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1217275,
+      "cached_input_tokens": 1150467,
+      "output_tokens": 11097,
+      "cost_usd": 0.2484367
+    },
+    {
+      "session_id": "session-0211",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1118558,
+      "cached_input_tokens": 1044261,
+      "output_tokens": 11431,
+      "cost_usd": 0.2473091
+    },
+    {
+      "session_id": "session-0212",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 2092063,
+      "cached_input_tokens": 2011163,
+      "output_tokens": 18987,
+      "cost_usd": 0.3959383
+    },
+    {
+      "session_id": "session-0213",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1114592,
+      "cached_input_tokens": 1046831,
+      "output_tokens": 12727,
+      "cost_usd": 0.2488061
+    },
+    {
+      "session_id": "session-0214",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 854463,
+      "cached_input_tokens": 786398,
+      "output_tokens": 8833,
+      "cost_usd": 0.1997028
+    },
+    {
+      "session_id": "session-0215",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1092921,
+      "cached_input_tokens": 1024841,
+      "output_tokens": 12753,
+      "cost_usd": 0.2470821
+    },
+    {
+      "session_id": "session-0216",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 867903,
+      "cached_input_tokens": 812782,
+      "output_tokens": 13950,
+      "cost_usd": 0.2200992
+    },
+    {
+      "session_id": "session-0217",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 2913376,
+      "cached_input_tokens": 2835328,
+      "output_tokens": 24112,
+      "cost_usd": 0.5062528
+    },
+    {
+      "session_id": "session-0218",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1425272,
+      "cached_input_tokens": 1349675,
+      "output_tokens": 22770,
+      "cost_usd": 0.3471845
+    },
+    {
+      "session_id": "session-0219",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 948286,
+      "cached_input_tokens": 895281,
+      "output_tokens": 10117,
+      "cost_usd": 0.2032351
+    },
+    {
+      "session_id": "session-0220",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1774827,
+      "cached_input_tokens": 1688048,
+      "output_tokens": 17502,
+      "cost_usd": 0.3605958
+    },
+    {
+      "session_id": "session-0221",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1686548,
+      "cached_input_tokens": 1623391,
+      "output_tokens": 16354,
+      "cost_usd": 0.3236201
+    },
+    {
+      "session_id": "session-0222",
+      "group": "group-02",
+      "phase": "evolve",
+      "input_tokens": 1257769,
+      "cached_input_tokens": 1183831,
+      "output_tokens": 10858,
+      "cost_usd": 0.2574691
+    },
+    {
+      "session_id": "session-0223",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 273849,
+      "cached_input_tokens": 229751,
+      "output_tokens": 7559,
+      "cost_usd": 0.1124271
+    },
+    {
+      "session_id": "session-0224",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 184819,
+      "cached_input_tokens": 151266,
+      "output_tokens": 9825,
+      "cost_usd": 0.1076296
+    },
+    {
+      "session_id": "session-0225",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 359814,
+      "cached_input_tokens": 299202,
+      "output_tokens": 8143,
+      "cost_usd": 0.1393902
+    },
+    {
+      "session_id": "session-0226",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 158135,
+      "cached_input_tokens": 134042,
+      "output_tokens": 9328,
+      "cost_usd": 0.0934652
+    },
+    {
+      "session_id": "session-0227",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 473327,
+      "cached_input_tokens": 397460,
+      "output_tokens": 7544,
+      "cost_usd": 0.160877
+    },
+    {
+      "session_id": "session-0228",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 157330,
+      "cached_input_tokens": 116271,
+      "output_tokens": 8632,
+      "cost_usd": 0.1044781
+    },
+    {
+      "session_id": "session-0229",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 396847,
+      "cached_input_tokens": 355125,
+      "output_tokens": 9885,
+      "cost_usd": 0.1365445
+    },
+    {
+      "session_id": "session-0230",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 479835,
+      "cached_input_tokens": 414078,
+      "output_tokens": 8856,
+      "cost_usd": 0.1603008
+    },
+    {
+      "session_id": "session-0231",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 449933,
+      "cached_input_tokens": 404018,
+      "output_tokens": 11114,
+      "cost_usd": 0.1530008
+    },
+    {
+      "session_id": "session-0232",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 308461,
+      "cached_input_tokens": 276861,
+      "output_tokens": 8352,
+      "cost_usd": 0.1093981
+    },
+    {
+      "session_id": "session-0233",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 356744,
+      "cached_input_tokens": 312046,
+      "output_tokens": 9526,
+      "cost_usd": 0.1330586
+    },
+    {
+      "session_id": "session-0234",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 113281,
+      "cached_input_tokens": 81144,
+      "output_tokens": 6384,
+      "cost_usd": 0.0785554
+    },
+    {
+      "session_id": "session-0235",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 825043,
+      "cached_input_tokens": 782041,
+      "output_tokens": 9666,
+      "cost_usd": 0.1792021
+    },
+    {
+      "session_id": "session-0236",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 506820,
+      "cached_input_tokens": 466200,
+      "output_tokens": 9236,
+      "cost_usd": 0.142656
+    },
+    {
+      "session_id": "session-0237",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 207990,
+      "cached_input_tokens": 169408,
+      "output_tokens": 9118,
+      "cost_usd": 0.1102308
+    },
+    {
+      "session_id": "session-0238",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 414747,
+      "cached_input_tokens": 348481,
+      "output_tokens": 10471,
+      "cost_usd": 0.1639401
+    },
+    {
+      "session_id": "session-0239",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 461781,
+      "cached_input_tokens": 424081,
+      "output_tokens": 10688,
+      "cost_usd": 0.1442361
+    },
+    {
+      "session_id": "session-0240",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 98759,
+      "cached_input_tokens": 71839,
+      "output_tokens": 6487,
+      "cost_usd": 0.0730259
+    },
+    {
+      "session_id": "session-0241",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 60046,
+      "cached_input_tokens": 38657,
+      "output_tokens": 4808,
+      "cost_usd": 0.0541027
+    },
+    {
+      "session_id": "session-0242",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 119707,
+      "cached_input_tokens": 93102,
+      "output_tokens": 7253,
+      "cost_usd": 0.0794332
+    },
+    {
+      "session_id": "session-0243",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 83830,
+      "cached_input_tokens": 53509,
+      "output_tokens": 6450,
+      "cost_usd": 0.0743719
+    },
+    {
+      "session_id": "session-0244",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 232429,
+      "cached_input_tokens": 165179,
+      "output_tokens": 7371,
+      "cost_usd": 0.1279939
+    },
+    {
+      "session_id": "session-0245",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 394970,
+      "cached_input_tokens": 330052,
+      "output_tokens": 9073,
+      "cost_usd": 0.1523612
+    },
+    {
+      "session_id": "session-0246",
+      "group": "group-03",
+      "phase": "overview",
+      "input_tokens": 676292,
+      "cached_input_tokens": 601813,
+      "output_tokens": 10986,
+      "cost_usd": 0.2005763
+    },
+    {
+      "session_id": "session-0247",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 8181233,
+      "cached_input_tokens": 8052616,
+      "output_tokens": 61472,
+      "cost_usd": 1.3027106
+    },
+    {
+      "session_id": "session-0248",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2795291,
+      "cached_input_tokens": 2711411,
+      "output_tokens": 27011,
+      "cost_usd": 0.5170871
+    },
+    {
+      "session_id": "session-0249",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2973971,
+      "cached_input_tokens": 2795933,
+      "output_tokens": 39513,
+      "cost_usd": 0.6947093
+    },
+    {
+      "session_id": "session-0250",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 5224161,
+      "cached_input_tokens": 5124515,
+      "output_tokens": 34725,
+      "cost_usd": 0.8204475
+    },
+    {
+      "session_id": "session-0251",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 3834932,
+      "cached_input_tokens": 3663594,
+      "output_tokens": 24743,
+      "cost_usd": 0.6861554
+    },
+    {
+      "session_id": "session-0252",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 893454,
+      "cached_input_tokens": 844381,
+      "output_tokens": 20332,
+      "cost_usd": 0.2555031
+    },
+    {
+      "session_id": "session-0253",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 184152,
+      "cached_input_tokens": 155704,
+      "output_tokens": 5456,
+      "cost_usd": 0.0767544
+    },
+    {
+      "session_id": "session-0254",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 4318359,
+      "cached_input_tokens": 4222978,
+      "output_tokens": 23532,
+      "cost_usd": 0.6588708
+    },
+    {
+      "session_id": "session-0255",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2177427,
+      "cached_input_tokens": 2112145,
+      "output_tokens": 33975,
+      "cost_usd": 0.4803465
+    },
+    {
+      "session_id": "session-0256",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 5007514,
+      "cached_input_tokens": 4907656,
+      "output_tokens": 36766,
+      "cost_usd": 0.8112196
+    },
+    {
+      "session_id": "session-0257",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 3651716,
+      "cached_input_tokens": 3592355,
+      "output_tokens": 24459,
+      "cost_usd": 0.5653505
+    },
+    {
+      "session_id": "session-0258",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2877035,
+      "cached_input_tokens": 2813067,
+      "output_tokens": 29544,
+      "cost_usd": 0.5225387
+    },
+    {
+      "session_id": "session-0259",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2042582,
+      "cached_input_tokens": 1977397,
+      "output_tokens": 19720,
+      "cost_usd": 0.3812447
+    },
+    {
+      "session_id": "session-0260",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 8048640,
+      "cached_input_tokens": 7934856,
+      "output_tokens": 62546,
+      "cost_usd": 1.2825456
+    },
+    {
+      "session_id": "session-0261",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 1553720,
+      "cached_input_tokens": 1527870,
+      "output_tokens": 21353,
+      "cost_usd": 0.306755
+    },
+    {
+      "session_id": "session-0262",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2432398,
+      "cached_input_tokens": 2367527,
+      "output_tokens": 22391,
+      "cost_usd": 0.4359697
+    },
+    {
+      "session_id": "session-0263",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 9201576,
+      "cached_input_tokens": 9074111,
+      "output_tokens": 52672,
+      "cost_usd": 1.3509081
+    },
+    {
+      "session_id": "session-0264",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 1894966,
+      "cached_input_tokens": 1834087,
+      "output_tokens": 14719,
+      "cost_usd": 0.3326017
+    },
+    {
+      "session_id": "session-0265",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 1218295,
+      "cached_input_tokens": 1193418,
+      "output_tokens": 7207,
+      "cost_usd": 0.1874608
+    },
+    {
+      "session_id": "session-0266",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 32554006,
+      "cached_input_tokens": 32404154,
+      "output_tokens": 72434,
+      "cost_usd": 3.8248714
+    },
+    {
+      "session_id": "session-0267",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 4318533,
+      "cached_input_tokens": 4158935,
+      "output_tokens": 22528,
+      "cost_usd": 0.7106595
+    },
+    {
+      "session_id": "session-0268",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 3136927,
+      "cached_input_tokens": 3070783,
+      "output_tokens": 16730,
+      "cost_usd": 0.4736023
+    },
+    {
+      "session_id": "session-0269",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 4833372,
+      "cached_input_tokens": 4759477,
+      "output_tokens": 26235,
+      "cost_usd": 0.7072527
+    },
+    {
+      "session_id": "session-0270",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 13466933,
+      "cached_input_tokens": 13296600,
+      "output_tokens": 85485,
+      "cost_usd": 2.012903
+    },
+    {
+      "session_id": "session-0271",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 24227737,
+      "cached_input_tokens": 24110640,
+      "output_tokens": 64025,
+      "cost_usd": 2.912311
+    },
+    {
+      "session_id": "session-0272",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 14851863,
+      "cached_input_tokens": 14733146,
+      "output_tokens": 54251,
+      "cost_usd": 1.9175376
+    },
+    {
+      "session_id": "session-0273",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 1102261,
+      "cached_input_tokens": 1066825,
+      "output_tokens": 12642,
+      "cost_usd": 0.2179705
+    },
+    {
+      "session_id": "session-0274",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 4046788,
+      "cached_input_tokens": 3986258,
+      "output_tokens": 32586,
+      "cost_usd": 0.6546718
+    },
+    {
+      "session_id": "session-0275",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2364767,
+      "cached_input_tokens": 2284924,
+      "output_tokens": 29923,
+      "cost_usd": 0.4878734
+    },
+    {
+      "session_id": "session-0276",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 7165450,
+      "cached_input_tokens": 7034244,
+      "output_tokens": 83243,
+      "cost_usd": 1.3340884
+    },
+    {
+      "session_id": "session-0277",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 30045446,
+      "cached_input_tokens": 29840295,
+      "output_tokens": 124765,
+      "cost_usd": 3.9377705
+    },
+    {
+      "session_id": "session-0278",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 7992780,
+      "cached_input_tokens": 7858669,
+      "output_tokens": 82719,
+      "cost_usd": 1.4162919
+    },
+    {
+      "session_id": "session-0279",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 13836964,
+      "cached_input_tokens": 13676956,
+      "output_tokens": 97591,
+      "cost_usd": 2.1132496
+    },
+    {
+      "session_id": "session-0280",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 1664015,
+      "cached_input_tokens": 1547654,
+      "output_tokens": 14461,
+      "cost_usd": 0.3578924
+    },
+    {
+      "session_id": "session-0281",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 15447385,
+      "cached_input_tokens": 15313988,
+      "output_tokens": 73738,
+      "cost_usd": 2.1072238
+    },
+    {
+      "session_id": "session-0282",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 1599689,
+      "cached_input_tokens": 1537638,
+      "output_tokens": 13287,
+      "cost_usd": 0.2955368
+    },
+    {
+      "session_id": "session-0283",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2063358,
+      "cached_input_tokens": 1946046,
+      "output_tokens": 32120,
+      "cost_usd": 0.5046366
+    },
+    {
+      "session_id": "session-0284",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 5800962,
+      "cached_input_tokens": 5675341,
+      "output_tokens": 72269,
+      "cost_usd": 1.1267691
+    },
+    {
+      "session_id": "session-0285",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 6788001,
+      "cached_input_tokens": 6730501,
+      "output_tokens": 19384,
+      "cost_usd": 0.8468541
+    },
+    {
+      "session_id": "session-0286",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 3086137,
+      "cached_input_tokens": 2929400,
+      "output_tokens": 38632,
+      "cost_usd": 0.681469
+    },
+    {
+      "session_id": "session-0287",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 4431863,
+      "cached_input_tokens": 4375304,
+      "output_tokens": 30309,
+      "cost_usd": 0.6759434
+    },
+    {
+      "session_id": "session-0288",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 8954144,
+      "cached_input_tokens": 8826416,
+      "output_tokens": 60149,
+      "cost_usd": 1.3712636
+    },
+    {
+      "session_id": "session-0289",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 23325689,
+      "cached_input_tokens": 23160406,
+      "output_tokens": 87187,
+      "cost_usd": 3.0044456
+    },
+    {
+      "session_id": "session-0290",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 1391687,
+      "cached_input_tokens": 1281596,
+      "output_tokens": 23061,
+      "cost_usd": 0.3766166
+    },
+    {
+      "session_id": "session-0291",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 21051178,
+      "cached_input_tokens": 20941849,
+      "output_tokens": 42601,
+      "cost_usd": 2.4591199
+    },
+    {
+      "session_id": "session-0292",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2794247,
+      "cached_input_tokens": 2728842,
+      "output_tokens": 30447,
+      "cost_usd": 0.5209712
+    },
+    {
+      "session_id": "session-0293",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 6922165,
+      "cached_input_tokens": 6787260,
+      "output_tokens": 66244,
+      "cost_usd": 1.211095
+    },
+    {
+      "session_id": "session-0294",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 6136146,
+      "cached_input_tokens": 5937206,
+      "output_tokens": 35058,
+      "cost_usd": 1.0030086
+    },
+    {
+      "session_id": "session-0295",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 6386609,
+      "cached_input_tokens": 6268310,
+      "output_tokens": 59433,
+      "cost_usd": 1.101728
+    },
+    {
+      "session_id": "session-0296",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 2916399,
+      "cached_input_tokens": 2761100,
+      "output_tokens": 32702,
+      "cost_usd": 0.627621
+    },
+    {
+      "session_id": "session-0297",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 1831274,
+      "cached_input_tokens": 1753195,
+      "output_tokens": 50871,
+      "cost_usd": 0.5586245
+    },
+    {
+      "session_id": "session-0298",
+      "group": "group-04",
+      "phase": "target",
+      "input_tokens": 18498028,
+      "cached_input_tokens": 18378704,
+      "output_tokens": 50371,
+      "cost_usd": 2.2594204
+    },
+    {
+      "session_id": "session-0299",
+      "group": "group-05",
+      "phase": "validation",
+      "input_tokens": 3483249,
+      "cached_input_tokens": 3379318,
+      "output_tokens": 17385,
+      "cost_usd": 0.5461728
+    },
+    {
+      "session_id": "session-0300",
+      "group": "group-05",
+      "phase": "validation",
+      "input_tokens": 21823732,
+      "cached_input_tokens": 21541550,
+      "output_tokens": 64510,
+      "cost_usd": 2.823397
+    },
+    {
+      "session_id": "session-0301",
+      "group": "group-05",
+      "phase": "validation",
+      "input_tokens": 3279647,
+      "cached_input_tokens": 3213270,
+      "output_tokens": 33238,
+      "cost_usd": 0.587132
+    },
+    {
+      "session_id": "session-0302",
+      "group": "group-05",
+      "phase": "validation",
+      "input_tokens": 7358747,
+      "cached_input_tokens": 7266393,
+      "output_tokens": 39060,
+      "cost_usd": 1.0533533
+    },
+    {
+      "session_id": "session-0303",
+      "group": "group-06",
+      "phase": "validation",
+      "input_tokens": 8505089,
+      "cached_input_tokens": 8419743,
+      "output_tokens": 46850,
+      "cost_usd": 1.2084203
+    },
+    {
+      "session_id": "session-0304",
+      "group": "group-06",
+      "phase": "validation",
+      "input_tokens": 834608,
+      "cached_input_tokens": 788805,
+      "output_tokens": 11772,
+      "cost_usd": 0.1953155
+    },
+    {
+      "session_id": "session-0305",
+      "group": "group-06",
+      "phase": "validation",
+      "input_tokens": 1577489,
+      "cached_input_tokens": 1508642,
+      "output_tokens": 18953,
+      "cost_usd": 0.3334292
+    },
+    {
+      "session_id": "session-0306",
+      "group": "group-06",
+      "phase": "validation",
+      "input_tokens": 12769506,
+      "cached_input_tokens": 12652430,
+      "output_tokens": 61315,
+      "cost_usd": 1.750209
+    },
+    {
+      "session_id": "session-0307",
+      "group": "group-07",
+      "phase": "validation",
+      "input_tokens": 14805103,
+      "cached_input_tokens": 14658510,
+      "output_tokens": 57483,
+      "cost_usd": 1.957342
+    },
+    {
+      "session_id": "session-0308",
+      "group": "group-07",
+      "phase": "validation",
+      "input_tokens": 120298596,
+      "cached_input_tokens": 120014918,
+      "output_tokens": 137198,
+      "cost_usd": 13.1083578
+    },
+    {
+      "session_id": "session-0309",
+      "group": "group-07",
+      "phase": "validation",
+      "input_tokens": 111080260,
+      "cached_input_tokens": 110807438,
+      "output_tokens": 134314,
+      "cost_usd": 12.1594498
+    },
+    {
+      "session_id": "session-0310",
+      "group": "group-07",
+      "phase": "validation",
+      "input_tokens": 75845596,
+      "cached_input_tokens": 75635785,
+      "output_tokens": 83039,
+      "cost_usd": 8.2716235
+    },
+    {
+      "session_id": "session-0311",
+      "group": "group-07",
+      "phase": "validation",
+      "input_tokens": 41121813,
+      "cached_input_tokens": 40813025,
+      "output_tokens": 97847,
+      "cost_usd": 4.9771725
+    },
+    {
+      "session_id": "session-0312",
+      "group": "group-07",
+      "phase": "validation",
+      "input_tokens": 22837681,
+      "cached_input_tokens": 22591147,
+      "output_tokens": 95121,
+      "cost_usd": 3.0763747
+    },
+    {
+      "session_id": "session-0313",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 14125619,
+      "cached_input_tokens": 13974291,
+      "output_tokens": 47717,
+      "cost_usd": 1.8350591
+    },
+    {
+      "session_id": "session-0314",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 327753,
+      "cached_input_tokens": 303023,
+      "output_tokens": 4219,
+      "cost_usd": 0.0803463
+    },
+    {
+      "session_id": "session-0315",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 348325,
+      "cached_input_tokens": 322433,
+      "output_tokens": 4190,
+      "cost_usd": 0.0832753
+    },
+    {
+      "session_id": "session-0316",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 15754239,
+      "cached_input_tokens": 15448467,
+      "output_tokens": 65806,
+      "cost_usd": 2.2454547
+    },
+    {
+      "session_id": "session-0317",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 12747795,
+      "cached_input_tokens": 12500586,
+      "output_tokens": 58020,
+      "cost_usd": 1.8453876
+    },
+    {
+      "session_id": "session-0318",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 722104,
+      "cached_input_tokens": 667753,
+      "output_tokens": 11192,
+      "cost_usd": 0.1882783
+    },
+    {
+      "session_id": "session-0319",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 17944059,
+      "cached_input_tokens": 17630760,
+      "output_tokens": 66881,
+      "cost_usd": 2.477661
+    },
+    {
+      "session_id": "session-0320",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 311573,
+      "cached_input_tokens": 278076,
+      "output_tokens": 10420,
+      "cost_usd": 0.1238246
+    },
+    {
+      "session_id": "session-0321",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 470923,
+      "cached_input_tokens": 444771,
+      "output_tokens": 5834,
+      "cost_usd": 0.1056331
+    },
+    {
+      "session_id": "session-0322",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 7042999,
+      "cached_input_tokens": 6923458,
+      "output_tokens": 33361,
+      "cost_usd": 1.0120528
+    },
+    {
+      "session_id": "session-0323",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 7822585,
+      "cached_input_tokens": 7715486,
+      "output_tokens": 43411,
+      "cost_usd": 1.1391136
+    },
+    {
+      "session_id": "session-0324",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 483960,
+      "cached_input_tokens": 455484,
+      "output_tokens": 9118,
+      "cost_usd": 0.1287324
+    },
+    {
+      "session_id": "session-0325",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 261756,
+      "cached_input_tokens": 235880,
+      "output_tokens": 3013,
+      "cost_usd": 0.067542
+    },
+    {
+      "session_id": "session-0326",
+      "group": "group-08",
+      "phase": "validation",
+      "input_tokens": 137602456,
+      "cached_input_tokens": 137299941,
+      "output_tokens": 133162,
+      "cost_usd": 14.8314811
+    },
+    {
+      "session_id": "session-0327",
+      "group": "group-09",
+      "phase": "validation",
+      "input_tokens": 1428305,
+      "cached_input_tokens": 1373443,
+      "output_tokens": 21425,
+      "cost_usd": 0.3207563
+    },
+    {
+      "session_id": "session-0328",
+      "group": "group-09",
+      "phase": "validation",
+      "input_tokens": 545659,
+      "cached_input_tokens": 512109,
+      "output_tokens": 18777,
+      "cost_usd": 0.1974229
+    },
+    {
+      "session_id": "session-0329",
+      "group": "group-09",
+      "phase": "validation",
+      "input_tokens": 525198,
+      "cached_input_tokens": 492041,
+      "output_tokens": 7071,
+      "cost_usd": 0.1247871
+    },
+    {
+      "session_id": "session-0330",
+      "group": "group-09",
+      "phase": "validation",
+      "input_tokens": 1904699,
+      "cached_input_tokens": 1841797,
+      "output_tokens": 16290,
+      "cost_usd": 0.3448217
+    },
+    {
+      "session_id": "session-0331",
+      "group": "group-10",
+      "phase": "validation",
+      "input_tokens": 454465,
+      "cached_input_tokens": 420619,
+      "output_tokens": 7091,
+      "cost_usd": 0.1184539
+    },
+    {
+      "session_id": "session-0332",
+      "group": "group-10",
+      "phase": "validation",
+      "input_tokens": 2406070,
+      "cached_input_tokens": 2347503,
+      "output_tokens": 17796,
+      "cost_usd": 0.4000933
+    },
+    {
+      "session_id": "session-0333",
+      "group": "group-11",
+      "phase": "validation",
+      "input_tokens": 833236,
+      "cached_input_tokens": 787572,
+      "output_tokens": 8541,
+      "cost_usd": 0.1756672
+    },
+    {
+      "session_id": "session-0334",
+      "group": "group-11",
+      "phase": "validation",
+      "input_tokens": 185299,
+      "cached_input_tokens": 171516,
+      "output_tokens": 5449,
+      "cost_usd": 0.0636286
+    },
+    {
+      "session_id": "session-0335",
+      "group": "group-11",
+      "phase": "validation",
+      "input_tokens": 5390902,
+      "cached_input_tokens": 5328192,
+      "output_tokens": 37524,
+      "cost_usd": 0.8206732
+    },
+    {
+      "session_id": "session-0336",
+      "group": "group-11",
+      "phase": "validation",
+      "input_tokens": 1281231,
+      "cached_input_tokens": 1223872,
+      "output_tokens": 18213,
+      "cost_usd": 0.2890242
+    },
+    {
+      "session_id": "session-0337",
+      "group": "group-11",
+      "phase": "validation",
+      "input_tokens": 2733179,
+      "cached_input_tokens": 2656897,
+      "output_tokens": 27985,
+      "cost_usd": 0.5098817
+    },
+    {
+      "session_id": "session-0338",
+      "group": "group-11",
+      "phase": "validation",
+      "input_tokens": 1650475,
+      "cached_input_tokens": 1556523,
+      "output_tokens": 26619,
+      "cost_usd": 0.4093183
+    },
+    {
+      "session_id": "session-0339",
+      "group": "group-12",
+      "phase": "validation",
+      "input_tokens": 882882,
+      "cached_input_tokens": 838218,
+      "output_tokens": 11576,
+      "cost_usd": 0.1979418
+    },
+    {
+      "session_id": "session-0340",
+      "group": "group-12",
+      "phase": "validation",
+      "input_tokens": 986041,
+      "cached_input_tokens": 946099,
+      "output_tokens": 11750,
+      "cost_usd": 0.2050519
+    },
+    {
+      "session_id": "session-0341",
+      "group": "group-12",
+      "phase": "validation",
+      "input_tokens": 149449,
+      "cached_input_tokens": 136271,
+      "output_tokens": 5414,
+      "cost_usd": 0.0592891
+    },
+    {
+      "session_id": "session-0342",
+      "group": "group-12",
+      "phase": "validation",
+      "input_tokens": 609870,
+      "cached_input_tokens": 573239,
+      "output_tokens": 17051,
+      "cost_usd": 0.1962609
+    },
+    {
+      "session_id": "session-0343",
+      "group": "group-12",
+      "phase": "validation",
+      "input_tokens": 237040,
+      "cached_input_tokens": 215862,
+      "output_tokens": 6671,
+      "cost_usd": 0.0827902
+    },
+    {
+      "session_id": "session-0344",
+      "group": "group-12",
+      "phase": "validation",
+      "input_tokens": 1507411,
+      "cached_input_tokens": 1452230,
+      "output_tokens": 14655,
+      "cost_usd": 0.288334
+    },
+    {
+      "session_id": "session-0345",
+      "group": "group-12",
+      "phase": "validation",
+      "input_tokens": 660202,
+      "cached_input_tokens": 621066,
+      "output_tokens": 10320,
+      "cost_usd": 0.1631626
+    },
+    {
+      "session_id": "session-0346",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 22151667,
+      "cached_input_tokens": 21827115,
+      "output_tokens": 54125,
+      "cost_usd": 2.8320135
+    },
+    {
+      "session_id": "session-0347",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 27763950,
+      "cached_input_tokens": 27411625,
+      "output_tokens": 60913,
+      "cost_usd": 3.4589655
+    },
+    {
+      "session_id": "session-0348",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 27609243,
+      "cached_input_tokens": 27253400,
+      "output_tokens": 57023,
+      "cost_usd": 3.423321
+    },
+    {
+      "session_id": "session-0349",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 11691507,
+      "cached_input_tokens": 11543904,
+      "output_tokens": 70995,
+      "cost_usd": 1.7279634
+    },
+    {
+      "session_id": "session-0350",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 22748303,
+      "cached_input_tokens": 22576816,
+      "output_tokens": 88409,
+      "cost_usd": 2.9596226
+    },
+    {
+      "session_id": "session-0351",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 80717930,
+      "cached_input_tokens": 80260196,
+      "output_tokens": 92366,
+      "cost_usd": 9.0379496
+    },
+    {
+      "session_id": "session-0352",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 16103214,
+      "cached_input_tokens": 15800602,
+      "output_tokens": 56919,
+      "cost_usd": 2.2241862
+    },
+    {
+      "session_id": "session-0353",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 45995191,
+      "cached_input_tokens": 45507007,
+      "output_tokens": 178300,
+      "cost_usd": 6.1086847
+    },
+    {
+      "session_id": "session-0354",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 18607382,
+      "cached_input_tokens": 18299315,
+      "output_tokens": 73106,
+      "cost_usd": 2.5766345
+    },
+    {
+      "session_id": "session-0355",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 4404597,
+      "cached_input_tokens": 4224637,
+      "output_tokens": 35465,
+      "cost_usd": 0.8152137
+    },
+    {
+      "session_id": "session-0356",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 134995571,
+      "cached_input_tokens": 134282400,
+      "output_tokens": 185330,
+      "cost_usd": 15.253391
+    },
+    {
+      "session_id": "session-0357",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 71991467,
+      "cached_input_tokens": 71469291,
+      "output_tokens": 127482,
+      "cost_usd": 8.4339971
+    },
+    {
+      "session_id": "session-0358",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 5465345,
+      "cached_input_tokens": 5278822,
+      "output_tokens": 49246,
+      "cost_usd": 1.0098812
+    },
+    {
+      "session_id": "session-0359",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 6542341,
+      "cached_input_tokens": 6363084,
+      "output_tokens": 38681,
+      "cost_usd": 1.0476514
+    },
+    {
+      "session_id": "session-0360",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 4503357,
+      "cached_input_tokens": 4345898,
+      "output_tokens": 36625,
+      "cost_usd": 0.8117988
+    },
+    {
+      "session_id": "session-0361",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 11502468,
+      "cached_input_tokens": 11265455,
+      "output_tokens": 46126,
+      "cost_usd": 1.6403145
+    },
+    {
+      "session_id": "session-0362",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 4734616,
+      "cached_input_tokens": 4662259,
+      "output_tokens": 29849,
+      "cost_usd": 0.7176769
+    },
+    {
+      "session_id": "session-0363",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 6250162,
+      "cached_input_tokens": 6065506,
+      "output_tokens": 39136,
+      "cost_usd": 1.0260226
+    },
+    {
+      "session_id": "session-0364",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 2690580,
+      "cached_input_tokens": 2633194,
+      "output_tokens": 24916,
+      "cost_usd": 0.4702014
+    },
+    {
+      "session_id": "session-0365",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 6804648,
+      "cached_input_tokens": 6618459,
+      "output_tokens": 36303,
+      "cost_usd": 1.0658529
+    },
+    {
+      "session_id": "session-0366",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 28924264,
+      "cached_input_tokens": 28533026,
+      "output_tokens": 69663,
+      "cost_usd": 3.6625186
+    },
+    {
+      "session_id": "session-0367",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 2701686,
+      "cached_input_tokens": 2633750,
+      "output_tokens": 21554,
+      "cost_usd": 0.460635
+    },
+    {
+      "session_id": "session-0368",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 2210969,
+      "cached_input_tokens": 2150380,
+      "output_tokens": 29934,
+      "cost_usd": 0.455231
+    },
+    {
+      "session_id": "session-0369",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 3522905,
+      "cached_input_tokens": 3445535,
+      "output_tokens": 37164,
+      "cost_usd": 0.6449075
+    },
+    {
+      "session_id": "session-0370",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 103740254,
+      "cached_input_tokens": 103452140,
+      "output_tokens": 108031,
+      "cost_usd": 11.281514
+    },
+    {
+      "session_id": "session-0371",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 10020906,
+      "cached_input_tokens": 9624066,
+      "output_tokens": 88143,
+      "cost_usd": 1.8881046
+    },
+    {
+      "session_id": "session-0372",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 95140514,
+      "cached_input_tokens": 94926181,
+      "output_tokens": 128571,
+      "cost_usd": 10.4783771
+    },
+    {
+      "session_id": "session-0373",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 41528787,
+      "cached_input_tokens": 41187721,
+      "output_tokens": 87712,
+      "cost_usd": 4.9861101
+    },
+    {
+      "session_id": "session-0374",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 69713332,
+      "cached_input_tokens": 69447145,
+      "output_tokens": 132903,
+      "cost_usd": 8.0083195
+    },
+    {
+      "session_id": "session-0375",
+      "group": "group-13",
+      "phase": "validation",
+      "input_tokens": 114268445,
+      "cached_input_tokens": 113968908,
+      "output_tokens": 127576,
+      "cost_usd": 12.4618838
+    },
+    {
+      "session_id": "session-0376",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 21461116,
+      "cached_input_tokens": 21210095,
+      "output_tokens": 51154,
+      "cost_usd": 2.6789545
+    },
+    {
+      "session_id": "session-0377",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 20854724,
+      "cached_input_tokens": 20512035,
+      "output_tokens": 125546,
+      "cost_usd": 3.1471685
+    },
+    {
+      "session_id": "session-0378",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 153563225,
+      "cached_input_tokens": 153050765,
+      "output_tokens": 156807,
+      "cost_usd": 16.7583785
+    },
+    {
+      "session_id": "session-0379",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 11242359,
+      "cached_input_tokens": 11126209,
+      "output_tokens": 41929,
+      "cost_usd": 1.4803449
+    },
+    {
+      "session_id": "session-0380",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 16457096,
+      "cached_input_tokens": 16334842,
+      "output_tokens": 60557,
+      "cost_usd": 2.1190802
+    },
+    {
+      "session_id": "session-0381",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 15438981,
+      "cached_input_tokens": 15129094,
+      "output_tokens": 89608,
+      "cost_usd": 2.3604444
+    },
+    {
+      "session_id": "session-0382",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 28705664,
+      "cached_input_tokens": 28341515,
+      "output_tokens": 64129,
+      "cost_usd": 3.5830745
+    },
+    {
+      "session_id": "session-0383",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 130639871,
+      "cached_input_tokens": 130030337,
+      "output_tokens": 147883,
+      "cost_usd": 14.4998657
+    },
+    {
+      "session_id": "session-0384",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 126496371,
+      "cached_input_tokens": 126245965,
+      "output_tokens": 115938,
+      "cost_usd": 13.5706305
+    },
+    {
+      "session_id": "session-0385",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 3510385,
+      "cached_input_tokens": 3431316,
+      "output_tokens": 24726,
+      "cost_usd": 0.5705566
+    },
+    {
+      "session_id": "session-0386",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 9053946,
+      "cached_input_tokens": 8843108,
+      "output_tokens": 46813,
+      "cost_usd": 1.3760268
+    },
+    {
+      "session_id": "session-0387",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 11290802,
+      "cached_input_tokens": 11029011,
+      "output_tokens": 56597,
+      "cost_usd": 1.7042741
+    },
+    {
+      "session_id": "session-0388",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 11890864,
+      "cached_input_tokens": 11650617,
+      "output_tokens": 41365,
+      "cost_usd": 1.6534987
+    },
+    {
+      "session_id": "session-0389",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 36196822,
+      "cached_input_tokens": 35987365,
+      "output_tokens": 87527,
+      "cost_usd": 4.3333555
+    },
+    {
+      "session_id": "session-0390",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 7648720,
+      "cached_input_tokens": 7561749,
+      "output_tokens": 45726,
+      "cost_usd": 1.1175019
+    },
+    {
+      "session_id": "session-0391",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 8176626,
+      "cached_input_tokens": 7963643,
+      "output_tokens": 29018,
+      "cost_usd": 1.1834553
+    },
+    {
+      "session_id": "session-0392",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 4230193,
+      "cached_input_tokens": 4141250,
+      "output_tokens": 24602,
+      "cost_usd": 0.65068
+    },
+    {
+      "session_id": "session-0393",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 7275636,
+      "cached_input_tokens": 7038764,
+      "output_tokens": 52368,
+      "cost_usd": 1.2549564
+    },
+    {
+      "session_id": "session-0394",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 19838333,
+      "cached_input_tokens": 19527453,
+      "output_tokens": 67275,
+      "cost_usd": 2.6672753
+    },
+    {
+      "session_id": "session-0395",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 135327626,
+      "cached_input_tokens": 135064321,
+      "output_tokens": 103804,
+      "cost_usd": 14.3925611
+    },
+    {
+      "session_id": "session-0396",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 5852834,
+      "cached_input_tokens": 5761177,
+      "output_tokens": 39408,
+      "cost_usd": 0.9042227
+    },
+    {
+      "session_id": "session-0397",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 112033106,
+      "cached_input_tokens": 111798289,
+      "output_tokens": 104189,
+      "cost_usd": 12.0397799
+    },
+    {
+      "session_id": "session-0398",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 10297858,
+      "cached_input_tokens": 10177610,
+      "output_tokens": 55641,
+      "cost_usd": 1.471855
+    },
+    {
+      "session_id": "session-0399",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 17640350,
+      "cached_input_tokens": 17367634,
+      "output_tokens": 68683,
+      "cost_usd": 2.4215774
+    },
+    {
+      "session_id": "session-0400",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 11624357,
+      "cached_input_tokens": 11358812,
+      "output_tokens": 49133,
+      "cost_usd": 1.6962242
+    },
+    {
+      "session_id": "session-0401",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 138268051,
+      "cached_input_tokens": 137971025,
+      "output_tokens": 150902,
+      "cost_usd": 14.9995405
+    },
+    {
+      "session_id": "session-0402",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 3655411,
+      "cached_input_tokens": 3610961,
+      "output_tokens": 15224,
+      "cost_usd": 0.4968901
+    },
+    {
+      "session_id": "session-0403",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 6401327,
+      "cached_input_tokens": 6340021,
+      "output_tokens": 20326,
+      "cost_usd": 0.8172641
+    },
+    {
+      "session_id": "session-0404",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 14051254,
+      "cached_input_tokens": 13740474,
+      "output_tokens": 57971,
+      "cost_usd": 2.0326534
+    },
+    {
+      "session_id": "session-0405",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 4125402,
+      "cached_input_tokens": 3958419,
+      "output_tokens": 30004,
+      "cost_usd": 0.7428489
+    },
+    {
+      "session_id": "session-0406",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 105130188,
+      "cached_input_tokens": 104819492,
+      "output_tokens": 139416,
+      "cost_usd": 11.6291412
+    },
+    {
+      "session_id": "session-0407",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 121567451,
+      "cached_input_tokens": 121279696,
+      "output_tokens": 129243,
+      "cost_usd": 13.1911826
+    },
+    {
+      "session_id": "session-0408",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 167518852,
+      "cached_input_tokens": 167154648,
+      "output_tokens": 162938,
+      "cost_usd": 18.0572968
+    },
+    {
+      "session_id": "session-0409",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 109357246,
+      "cached_input_tokens": 108984436,
+      "output_tokens": 184055,
+      "cost_usd": 12.3755836
+    },
+    {
+      "session_id": "session-0410",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 85854737,
+      "cached_input_tokens": 85655081,
+      "output_tokens": 87360,
+      "cost_usd": 9.2893241
+    },
+    {
+      "session_id": "session-0411",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 17632957,
+      "cached_input_tokens": 17309954,
+      "output_tokens": 60221,
+      "cost_usd": 2.4153244
+    },
+    {
+      "session_id": "session-0412",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 118999214,
+      "cached_input_tokens": 118696854,
+      "output_tokens": 162398,
+      "cost_usd": 13.1464334
+    },
+    {
+      "session_id": "session-0413",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 77415926,
+      "cached_input_tokens": 77010865,
+      "output_tokens": 108950,
+      "cost_usd": 8.7598475
+    },
+    {
+      "session_id": "session-0414",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 49576609,
+      "cached_input_tokens": 49156086,
+      "output_tokens": 97055,
+      "cost_usd": 5.9184616
+    },
+    {
+      "session_id": "session-0415",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 46358444,
+      "cached_input_tokens": 45977575,
+      "output_tokens": 86949,
+      "cost_usd": 5.5003205
+    },
+    {
+      "session_id": "session-0416",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 103167880,
+      "cached_input_tokens": 102882562,
+      "output_tokens": 128784,
+      "cost_usd": 11.3462782
+    },
+    {
+      "session_id": "session-0417",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 8582414,
+      "cached_input_tokens": 8372218,
+      "output_tokens": 38159,
+      "cost_usd": 1.2763718
+    },
+    {
+      "session_id": "session-0418",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 50108832,
+      "cached_input_tokens": 49722416,
+      "output_tokens": 80990,
+      "cost_usd": 5.8445976
+    },
+    {
+      "session_id": "session-0419",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 3289033,
+      "cached_input_tokens": 3222685,
+      "output_tokens": 23639,
+      "cost_usd": 0.5304505
+    },
+    {
+      "session_id": "session-0420",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 125309380,
+      "cached_input_tokens": 124995113,
+      "output_tokens": 147914,
+      "cost_usd": 13.7012623
+    },
+    {
+      "session_id": "session-0421",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 36151113,
+      "cached_input_tokens": 35434740,
+      "output_tokens": 121253,
+      "cost_usd": 4.987365
+    },
+    {
+      "session_id": "session-0422",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 5184169,
+      "cached_input_tokens": 5085879,
+      "output_tokens": 64817,
+      "cost_usd": 0.9957799
+    },
+    {
+      "session_id": "session-0423",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 14484140,
+      "cached_input_tokens": 14191515,
+      "output_tokens": 61515,
+      "cost_usd": 2.0808665
+    },
+    {
+      "session_id": "session-0424",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 135143309,
+      "cached_input_tokens": 134681522,
+      "output_tokens": 114742,
+      "cost_usd": 14.6183912
+    },
+    {
+      "session_id": "session-0425",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 96244035,
+      "cached_input_tokens": 95991397,
+      "output_tokens": 127959,
+      "cost_usd": 10.6195317
+    },
+    {
+      "session_id": "session-0426",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 13557529,
+      "cached_input_tokens": 13307340,
+      "output_tokens": 44624,
+      "cost_usd": 1.848667
+    },
+    {
+      "session_id": "session-0427",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 832654,
+      "cached_input_tokens": 792973,
+      "output_tokens": 17515,
+      "cost_usd": 0.2240683
+    },
+    {
+      "session_id": "session-0428",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 139474998,
+      "cached_input_tokens": 138871261,
+      "output_tokens": 141577,
+      "cost_usd": 15.3403251
+    },
+    {
+      "session_id": "session-0429",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 2491401,
+      "cached_input_tokens": 2444769,
+      "output_tokens": 13025,
+      "cost_usd": 0.3692589
+    },
+    {
+      "session_id": "session-0430",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 19073563,
+      "cached_input_tokens": 18961499,
+      "output_tokens": 60645,
+      "cost_usd": 2.3720839
+    },
+    {
+      "session_id": "session-0431",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 12151254,
+      "cached_input_tokens": 12029090,
+      "output_tokens": 63323,
+      "cost_usd": 1.705011
+    },
+    {
+      "session_id": "session-0432",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 8465421,
+      "cached_input_tokens": 8374548,
+      "output_tokens": 56081,
+      "cost_usd": 1.2648138
+    },
+    {
+      "session_id": "session-0433",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 132939188,
+      "cached_input_tokens": 132639389,
+      "output_tokens": 119263,
+      "cost_usd": 14.2793159
+    },
+    {
+      "session_id": "session-0434",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 1825685,
+      "cached_input_tokens": 1700892,
+      "output_tokens": 32174,
+      "cost_usd": 0.4879262
+    },
+    {
+      "session_id": "session-0435",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 129348287,
+      "cached_input_tokens": 128594245,
+      "output_tokens": 129498,
+      "cost_usd": 14.3904545
+    },
+    {
+      "session_id": "session-0436",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 453850,
+      "cached_input_tokens": 421158,
+      "output_tokens": 15435,
+      "cost_usd": 0.1674178
+    },
+    {
+      "session_id": "session-0437",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 1051264,
+      "cached_input_tokens": 1001546,
+      "output_tokens": 29156,
+      "cost_usd": 0.3248086
+    },
+    {
+      "session_id": "session-0438",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 69837280,
+      "cached_input_tokens": 69658706,
+      "output_tokens": 94775,
+      "cost_usd": 7.7130946
+    },
+    {
+      "session_id": "session-0439",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 28107811,
+      "cached_input_tokens": 27972201,
+      "output_tokens": 67548,
+      "cost_usd": 3.3381181
+    },
+    {
+      "session_id": "session-0440",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 127260284,
+      "cached_input_tokens": 126783079,
+      "output_tokens": 122181,
+      "cost_usd": 13.8885989
+    },
+    {
+      "session_id": "session-0441",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 6276718,
+      "cached_input_tokens": 6161320,
+      "output_tokens": 38980,
+      "cost_usd": 0.96541
+    },
+    {
+      "session_id": "session-0442",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 5961485,
+      "cached_input_tokens": 5796939,
+      "output_tokens": 41432,
+      "cost_usd": 0.9928319
+    },
+    {
+      "session_id": "session-0443",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 87713769,
+      "cached_input_tokens": 87355023,
+      "output_tokens": 112309,
+      "cost_usd": 9.7681023
+    },
+    {
+      "session_id": "session-0444",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 2502854,
+      "cached_input_tokens": 2433969,
+      "output_tokens": 20005,
+      "cost_usd": 0.4323119
+    },
+    {
+      "session_id": "session-0445",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 1495846,
+      "cached_input_tokens": 1439920,
+      "output_tokens": 15994,
+      "cost_usd": 0.295882
+    },
+    {
+      "session_id": "session-0446",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 2526069,
+      "cached_input_tokens": 2382861,
+      "output_tokens": 25912,
+      "cost_usd": 0.5369661
+    },
+    {
+      "session_id": "session-0447",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 2733474,
+      "cached_input_tokens": 2673016,
+      "output_tokens": 31148,
+      "cost_usd": 0.5146476
+    },
+    {
+      "session_id": "session-0448",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 27524951,
+      "cached_input_tokens": 27102488,
+      "output_tokens": 87963,
+      "cost_usd": 3.6604898
+    },
+    {
+      "session_id": "session-0449",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 5733934,
+      "cached_input_tokens": 5635361,
+      "output_tokens": 57018,
+      "cost_usd": 1.0042171
+    },
+    {
+      "session_id": "session-0450",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 5056526,
+      "cached_input_tokens": 4866778,
+      "output_tokens": 71882,
+      "cost_usd": 1.1077178
+    },
+    {
+      "session_id": "session-0451",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 3859396,
+      "cached_input_tokens": 3787307,
+      "output_tokens": 32200,
+      "cost_usd": 0.6440197
+    },
+    {
+      "session_id": "session-0452",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 114283187,
+      "cached_input_tokens": 114004552,
+      "output_tokens": 137679,
+      "cost_usd": 12.5051642
+    },
+    {
+      "session_id": "session-0453",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 6723627,
+      "cached_input_tokens": 6618628,
+      "output_tokens": 51523,
+      "cost_usd": 1.0759998
+    },
+    {
+      "session_id": "session-0454",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 7448773,
+      "cached_input_tokens": 7353693,
+      "output_tokens": 36018,
+      "cost_usd": 1.0465573
+    },
+    {
+      "session_id": "session-0455",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 33130828,
+      "cached_input_tokens": 32915705,
+      "output_tokens": 122399,
+      "cost_usd": 4.2410875
+    },
+    {
+      "session_id": "session-0456",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 4166275,
+      "cached_input_tokens": 4089889,
+      "output_tokens": 31962,
+      "cost_usd": 0.6771469
+    },
+    {
+      "session_id": "session-0457",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 11282025,
+      "cached_input_tokens": 11029336,
+      "output_tokens": 49863,
+      "cost_usd": 1.6548006
+    },
+    {
+      "session_id": "session-0458",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 3460956,
+      "cached_input_tokens": 3375628,
+      "output_tokens": 23231,
+      "cost_usd": 0.5622768
+    },
+    {
+      "session_id": "session-0459",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 4476221,
+      "cached_input_tokens": 4353091,
+      "output_tokens": 36011,
+      "cost_usd": 0.7745051
+    },
+    {
+      "session_id": "session-0460",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 44669308,
+      "cached_input_tokens": 44203833,
+      "output_tokens": 86578,
+      "cost_usd": 5.4053263
+    },
+    {
+      "session_id": "session-0461",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 90708112,
+      "cached_input_tokens": 90195503,
+      "output_tokens": 102526,
+      "cost_usd": 10.1473153
+    },
+    {
+      "session_id": "session-0462",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 86383241,
+      "cached_input_tokens": 86083885,
+      "output_tokens": 148124,
+      "cost_usd": 9.7964885
+    },
+    {
+      "session_id": "session-0463",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 72228968,
+      "cached_input_tokens": 72016251,
+      "output_tokens": 80840,
+      "cost_usd": 7.8993821
+    },
+    {
+      "session_id": "session-0464",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 11681407,
+      "cached_input_tokens": 11565635,
+      "output_tokens": 45106,
+      "cost_usd": 1.5429715
+    },
+    {
+      "session_id": "session-0465",
+      "group": "group-14",
+      "phase": "validation",
+      "input_tokens": 9841682,
+      "cached_input_tokens": 9582782,
+      "output_tokens": 50903,
+      "cost_usd": 1.5225962
+    },
+    {
+      "session_id": "session-0466",
+      "group": "group-15",
+      "phase": "validation",
+      "input_tokens": 646602,
+      "cached_input_tokens": 605082,
+      "output_tokens": 16110,
+      "cost_usd": 0.1986882
+    },
+    {
+      "session_id": "session-0467",
+      "group": "group-15",
+      "phase": "validation",
+      "input_tokens": 817276,
+      "cached_input_tokens": 767679,
+      "output_tokens": 18094,
+      "cost_usd": 0.2349289
+    },
+    {
+      "session_id": "session-0468",
+      "group": "group-15",
+      "phase": "validation",
+      "input_tokens": 299499,
+      "cached_input_tokens": 269089,
+      "output_tokens": 19303,
+      "cost_usd": 0.1731369
+    },
+    {
+      "session_id": "session-0469",
+      "group": "group-15",
+      "phase": "validation",
+      "input_tokens": 304180,
+      "cached_input_tokens": 275681,
+      "output_tokens": 17850,
+      "cost_usd": 0.1631671
+    },
+    {
+      "session_id": "session-0470",
+      "group": "group-15",
+      "phase": "validation",
+      "input_tokens": 149679,
+      "cached_input_tokens": 135043,
+      "output_tokens": 6196,
+      "cost_usd": 0.0653163
+    },
+    {
+      "session_id": "session-0471",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 169350860,
+      "cached_input_tokens": 168959384,
+      "output_tokens": 191547,
+      "cost_usd": 18.4366964
+    },
+    {
+      "session_id": "session-0472",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 125032942,
+      "cached_input_tokens": 124770862,
+      "output_tokens": 111782,
+      "cost_usd": 13.4098582
+    },
+    {
+      "session_id": "session-0473",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 27296137,
+      "cached_input_tokens": 26957978,
+      "output_tokens": 62735,
+      "cost_usd": 3.4103668
+    },
+    {
+      "session_id": "session-0474",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 25178934,
+      "cached_input_tokens": 24821058,
+      "output_tokens": 55471,
+      "cost_usd": 3.1728078
+    },
+    {
+      "session_id": "session-0475",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 126683242,
+      "cached_input_tokens": 126409842,
+      "output_tokens": 139869,
+      "cost_usd": 13.7535982
+    },
+    {
+      "session_id": "session-0476",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 15589533,
+      "cached_input_tokens": 15279830,
+      "output_tokens": 86973,
+      "cost_usd": 2.359524
+    },
+    {
+      "session_id": "session-0477",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 31258052,
+      "cached_input_tokens": 30874543,
+      "output_tokens": 63757,
+      "cost_usd": 3.8535053
+    },
+    {
+      "session_id": "session-0478",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 18054761,
+      "cached_input_tokens": 17703643,
+      "output_tokens": 90836,
+      "cost_usd": 2.6664983
+    },
+    {
+      "session_id": "session-0479",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 138132320,
+      "cached_input_tokens": 137863817,
+      "output_tokens": 116146,
+      "cost_usd": 14.7517607
+    },
+    {
+      "session_id": "session-0480",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 9737729,
+      "cached_input_tokens": 9621369,
+      "output_tokens": 33663,
+      "cost_usd": 1.2804749
+    },
+    {
+      "session_id": "session-0481",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 47848245,
+      "cached_input_tokens": 47669074,
+      "output_tokens": 66878,
+      "cost_usd": 5.3473464
+    },
+    {
+      "session_id": "session-0482",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 6960685,
+      "cached_input_tokens": 6850657,
+      "output_tokens": 47997,
+      "cost_usd": 1.0830757
+    },
+    {
+      "session_id": "session-0483",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 5287521,
+      "cached_input_tokens": 5095510,
+      "output_tokens": 36545,
+      "cost_usd": 0.920832
+    },
+    {
+      "session_id": "session-0484",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 7729388,
+      "cached_input_tokens": 7608506,
+      "output_tokens": 47945,
+      "cost_usd": 1.1694026
+    },
+    {
+      "session_id": "session-0485",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 3762084,
+      "cached_input_tokens": 3685260,
+      "output_tokens": 30585,
+      "cost_usd": 0.62886
+    },
+    {
+      "session_id": "session-0486",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 3867025,
+      "cached_input_tokens": 3829219,
+      "output_tokens": 14376,
+      "cost_usd": 0.5069839
+    },
+    {
+      "session_id": "session-0487",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 6808094,
+      "cached_input_tokens": 6692764,
+      "output_tokens": 54612,
+      "cost_usd": 1.1122784
+    },
+    {
+      "session_id": "session-0488",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 4820400,
+      "cached_input_tokens": 4728249,
+      "output_tokens": 35427,
+      "cost_usd": 0.7775379
+    },
+    {
+      "session_id": "session-0489",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 158594078,
+      "cached_input_tokens": 158188177,
+      "output_tokens": 167165,
+      "cost_usd": 17.2277087
+    },
+    {
+      "session_id": "session-0490",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 15598476,
+      "cached_input_tokens": 15339297,
+      "output_tokens": 49854,
+      "cost_usd": 2.0922327
+    },
+    {
+      "session_id": "session-0491",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 3552541,
+      "cached_input_tokens": 3505264,
+      "output_tokens": 12261,
+      "cost_usd": 0.4713694
+    },
+    {
+      "session_id": "session-0492",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 21257964,
+      "cached_input_tokens": 20884117,
+      "output_tokens": 125279,
+      "cost_usd": 3.2139327
+    },
+    {
+      "session_id": "session-0493",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 21849886,
+      "cached_input_tokens": 21476293,
+      "output_tokens": 84180,
+      "cost_usd": 3.0263023
+    },
+    {
+      "session_id": "session-0494",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 131792139,
+      "cached_input_tokens": 131517595,
+      "output_tokens": 117592,
+      "cost_usd": 14.1318555
+    },
+    {
+      "session_id": "session-0495",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 150999662,
+      "cached_input_tokens": 150659241,
+      "output_tokens": 155648,
+      "cost_usd": 16.3402331
+    },
+    {
+      "session_id": "session-0496",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 11295800,
+      "cached_input_tokens": 11052643,
+      "output_tokens": 57661,
+      "cost_usd": 1.6943873
+    },
+    {
+      "session_id": "session-0497",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 13744402,
+      "cached_input_tokens": 13429005,
+      "output_tokens": 59882,
+      "cost_usd": 2.0175895
+    },
+    {
+      "session_id": "session-0498",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 135711706,
+      "cached_input_tokens": 135398232,
+      "output_tokens": 176886,
+      "cost_usd": 14.9146132
+    },
+    {
+      "session_id": "session-0499",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 123268207,
+      "cached_input_tokens": 123032582,
+      "output_tokens": 92397,
+      "cost_usd": 13.0932652
+    },
+    {
+      "session_id": "session-0500",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 85152192,
+      "cached_input_tokens": 84885170,
+      "output_tokens": 145340,
+      "cost_usd": 9.627579
+    },
+    {
+      "session_id": "session-0501",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 8841048,
+      "cached_input_tokens": 8588989,
+      "output_tokens": 63912,
+      "cost_usd": 1.4944299
+    },
+    {
+      "session_id": "session-0502",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 3611941,
+      "cached_input_tokens": 3533747,
+      "output_tokens": 33320,
+      "cost_usd": 0.6314887
+    },
+    {
+      "session_id": "session-0503",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 156386628,
+      "cached_input_tokens": 155962948,
+      "output_tokens": 192598,
+      "cost_usd": 17.1755628
+    },
+    {
+      "session_id": "session-0504",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 169725314,
+      "cached_input_tokens": 169334907,
+      "output_tokens": 169775,
+      "cost_usd": 18.3425477
+    },
+    {
+      "session_id": "session-0505",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 6698370,
+      "cached_input_tokens": 6486232,
+      "output_tokens": 44985,
+      "cost_usd": 1.1306712
+    },
+    {
+      "session_id": "session-0506",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 144811805,
+      "cached_input_tokens": 144483712,
+      "output_tokens": 167139,
+      "cost_usd": 15.7792982
+    },
+    {
+      "session_id": "session-0507",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 4865231,
+      "cached_input_tokens": 4686915,
+      "output_tokens": 41831,
+      "cost_usd": 0.8979935
+    },
+    {
+      "session_id": "session-0508",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 102110916,
+      "cached_input_tokens": 101892092,
+      "output_tokens": 105768,
+      "cost_usd": 11.0426412
+    },
+    {
+      "session_id": "session-0509",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 76550664,
+      "cached_input_tokens": 76320384,
+      "output_tokens": 99464,
+      "cost_usd": 8.4591024
+    },
+    {
+      "session_id": "session-0510",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 6059485,
+      "cached_input_tokens": 5867412,
+      "output_tokens": 38563,
+      "cost_usd": 1.0101922
+    },
+    {
+      "session_id": "session-0511",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 7729851,
+      "cached_input_tokens": 7514696,
+      "output_tokens": 54794,
+      "cost_usd": 1.2953886
+    },
+    {
+      "session_id": "session-0512",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 3235768,
+      "cached_input_tokens": 3095016,
+      "output_tokens": 30550,
+      "cost_usd": 0.6335536
+    },
+    {
+      "session_id": "session-0513",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 102772925,
+      "cached_input_tokens": 102482751,
+      "output_tokens": 119046,
+      "cost_usd": 11.2527251
+    },
+    {
+      "session_id": "session-0514",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 4984379,
+      "cached_input_tokens": 4835525,
+      "output_tokens": 35046,
+      "cost_usd": 0.8426825
+    },
+    {
+      "session_id": "session-0515",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 8395611,
+      "cached_input_tokens": 8181591,
+      "output_tokens": 50778,
+      "cost_usd": 1.3368471
+    },
+    {
+      "session_id": "session-0516",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 94033454,
+      "cached_input_tokens": 93817592,
+      "output_tokens": 109071,
+      "cost_usd": 10.2520472
+    },
+    {
+      "session_id": "session-0517",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 107533909,
+      "cached_input_tokens": 107298120,
+      "output_tokens": 109002,
+      "cost_usd": 11.619613
+    },
+    {
+      "session_id": "session-0518",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 15236016,
+      "cached_input_tokens": 14930126,
+      "output_tokens": 63516,
+      "cost_usd": 2.1799986
+    },
+    {
+      "session_id": "session-0519",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 5165379,
+      "cached_input_tokens": 4984826,
+      "output_tokens": 39711,
+      "cost_usd": 0.9173016
+    },
+    {
+      "session_id": "session-0520",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 6782326,
+      "cached_input_tokens": 6668238,
+      "output_tokens": 71760,
+      "cost_usd": 1.2114718
+    },
+    {
+      "session_id": "session-0521",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 14564299,
+      "cached_input_tokens": 14288994,
+      "output_tokens": 46258,
+      "cost_usd": 1.9817524
+    },
+    {
+      "session_id": "session-0522",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 9689009,
+      "cached_input_tokens": 9492231,
+      "output_tokens": 43701,
+      "cost_usd": 1.4082071
+    },
+    {
+      "session_id": "session-0523",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 122763994,
+      "cached_input_tokens": 122503339,
+      "output_tokens": 113955,
+      "cost_usd": 13.1947189
+    },
+    {
+      "session_id": "session-0524",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 4774825,
+      "cached_input_tokens": 4609417,
+      "output_tokens": 35304,
+      "cost_usd": 0.8381737
+    },
+    {
+      "session_id": "session-0525",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 130220521,
+      "cached_input_tokens": 129938185,
+      "output_tokens": 134357,
+      "cost_usd": 14.0822965
+    },
+    {
+      "session_id": "session-0526",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 118038330,
+      "cached_input_tokens": 117774330,
+      "output_tokens": 121002,
+      "cost_usd": 12.767445
+    },
+    {
+      "session_id": "session-0527",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 2981980,
+      "cached_input_tokens": 2855081,
+      "output_tokens": 28269,
+      "cost_usd": 0.5820211
+    },
+    {
+      "session_id": "session-0528",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 3226620,
+      "cached_input_tokens": 3091520,
+      "output_tokens": 30792,
+      "cost_usd": 0.629004
+    },
+    {
+      "session_id": "session-0529",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 2371430,
+      "cached_input_tokens": 2311403,
+      "output_tokens": 26205,
+      "cost_usd": 0.4483973
+    },
+    {
+      "session_id": "session-0530",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 2170009,
+      "cached_input_tokens": 2034661,
+      "output_tokens": 36081,
+      "cost_usd": 0.5553001
+    },
+    {
+      "session_id": "session-0531",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 2013178,
+      "cached_input_tokens": 1874245,
+      "output_tokens": 37109,
+      "cost_usd": 0.5490115
+    },
+    {
+      "session_id": "session-0532",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 4668467,
+      "cached_input_tokens": 4491553,
+      "output_tokens": 58012,
+      "cost_usd": 0.9741413
+    },
+    {
+      "session_id": "session-0533",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 119252394,
+      "cached_input_tokens": 118962921,
+      "output_tokens": 143953,
+      "cost_usd": 13.0494831
+    },
+    {
+      "session_id": "session-0534",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 40019231,
+      "cached_input_tokens": 39857205,
+      "output_tokens": 77495,
+      "cost_usd": 4.6127165
+    },
+    {
+      "session_id": "session-0535",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 59970054,
+      "cached_input_tokens": 59744895,
+      "output_tokens": 112169,
+      "cost_usd": 6.8726625
+    },
+    {
+      "session_id": "session-0536",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 2932147,
+      "cached_input_tokens": 2868618,
+      "output_tokens": 24327,
+      "cost_usd": 0.4963528
+    },
+    {
+      "session_id": "session-0537",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 4220908,
+      "cached_input_tokens": 4137628,
+      "output_tokens": 27129,
+      "cost_usd": 0.6598168
+    },
+    {
+      "session_id": "session-0538",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 4508987,
+      "cached_input_tokens": 4420712,
+      "output_tokens": 30714,
+      "cost_usd": 0.7146302
+    },
+    {
+      "session_id": "session-0539",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 4632813,
+      "cached_input_tokens": 4533266,
+      "output_tokens": 49690,
+      "cost_usd": 0.8510136
+    },
+    {
+      "session_id": "session-0540",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 15151008,
+      "cached_input_tokens": 14990191,
+      "output_tokens": 46677,
+      "cost_usd": 1.9398981
+    },
+    {
+      "session_id": "session-0541",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 5042095,
+      "cached_input_tokens": 4854362,
+      "output_tokens": 61079,
+      "cost_usd": 1.0396432
+    },
+    {
+      "session_id": "session-0542",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 2194566,
+      "cached_input_tokens": 2133848,
+      "output_tokens": 19738,
+      "cost_usd": 0.3925308
+    },
+    {
+      "session_id": "session-0543",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 103405977,
+      "cached_input_tokens": 103141069,
+      "output_tokens": 132067,
+      "cost_usd": 11.3714169
+    },
+    {
+      "session_id": "session-0544",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 12216568,
+      "cached_input_tokens": 12085760,
+      "output_tokens": 70547,
+      "cost_usd": 1.762666
+    },
+    {
+      "session_id": "session-0545",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 3538687,
+      "cached_input_tokens": 3458335,
+      "output_tokens": 32681,
+      "cost_usd": 0.6222715
+    },
+    {
+      "session_id": "session-0546",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 55395896,
+      "cached_input_tokens": 55200329,
+      "output_tokens": 89321,
+      "cost_usd": 6.2515259
+    },
+    {
+      "session_id": "session-0547",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 2645037,
+      "cached_input_tokens": 2574524,
+      "output_tokens": 33214,
+      "cost_usd": 0.5272494
+    },
+    {
+      "session_id": "session-0548",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 10071994,
+      "cached_input_tokens": 9960365,
+      "output_tokens": 48257,
+      "cost_usd": 1.3972075
+    },
+    {
+      "session_id": "session-0549",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 92671333,
+      "cached_input_tokens": 92397762,
+      "output_tokens": 118035,
+      "cost_usd": 10.2215572
+    },
+    {
+      "session_id": "session-0550",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 7737273,
+      "cached_input_tokens": 7631733,
+      "output_tokens": 47385,
+      "cost_usd": 1.1530233
+    },
+    {
+      "session_id": "session-0551",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 72832600,
+      "cached_input_tokens": 72596500,
+      "output_tokens": 103903,
+      "cost_usd": 8.119168
+    },
+    {
+      "session_id": "session-0552",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 144291962,
+      "cached_input_tokens": 144013508,
+      "output_tokens": 112934,
+      "cost_usd": 15.3574088
+    },
+    {
+      "session_id": "session-0553",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 4733117,
+      "cached_input_tokens": 4643886,
+      "output_tokens": 37353,
+      "cost_usd": 0.7777376
+    },
+    {
+      "session_id": "session-0554",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 68142551,
+      "cached_input_tokens": 67907905,
+      "output_tokens": 92447,
+      "cost_usd": 7.5801185
+    },
+    {
+      "session_id": "session-0555",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 129096525,
+      "cached_input_tokens": 128802526,
+      "output_tokens": 105344,
+      "cost_usd": 13.8063156
+    },
+    {
+      "session_id": "session-0556",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 122598144,
+      "cached_input_tokens": 122218589,
+      "output_tokens": 101070,
+      "cost_usd": 13.2078339
+    },
+    {
+      "session_id": "session-0557",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 160108669,
+      "cached_input_tokens": 159764273,
+      "output_tokens": 127846,
+      "cost_usd": 17.0878993
+    },
+    {
+      "session_id": "session-0558",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 167938519,
+      "cached_input_tokens": 167544911,
+      "output_tokens": 148300,
+      "cost_usd": 18.0378991
+    },
+    {
+      "session_id": "session-0559",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 41311209,
+      "cached_input_tokens": 41042526,
+      "output_tokens": 119102,
+      "cost_usd": 5.0875476
+    },
+    {
+      "session_id": "session-0560",
+      "group": "group-16",
+      "phase": "validation",
+      "input_tokens": 39067074,
+      "cached_input_tokens": 38856268,
+      "output_tokens": 90015,
+      "cost_usd": 4.6365228
+    }
+  ]
+}

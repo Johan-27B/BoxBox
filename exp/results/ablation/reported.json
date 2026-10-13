@@ -1,0 +1,23 @@
+{
+  "periodic_boxbox": {
+    "task_count": 14,
+    "run_count": 42,
+    "speedup_at_4h": 1.507992960302685,
+    "mean_model_cost_usd": 21.584594988095237,
+    "mean_task_ratio": 0.13382528549006123
+  },
+  "bounded_boxbox": {
+    "task_count": 14,
+    "run_count": 42,
+    "speedup_at_4h": 1.3493893905769718,
+    "mean_model_cost_usd": 16.071415326190476,
+    "mean_task_ratio": 0.1132490917487571
+  },
+  "boxbox": {
+    "task_count": 14,
+    "run_count": 42,
+    "speedup_at_4h": 1.5839998325453866,
+    "mean_model_cost_usd": 15.067640166666665,
+    "mean_task_ratio": 0.3452299464842596
+  }
+}

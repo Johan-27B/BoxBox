@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+data/
+runs/
+instances/
+artifacts/
+.env
+.env.*
+configs/local*
+*.egg-info/
+build/
+dist/
+config/tokens.json
+
+# Local files.
+/.local/

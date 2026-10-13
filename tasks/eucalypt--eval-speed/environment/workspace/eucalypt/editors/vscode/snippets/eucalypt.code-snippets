@@ -1,0 +1,228 @@
+{
+  "Function declaration": {
+    "prefix": "fn",
+    "body": ["${1:name}(${2:x}): ${3:x}"],
+    "description": "Function declaration"
+  },
+  "Property declaration": {
+    "prefix": "prop",
+    "body": ["${1:name}: ${2:value}"],
+    "description": "Property declaration"
+  },
+  "Block": {
+    "prefix": "blk",
+    "body": [
+      "{",
+      "\t${1:name}: ${2:value}",
+      "}"
+    ],
+    "description": "Block literal"
+  },
+  "Documented declaration": {
+    "prefix": "doc",
+    "body": [
+      "` \"${1:Documentation.}\"",
+      "${2:name}: ${3:value}"
+    ],
+    "description": "Declaration with documentation string"
+  },
+  "Block with documentation": {
+    "prefix": "docblk",
+    "body": [
+      "` {doc: \"${1:Documentation.}\"}",
+      "${2:name}: ${3:value}"
+    ],
+    "description": "Declaration with block-valued metadata documentation"
+  },
+  "If expression": {
+    "prefix": "if",
+    "body": ["if ${1:condition} then ${2:true-value} else ${3:false-value}"],
+    "description": "Conditional if expression"
+  },
+  "Cond expression": {
+    "prefix": "cond",
+    "body": [
+      "cond([",
+      "\t[${1:condition}, ${2:value}],",
+      "\t[true, ${3:default}]",
+      "])"
+    ],
+    "description": "Multi-branch conditional"
+  },
+  "Map": {
+    "prefix": "map",
+    "body": ["${1:list} map(${2:f})"],
+    "description": "Map over a list"
+  },
+  "Filter": {
+    "prefix": "filter",
+    "body": ["${1:list} filter(${2:pred})"],
+    "description": "Filter a list"
+  },
+  "Foldl": {
+    "prefix": "foldl",
+    "body": ["${1:list} foldl(${2:f}, ${3:initial})"],
+    "description": "Left fold over a list"
+  },
+  "Lambda (expression anaphor)": {
+    "prefix": "lam",
+    "body": ["(_ ${1:+ 1})"],
+    "description": "Anonymous function using expression anaphor"
+  },
+  "Merge blocks": {
+    "prefix": "merge",
+    "body": ["${1:a} merge(${2:b})"],
+    "description": "Merge two blocks"
+  },
+  "Import": {
+    "prefix": "import",
+    "body": ["${1:data}: import(\"${2:file.yaml}\")"],
+    "description": "Import external data file"
+  },
+  "Render target": {
+    "prefix": "target",
+    "body": [
+      "` :target",
+      "${1:name}: ${2:expression}"
+    ],
+    "description": "Declare a named render target"
+  },
+  "List comprehension (mapcat)": {
+    "prefix": "mapcat",
+    "body": ["${1:list} mapcat(${2:f})"],
+    "description": "Flat-map over a list"
+  },
+  "Pipeline": {
+    "prefix": "pipe",
+    "body": ["${1:value} ${2:f} ${3:g}"],
+    "description": "Value pipeline (catenation)"
+  },
+
+  "Typed function declaration": {
+    "prefix": "tfn",
+    "body": [
+      "` { doc: \"`${1:name}(${2:x})` - ${3:description}.\"",
+      "    type: \"${4:number} -> ${5:number}\" }",
+      "${1:name}(${2:x}): ${0:${2:x}}"
+    ],
+    "description": "Function declaration with doc string and type annotation"
+  },
+  "Typed property declaration": {
+    "prefix": "tprop",
+    "body": [
+      "` { doc: \"`${1:name}` - ${2:description}.\"",
+      "    type: \"${3:string}\" }",
+      "${1:name}: ${0:value}"
+    ],
+    "description": "Property declaration with doc string and type annotation"
+  },
+  "Typed operator declaration": {
+    "prefix": "top",
+    "body": [
+      "` { doc: \"`${1:l} ${2:op} ${3:r}` - ${4:description}.\"",
+      "    type: \"${5:a} -> ${6:b} -> ${7:c}\"",
+      "    associates: :${8:left}",
+      "    precedence: :${9:sum} }",
+      "(${1:l} ${2:op} ${3:r}): ${0:expression}"
+    ],
+    "description": "Operator declaration with type annotation and precedence"
+  },
+  "Type aliases in unit metadata": {
+    "prefix": "types",
+    "body": [
+      "{ types: { ${1:Name}: \"{${2:key}: ${3:type}, ..}\"",
+      "           ${4:Other}: \"${5:string}\" } }"
+    ],
+    "description": "Named type aliases in unit-level metadata block"
+  },
+  "Type alias (single)": {
+    "prefix": "type1",
+    "body": [
+      "{ types: { ${1:Name}: \"${2:{key: type, ..}}\" } }"
+    ],
+    "description": "Single named type alias in unit-level metadata"
+  },
+  "Type-def from canonical instance": {
+    "prefix": "typedef",
+    "body": [
+      "` { type-def: \"${1:TypeName}\" }",
+      "${2:canonical}: ${0:{ key: value }}"
+    ],
+    "description": "Derive a type alias from the type of a canonical value"
+  },
+  "Type-def with explicit type override": {
+    "prefix": "typedefx",
+    "body": [
+      "` { type-def: \"${1:TypeName}\"",
+      "    type: \"${2:{key: type, ..}}\" }",
+      "${3:canonical}: ${0:{ key: value }}"
+    ],
+    "description": "Type-def with explicit type (overrides inferred type)"
+  },
+  "Typed IO action": {
+    "prefix": "tio",
+    "body": [
+      "` { doc: \"`${1:name}` - ${2:description}.\"",
+      "    type: \"IO(${3:block})\" }",
+      "${1:name}: io.shell(\"${0:command}\")"
+    ],
+    "description": "IO action binding with type annotation"
+  },
+  "Typed function returning IO": {
+    "prefix": "tiofn",
+    "body": [
+      "` { doc: \"`${1:name}(${2:x})` - ${3:description}.\"",
+      "    type: \"${4:string} -> IO(${5:block})\" }",
+      "${1:name}(${2:x}): io.shell(${0:${2:x}})"
+    ],
+    "description": "Function that returns an IO action, with type annotation"
+  },
+  "Typed Lens declaration": {
+    "prefix": "tlens",
+    "body": [
+      "` { doc: \"`${1:name}` - lens focusing on ${2:field} within ${3:record}.\"",
+      "    type: \"Lens(${4:{..}}, ${5:any})\" }",
+      "${1:name}: at(:${0:field})"
+    ],
+    "description": "Lens declaration with Lens(a, b) type annotation"
+  },
+  "Typed Traversal declaration": {
+    "prefix": "ttraversal",
+    "body": [
+      "` { doc: \"`${1:name}` - traversal over ${2:elements}.\"",
+      "    type: \"Traversal(${3:[a]}, ${4:a})\" }",
+      "${1:name}: ${0:expression}"
+    ],
+    "description": "Traversal declaration with Traversal(a, b) type annotation"
+  },
+  "Open record type annotation": {
+    "prefix": "torec",
+    "body": "\"{${1:key}: ${2:type}, ..}\"",
+    "description": "Open record type string — at least the named fields, may have more"
+  },
+  "Closed record type annotation": {
+    "prefix": "tcrec",
+    "body": "\"{${1:key}: ${2:type}}\"",
+    "description": "Closed record type string — exactly the named fields"
+  },
+  "List type annotation": {
+    "prefix": "tlist",
+    "body": "\"[${1:type}]\"",
+    "description": "Homogeneous list type string"
+  },
+  "Union type annotation": {
+    "prefix": "tunion",
+    "body": "\"${1:A} | ${2:B}\"",
+    "description": "Union type string — value is either A or B"
+  },
+  "Function type annotation": {
+    "prefix": "tftype",
+    "body": "\"${1:a} -> ${2:b}\"",
+    "description": "Function type string"
+  },
+  "IO type annotation": {
+    "prefix": "tiotype",
+    "body": "\"IO(${1:result})\"",
+    "description": "IO action type string"
+  }
+}

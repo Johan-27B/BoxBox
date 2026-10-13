@@ -1,0 +1,22 @@
+# Copy to configs/local.yaml, choose your model, and supply --path.
+api_gateway:
+  api_key: ${env:LLM_API_KEY}
+  base_url: ${env:LLM_BASE_URL}
+  port: 4101
+enable_cache: false
+job:
+  agents:
+  - env:
+      LLM_API_KEY: ${api_gateway.api_key}
+      LLM_BASE_URL: ${api_gateway.container_base_url}
+    kwargs:
+      reasoning_effort: high
+    model_name: REPLACE_WITH_MODEL_ID
+    name: harness-scaling
+  environment:
+    type: docker
+  jobs_dir: runs
+  n_attempts: 3
+  n_concurrent_trials: 1
+  job_name: harness-scaling
+task_budget_sec: 14400

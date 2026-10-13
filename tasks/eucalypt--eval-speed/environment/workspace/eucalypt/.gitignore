@@ -1,0 +1,61 @@
+/target/
+**/*.rs.bk
+/.idea
+/tests/harness/.result/
+/tests/harness/**/.result/
+/src/syntax/grammar.rs
+/src/syntax/string_pattern.rs
+
+# Temporary files
+.DS_Store
+.cache/
+test.eu
+
+# Benchmark results
+benchmark_results/
+gc-bench-baseline.json
+
+.runtime/
+
+# Gas Town (added by gt)
+.claude/
+.logs/
+
+# Beads runtime state (not tracked in git)
+# issues.jsonl and metadata files ARE tracked - see .beads/.gitignore for internal patterns
+.beads/redirect
+.beads/mq/
+.beads/last-touched
+.beads/daemon-*.log.gz
+.beads/.sync.lock
+.beads/sync_base.jsonl
+.beads-wisp/
+
+# Gas Town (added by gt)
+.beads/
+
+# VS Code extension build artefacts
+editors/vscode/node_modules/
+editors/vscode/out/
+editors/vscode/*.vsix
+
+# Byte-compiled Emacs Lisp
+*.elc
+
+# Local settings
+*.local.json
+
+# mdBook build output
+/book/
+#*#
+.playwright-mcp/
+lib/.result/
+lib/.result/
+# Emacs auto-save and lock files
+\#*\#
+.#*
+
+# Fuzz corpora and artefacts (generated from existing tests)
+fuzz/corpus/
+fuzz/artifacts/
+lib/prelude.blob

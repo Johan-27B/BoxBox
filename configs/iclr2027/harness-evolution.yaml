@@ -1,0 +1,33 @@
+# Copy to a local config and fill in the task catalog, split, paths and model.
+experiment_name: harness-evolution
+artifact_root: runs/harness-evolution
+instance_root: ../PerfRace-Bench
+release_catalog: ../PerfRace-Bench/releases/catalog.json
+split_manifest: configs/iclr2027/split.json
+base_run_config: configs/iclr2027/he-run.yaml
+harness_source: boxbox/terminus_boxbox/harness
+model_name: REPLACE_WITH_MODEL_ID
+split:
+  expected_total: 100
+  early_test_count: 0
+  train_count: 40
+  validation_count: 10
+  test_count: 50
+protocol:
+  generations: 24
+  train_batch_size: 5
+  validation_generations: [8, 16, 24]
+  train_timeout_sec: 2700
+  validation_timeout_sec: 14400
+  test_timeout_sec: 14400
+  train_attempts: 1
+  validation_attempts: 3
+  test_attempts: 3
+  trust_evolved_code: false
+concurrency:
+  qualified_max: 1
+  debugger_max_workers: 1
+  baseline: 1
+  train: 1
+  validation: 1
+  test: 1

@@ -1,0 +1,58 @@
+"""Constants for candidate Filter runs."""
+
+from __future__ import annotations
+
+import logging
+from pathlib import Path
+
+from ..utils._constants import DEFAULT_TOKEN_FILE
+
+REPO_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_OUTPUT_ROOT = REPO_ROOT / "data" / "filter"
+PROMPT_PATH = Path(__file__).with_name("prompt.md")
+COAUTHOR_SIGNATURES_PATH = Path(__file__).with_name("coauthor_signatures.txt")
+
+DEFAULT_MODEL = None
+DEFAULT_REASONING_EFFORT = "high"
+DEFAULT_CONCURRENCY = 20
+DEFAULT_TIMEOUT_SECONDS = 180
+DEFAULT_RETRIES = 1
+DEFAULT_MAX_OUTPUT_TOKENS = 8000
+
+MIN_STARGAZER_COUNT = 10
+MAX_STARGAZER_COUNT = 5_000
+MAX_SNAPSHOT_BYTES = 50 * 1024
+MAX_TREE_ENTRIES = 25_000
+MAX_TRACKED_BYTES = 500 * 1024 * 1024
+MAX_TREE_PATHS_IN_PROMPT = 250
+MAX_SELECTED_FILES = 12
+MAX_README_BYTES = 16 * 1024
+MAX_LICENSE_BYTES = 16 * 1024
+MAX_FILE_BYTES = 4 * 1024
+
+logger = logging.getLogger("perfrace.filter")
+
+__all__ = [
+    "DEFAULT_CONCURRENCY",
+    "DEFAULT_MODEL",
+    "DEFAULT_MAX_OUTPUT_TOKENS",
+    "DEFAULT_OUTPUT_ROOT",
+    "DEFAULT_REASONING_EFFORT",
+    "DEFAULT_RETRIES",
+    "DEFAULT_TIMEOUT_SECONDS",
+    "DEFAULT_TOKEN_FILE",
+    "COAUTHOR_SIGNATURES_PATH",
+    "MAX_FILE_BYTES",
+    "MAX_LICENSE_BYTES",
+    "MAX_README_BYTES",
+    "MAX_SELECTED_FILES",
+    "MAX_SNAPSHOT_BYTES",
+    "MAX_STARGAZER_COUNT",
+    "MAX_TRACKED_BYTES",
+    "MAX_TREE_ENTRIES",
+    "MAX_TREE_PATHS_IN_PROMPT",
+    "MIN_STARGAZER_COUNT",
+    "PROMPT_PATH",
+    "REPO_ROOT",
+    "logger",
+]

@@ -1,0 +1,13 @@
+type: tool
+name: list_directory
+description: List files and directories directly below a local directory.
+input_schema:
+  type: object
+  properties:
+    dir_path: {type: string}
+    ignore:
+      type: array
+      items: {type: string}
+    show_hidden: {type: boolean}
+  required: [dir_path]
+  additionalProperties: false

@@ -1,0 +1,10 @@
+name = "eucalypt"
+level = "stable"
+count = 42
+enabled = true
+tags = ["a", "b", "c"]
+
+[database]
+host = "localhost"
+port = 5432
+

@@ -1,0 +1,31 @@
+schema_version = "1.3"
+
+[task]
+name = "perfrace/ccc--compile-speed"
+description = "Optimize CCC compile-to-object latency on the SQLite 3.46.0 amalgamation"
+authors = [{ name = "PerfRace" }]
+keywords = ["source:upstream-pin", "category:compile-time", "scale:project-level"]
+
+[perfrace.measurement]
+measurement = "wall-clock"
+direction = "minimize"
+unit = "seconds"
+workload = "sqlite-3.46.0-compile-to-object"
+n_warmup = 1
+n_repetitions = 5
+aggregator = "mean"
+repetition_scope = "internal"
+
+[agent]
+timeout_sec = 2700
+
+[verifier]
+timeout_sec = 600
+
+[environment]
+workdir = "/home/user/workspace"
+network_mode = "public"
+build_timeout_sec = 1800
+cpus = 4
+memory_mb = 16384
+storage_mb = 20480

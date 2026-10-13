@@ -1,0 +1,11 @@
+type: tool
+name: search_file_content
+description: Search file contents with a regular expression and optional glob filter.
+input_schema:
+  type: object
+  properties:
+    pattern: {type: string}
+    dir_path: {type: string}
+    include: {type: string}
+  required: [pattern]
+  additionalProperties: false

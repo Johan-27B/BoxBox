@@ -1,0 +1,11 @@
+type: tool
+name: read_file
+description: Read a UTF-8 text file, optionally by zero-based line offset and limit.
+input_schema:
+  type: object
+  properties:
+    file_path: {type: string}
+    offset: {type: integer, minimum: 0}
+    limit: {type: integer, minimum: 1}
+  required: [file_path]
+  additionalProperties: false

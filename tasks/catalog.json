@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {
+      "id": "eucalypt--eval-speed",
+      "project": "curvelogic/eucalypt",
+      "revision": "2380a95f72ede6484d51d8faf6e6fed4e82ee37d",
+      "language": "Rust",
+      "workload": "day06-part-2",
+      "package_sha256": "a90754cfcce8de67433c0e5a7e76790a592c8462e230cb13b4827c0cdbda6fd9",
+      "base_image": "rust:1.96-slim-bookworm"
+    },
+    {
+      "id": "ccc--compile-speed",
+      "project": "anthropics/claudes-c-compiler",
+      "revision": "6f1b99acb2f4ec2414592136c2009fe7713deec3",
+      "language": "C",
+      "workload": "sqlite-3.46.0-compile-to-object",
+      "package_sha256": "2b9f51382ba77c2ee2abfb45c1c79414175bd52bf9234099ef0163bd859b8b98",
+      "base_image": "rust@sha256:a5e80efc194cfc8e7453cb27b022f07e6ed212f49fdd4055caf85f8be806538c"
+    },
+    {
+      "id": "n8n-mcp--tool-batch-speed",
+      "project": "czlonkowski/n8n-mcp",
+      "revision": "f5694cce54c26777e6c16d606eb6b90cd39f5f96",
+      "language": "TypeScript",
+      "workload": "mcp-tool-call-batch",
+      "base_image": "node:22-bookworm-slim@sha256:83f487e0a63425e5b4d146fb5e5be574bcbe1b7b843d3ebafdd95eaf7767a7e5",
+      "package_sha256": "201fc5fe08675aba211544b323dc148a6564437684b9198c7a2770281fec767e"
+    }
+  ]
+}

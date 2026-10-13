@@ -1,0 +1,12 @@
+type: tool
+name: glob
+description: Find files matching a glob pattern in the local experiment workspace.
+input_schema:
+  type: object
+  properties:
+    pattern: {type: string}
+    dir_path: {type: string}
+    case_sensitive: {type: boolean}
+    respect_git_ignore: {type: boolean}
+  required: [pattern]
+  additionalProperties: false

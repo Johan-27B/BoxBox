@@ -1,0 +1,905 @@
+{
+  "schema_version": 1,
+  "currency": "USD",
+  "price_usd_per_token": {
+    "input": 1e-06,
+    "cached_input": 1e-07,
+    "output": 6e-06
+  },
+  "main": {
+    "task_count": 50,
+    "runs_per_task": 3,
+    "budget_seconds": 14400
+  },
+  "ablation": {
+    "task_count": 14,
+    "runs_per_task": 3,
+    "budget_seconds": 14400
+  },
+  "aggregation": {
+    "run": "Best positive accepted speedup within analysis time, with a floor of one.",
+    "task": "Geometric mean across independent runs.",
+    "benchmark": "Harmonic mean across tasks.",
+    "speedup_per_dollar": "Arithmetic mean of task speedup / mean task run cost."
+  },
+  "analysis_rules": {
+    "he_time": "Elapsed time from the first agent phase. Final-delivery evaluations after 4h are assigned analysis time 4h; observed times remain unchanged.",
+    "he_cost_time": "Missing cost timestamps use the next matched event or final evaluation start. Cost booking times beyond 4h are capped at 4h; request timestamps remain separate.",
+    "frozen_usage_time": "Estimated accounting times are identified by per-run flags.",
+    "full_run_cost": "Includes recorded calls beyond the time-curve endpoint.",
+    "he_training_score": "Floor each recorded run reward at one before aggregation.",
+    "ablation_score": "Use endpoint rewards from the recorded ablation cohort.",
+    "bounded_cost": "Reported cost includes an author-supplied $10 per run in addition to recorded model cost. Both components are stored separately; the additional amount is not derived from token counts.",
+    "offline_he_cost": "Includes recorded training, validation, and retries. The total is a lower bound because usage coverage is incomplete."
+  },
+  "files": {
+    ".gitignore": {
+      "sha256": "61110d4d0f97c7a07e66699031047037d49f5d27bb5ded3230306b75dfa9bceb",
+      "bytes": 12
+    },
+    "README.md": {
+      "sha256": "c317764244a52baf5bf6e83ac660897b34f029df8434832c7d742e9542ea8e19",
+      "bytes": 4515
+    },
+    "harnesses/he/README.md": {
+      "sha256": "114ca1eb0b3cbed800d8fe61ba6cfdfc370e7bf44b2a5b419372f521129a72bb",
+      "bytes": 476
+    },
+    "harnesses/he/h00/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h00/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h00/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h00/terminus_boxbox/materiality.py": {
+      "sha256": "445056315c95868eff4ab7f7b08e064e5671aea59f51ca4d72ce70c53fddbd5f",
+      "bytes": 8925
+    },
+    "harnesses/he/h00/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "47a95f8039d69d0a2065cc318f4474381dbf49f76d0bc382e96a93290c5f1a51",
+      "bytes": 989
+    },
+    "harnesses/he/h00/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "374e8722f600cd6c6bdce752b327668bc1ac6f54322a0fb686b508f9bba12a07",
+      "bytes": 7480
+    },
+    "harnesses/he/h00/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "3dd85b29b0cf9cbd79edaef38baf0620d1b74a1c3a7c3822ed9e9899c3d41397",
+      "bytes": 10220
+    },
+    "harnesses/he/h00/terminus_boxbox/terminus_kira.py": {
+      "sha256": "73f51dccd5d2fd8bede9bd8cf24114fdaebfab166faacb5174508504aed1209b",
+      "bytes": 68059
+    },
+    "harnesses/he/h01/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h01/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h01/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h01/terminus_boxbox/materiality.py": {
+      "sha256": "445056315c95868eff4ab7f7b08e064e5671aea59f51ca4d72ce70c53fddbd5f",
+      "bytes": 8925
+    },
+    "harnesses/he/h01/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "47a95f8039d69d0a2065cc318f4474381dbf49f76d0bc382e96a93290c5f1a51",
+      "bytes": 989
+    },
+    "harnesses/he/h01/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "0c9cce4c4cca2ca4be3b120c8fdcf2bd115875215ef521bee9827216acadd544",
+      "bytes": 9416
+    },
+    "harnesses/he/h01/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "bedc753ff1fa7fd10b71c089eabe31c1b8ea380873e1f13a8367f354a36d57e3",
+      "bytes": 10760
+    },
+    "harnesses/he/h01/terminus_boxbox/terminus_kira.py": {
+      "sha256": "73f51dccd5d2fd8bede9bd8cf24114fdaebfab166faacb5174508504aed1209b",
+      "bytes": 68059
+    },
+    "harnesses/he/h02/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h02/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h02/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h02/terminus_boxbox/materiality.py": {
+      "sha256": "445056315c95868eff4ab7f7b08e064e5671aea59f51ca4d72ce70c53fddbd5f",
+      "bytes": 8925
+    },
+    "harnesses/he/h02/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "47a95f8039d69d0a2065cc318f4474381dbf49f76d0bc382e96a93290c5f1a51",
+      "bytes": 989
+    },
+    "harnesses/he/h02/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "326105b43be85dac2049e7f0b62e64fd87025f64115e41096b6acc42f1be7961",
+      "bytes": 10811
+    },
+    "harnesses/he/h02/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+      "bytes": 11313
+    },
+    "harnesses/he/h02/terminus_boxbox/terminus_kira.py": {
+      "sha256": "73f51dccd5d2fd8bede9bd8cf24114fdaebfab166faacb5174508504aed1209b",
+      "bytes": 68059
+    },
+    "harnesses/he/h03/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h03/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h03/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h03/terminus_boxbox/materiality.py": {
+      "sha256": "445056315c95868eff4ab7f7b08e064e5671aea59f51ca4d72ce70c53fddbd5f",
+      "bytes": 8925
+    },
+    "harnesses/he/h03/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "47a95f8039d69d0a2065cc318f4474381dbf49f76d0bc382e96a93290c5f1a51",
+      "bytes": 989
+    },
+    "harnesses/he/h03/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "326105b43be85dac2049e7f0b62e64fd87025f64115e41096b6acc42f1be7961",
+      "bytes": 10811
+    },
+    "harnesses/he/h03/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+      "bytes": 11313
+    },
+    "harnesses/he/h03/terminus_boxbox/terminus_kira.py": {
+      "sha256": "b1b93b3f5c7ef8adb00ee4fd862e01e0b1603b0458f4cc3d901e464868f0581d",
+      "bytes": 71645
+    },
+    "harnesses/he/h04/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h04/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h04/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h04/terminus_boxbox/materiality.py": {
+      "sha256": "445056315c95868eff4ab7f7b08e064e5671aea59f51ca4d72ce70c53fddbd5f",
+      "bytes": 8925
+    },
+    "harnesses/he/h04/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "47a95f8039d69d0a2065cc318f4474381dbf49f76d0bc382e96a93290c5f1a51",
+      "bytes": 989
+    },
+    "harnesses/he/h04/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "326105b43be85dac2049e7f0b62e64fd87025f64115e41096b6acc42f1be7961",
+      "bytes": 10811
+    },
+    "harnesses/he/h04/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+      "bytes": 11313
+    },
+    "harnesses/he/h04/terminus_boxbox/terminus_kira.py": {
+      "sha256": "388e4f3e0efc1de1856013921f05eb219f2913f437ff0e2d17dd6b57895eeaf6",
+      "bytes": 75192
+    },
+    "harnesses/he/h05/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h05/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h05/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h05/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h05/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "d5f8cce9fe557b97cbafc1911fd315c03bd88723543c77ae41eec4beda4cb110",
+      "bytes": 1185
+    },
+    "harnesses/he/h05/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "761a3da30be912282e74ef2b86a2e5cef4b76eb784ffeb046e10498238ea3edb",
+      "bytes": 12495
+    },
+    "harnesses/he/h05/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+      "bytes": 11313
+    },
+    "harnesses/he/h05/terminus_boxbox/terminus_kira.py": {
+      "sha256": "d1bada0956bfc1766d1d5668fe1d237e90bffbecc0a2a0135b9d9718ddc8f32e",
+      "bytes": 79458
+    },
+    "harnesses/he/h06/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h06/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h06/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h06/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h06/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "3172e07cc840dc0c5463f02a1862ec6b16139c7b1b3aec2b09daea89d2039ecb",
+      "bytes": 1603
+    },
+    "harnesses/he/h06/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "a41a6dbf596b3b88ecee995b01bc2c47b7d872b3fb6a5106402159f5d5f8e9b5",
+      "bytes": 13808
+    },
+    "harnesses/he/h06/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+      "bytes": 11313
+    },
+    "harnesses/he/h06/terminus_boxbox/terminus_kira.py": {
+      "sha256": "d1bada0956bfc1766d1d5668fe1d237e90bffbecc0a2a0135b9d9718ddc8f32e",
+      "bytes": 79458
+    },
+    "harnesses/he/h07/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h07/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h07/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h07/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h07/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+      "bytes": 1997
+    },
+    "harnesses/he/h07/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "30277c3f1bf174c6feedbdf592046759367647102f3f1179a30ea3eaaebc3c31",
+      "bytes": 14174
+    },
+    "harnesses/he/h07/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+      "bytes": 11313
+    },
+    "harnesses/he/h07/terminus_boxbox/terminus_kira.py": {
+      "sha256": "158c474aa3b99fdaf436cfd9f46855e0f5e6b30c034f57e187a4a5e89ec0ff8f",
+      "bytes": 81379
+    },
+    "harnesses/he/h08/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h08/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h08/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h08/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h08/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+      "bytes": 1997
+    },
+    "harnesses/he/h08/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "30277c3f1bf174c6feedbdf592046759367647102f3f1179a30ea3eaaebc3c31",
+      "bytes": 14174
+    },
+    "harnesses/he/h08/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "558b745c6d6be4d125a0c3f6448bba05953ff9bfae516b84efdbc7b4b1f5ed4f",
+      "bytes": 11313
+    },
+    "harnesses/he/h08/terminus_boxbox/terminus_kira.py": {
+      "sha256": "db4f727d51739ba4593c8571ee078c1c3dfdfc48a5a0653137403a3a8899b740",
+      "bytes": 83182
+    },
+    "harnesses/he/h09/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h09/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h09/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h09/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h09/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+      "bytes": 1997
+    },
+    "harnesses/he/h09/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "30277c3f1bf174c6feedbdf592046759367647102f3f1179a30ea3eaaebc3c31",
+      "bytes": 14174
+    },
+    "harnesses/he/h09/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "1f583d65cbe947e5944b8f3031d2a023bb68b28ebd244d99da6e815a156d5113",
+      "bytes": 12435
+    },
+    "harnesses/he/h09/terminus_boxbox/terminus_kira.py": {
+      "sha256": "db4f727d51739ba4593c8571ee078c1c3dfdfc48a5a0653137403a3a8899b740",
+      "bytes": 83182
+    },
+    "harnesses/he/h10/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h10/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h10/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h10/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h10/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+      "bytes": 1997
+    },
+    "harnesses/he/h10/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "30277c3f1bf174c6feedbdf592046759367647102f3f1179a30ea3eaaebc3c31",
+      "bytes": 14174
+    },
+    "harnesses/he/h10/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "acd1a81ab9f297ab54224c948cc46403e526c0ee66eca5cd15341a9eb803fdfa",
+      "bytes": 19526
+    },
+    "harnesses/he/h10/terminus_boxbox/terminus_kira.py": {
+      "sha256": "db4f727d51739ba4593c8571ee078c1c3dfdfc48a5a0653137403a3a8899b740",
+      "bytes": 83182
+    },
+    "harnesses/he/h11/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h11/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h11/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h11/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h11/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+      "bytes": 1997
+    },
+    "harnesses/he/h11/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "30277c3f1bf174c6feedbdf592046759367647102f3f1179a30ea3eaaebc3c31",
+      "bytes": 14174
+    },
+    "harnesses/he/h11/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "342a57bce5bb2c51e34adead179920d36c19629feb96780cc27d382a0a3fc8f2",
+      "bytes": 19641
+    },
+    "harnesses/he/h11/terminus_boxbox/terminus_kira.py": {
+      "sha256": "ae39c6e62d3baa3e7de86d6967f3b37c0091ebe65188e7cdbe3cbfafc69d37bd",
+      "bytes": 89279
+    },
+    "harnesses/he/h12/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h12/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h12/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h12/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h12/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+      "bytes": 1997
+    },
+    "harnesses/he/h12/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "efe0fdb7036cd177e365484150e5a6f1e761d050ded4c08fec94296bc2011aba",
+      "bytes": 15656
+    },
+    "harnesses/he/h12/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "342a57bce5bb2c51e34adead179920d36c19629feb96780cc27d382a0a3fc8f2",
+      "bytes": 19641
+    },
+    "harnesses/he/h12/terminus_boxbox/terminus_kira.py": {
+      "sha256": "ae39c6e62d3baa3e7de86d6967f3b37c0091ebe65188e7cdbe3cbfafc69d37bd",
+      "bytes": 89279
+    },
+    "harnesses/he/h13/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h13/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h13/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h13/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h13/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+      "bytes": 1997
+    },
+    "harnesses/he/h13/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "efe0fdb7036cd177e365484150e5a6f1e761d050ded4c08fec94296bc2011aba",
+      "bytes": 15656
+    },
+    "harnesses/he/h13/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "342a57bce5bb2c51e34adead179920d36c19629feb96780cc27d382a0a3fc8f2",
+      "bytes": 19641
+    },
+    "harnesses/he/h13/terminus_boxbox/terminus_kira.py": {
+      "sha256": "87b1fe093b57e29151af808c8459e93096c57cd673310d28f980be6771eb4c2c",
+      "bytes": 93239
+    },
+    "harnesses/he/h14/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h14/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h14/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h14/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h14/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+      "bytes": 1997
+    },
+    "harnesses/he/h14/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "efe0fdb7036cd177e365484150e5a6f1e761d050ded4c08fec94296bc2011aba",
+      "bytes": 15656
+    },
+    "harnesses/he/h14/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "342a57bce5bb2c51e34adead179920d36c19629feb96780cc27d382a0a3fc8f2",
+      "bytes": 19641
+    },
+    "harnesses/he/h14/terminus_boxbox/terminus_kira.py": {
+      "sha256": "2b6b4f45e38cec98b0f4f2b03f0c8b7a5b3a688b681ba643eb8235c15bb845fc",
+      "bytes": 93542
+    },
+    "harnesses/he/h15/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h15/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h15/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h15/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h15/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+      "bytes": 1997
+    },
+    "harnesses/he/h15/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "efe0fdb7036cd177e365484150e5a6f1e761d050ded4c08fec94296bc2011aba",
+      "bytes": 15656
+    },
+    "harnesses/he/h15/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "9c6873e57e4f68b027c8b47c78f6d0fd37d844e025092265a277498a40c2d526",
+      "bytes": 19809
+    },
+    "harnesses/he/h15/terminus_boxbox/terminus_kira.py": {
+      "sha256": "d4d0438f2154cb0ae815d137edddff30a2aa0135e0f578af6116a446fe678983",
+      "bytes": 94217
+    },
+    "harnesses/he/h16/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h16/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h16/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h16/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h16/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "883c7685c01326f8e73805d044886bfba2d1f4a347f2eeaf3079f6ec2fa9d694",
+      "bytes": 1997
+    },
+    "harnesses/he/h16/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "efe0fdb7036cd177e365484150e5a6f1e761d050ded4c08fec94296bc2011aba",
+      "bytes": 15656
+    },
+    "harnesses/he/h16/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "9c6873e57e4f68b027c8b47c78f6d0fd37d844e025092265a277498a40c2d526",
+      "bytes": 19809
+    },
+    "harnesses/he/h16/terminus_boxbox/terminus_kira.py": {
+      "sha256": "2b3900652615803ea1b8cebb0bc53b62f16aa105a5eae92a582727fe2204c45c",
+      "bytes": 96745
+    },
+    "harnesses/he/h17/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h17/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h17/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h17/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h17/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "1985ba4c4fa8509147b4d9b85aecd3ac585ba0f8b604bf125e8a49fbec596dd5",
+      "bytes": 2516
+    },
+    "harnesses/he/h17/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "8110860e6fc0d4d0065efd82e7021f70c67de209eee21706ebd9ee6fcbfd218c",
+      "bytes": 15794
+    },
+    "harnesses/he/h17/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "9c6873e57e4f68b027c8b47c78f6d0fd37d844e025092265a277498a40c2d526",
+      "bytes": 19809
+    },
+    "harnesses/he/h17/terminus_boxbox/terminus_kira.py": {
+      "sha256": "b49bd5df630ad2bdc747179fe94ad0ac47322cc467f7538b6a7e5b107fd508d7",
+      "bytes": 99957
+    },
+    "harnesses/he/h18/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h18/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h18/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h18/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h18/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+      "bytes": 2765
+    },
+    "harnesses/he/h18/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "ea8aea6c30a97ea35cf409b54da2102ef45c36fc6c5ef1b45c41853c04fba536",
+      "bytes": 16029
+    },
+    "harnesses/he/h18/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "9c6873e57e4f68b027c8b47c78f6d0fd37d844e025092265a277498a40c2d526",
+      "bytes": 19809
+    },
+    "harnesses/he/h18/terminus_boxbox/terminus_kira.py": {
+      "sha256": "e2ce725a9391c8e5c5ba33d0f1544c24186953d7c8d928c1515873439bda2b7a",
+      "bytes": 101055
+    },
+    "harnesses/he/h19/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h19/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h19/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h19/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h19/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+      "bytes": 2765
+    },
+    "harnesses/he/h19/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "ea8aea6c30a97ea35cf409b54da2102ef45c36fc6c5ef1b45c41853c04fba536",
+      "bytes": 16029
+    },
+    "harnesses/he/h19/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "614562111099cb05f37cb14d058a7630e3b60cf5b2f410df7245548238ca2d2a",
+      "bytes": 19918
+    },
+    "harnesses/he/h19/terminus_boxbox/terminus_kira.py": {
+      "sha256": "ed17234786754d4b6525723d27260943fc82e1f44501c8f3d9f9a074c2f47095",
+      "bytes": 108845
+    },
+    "harnesses/he/h20/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h20/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h20/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h20/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h20/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+      "bytes": 2765
+    },
+    "harnesses/he/h20/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "ea8aea6c30a97ea35cf409b54da2102ef45c36fc6c5ef1b45c41853c04fba536",
+      "bytes": 16029
+    },
+    "harnesses/he/h20/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "614562111099cb05f37cb14d058a7630e3b60cf5b2f410df7245548238ca2d2a",
+      "bytes": 19918
+    },
+    "harnesses/he/h20/terminus_boxbox/terminus_kira.py": {
+      "sha256": "0214db6a60bdfc624e307e733ed8e0e3d533d4473d7915109fa1412075405183",
+      "bytes": 111104
+    },
+    "harnesses/he/h21/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h21/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h21/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h21/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h21/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+      "bytes": 2765
+    },
+    "harnesses/he/h21/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "ea8aea6c30a97ea35cf409b54da2102ef45c36fc6c5ef1b45c41853c04fba536",
+      "bytes": 16029
+    },
+    "harnesses/he/h21/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "614562111099cb05f37cb14d058a7630e3b60cf5b2f410df7245548238ca2d2a",
+      "bytes": 19918
+    },
+    "harnesses/he/h21/terminus_boxbox/terminus_kira.py": {
+      "sha256": "4049bb87e6f0c1caef6202c5a336eb49d92f48e2a7ac544aaf6401d745fc16bc",
+      "bytes": 113526
+    },
+    "harnesses/he/h22/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h22/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h22/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h22/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h22/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+      "bytes": 2765
+    },
+    "harnesses/he/h22/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "ea8aea6c30a97ea35cf409b54da2102ef45c36fc6c5ef1b45c41853c04fba536",
+      "bytes": 16029
+    },
+    "harnesses/he/h22/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "614562111099cb05f37cb14d058a7630e3b60cf5b2f410df7245548238ca2d2a",
+      "bytes": 19918
+    },
+    "harnesses/he/h22/terminus_boxbox/terminus_kira.py": {
+      "sha256": "3abad83b3dd36584d4bbfbf2382bae96fa0e6be64ce9c2c36b0e3a43ca0754e7",
+      "bytes": 114615
+    },
+    "harnesses/he/h23/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h23/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h23/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h23/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h23/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+      "bytes": 2765
+    },
+    "harnesses/he/h23/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "55f38cf505378a61fbe6955b8a94f4fdff450c8aecbb08a577c3a678ab0e3049",
+      "bytes": 17681
+    },
+    "harnesses/he/h23/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "614562111099cb05f37cb14d058a7630e3b60cf5b2f410df7245548238ca2d2a",
+      "bytes": 19918
+    },
+    "harnesses/he/h23/terminus_boxbox/terminus_kira.py": {
+      "sha256": "3abad83b3dd36584d4bbfbf2382bae96fa0e6be64ce9c2c36b0e3a43ca0754e7",
+      "bytes": 114615
+    },
+    "harnesses/he/h24/pyproject.toml": {
+      "sha256": "196f7433fa6a2e8a303f89618e328980e6359744f3eff6f71baf21deda05118d",
+      "bytes": 233
+    },
+    "harnesses/he/h24/terminus_boxbox/__init__.py": {
+      "sha256": "934a1247ec34cb9d6b0d25660a723ceb7c7ded324cbc2f198a3e7b48ed879143",
+      "bytes": 155
+    },
+    "harnesses/he/h24/terminus_boxbox/caching.py": {
+      "sha256": "fbc08f6e93569ce8dc144d765be6c24f28be139e630983aea9f0b741a464d56c",
+      "bytes": 2496
+    },
+    "harnesses/he/h24/terminus_boxbox/materiality.py": {
+      "sha256": "2fd3a6db506cedd8dc791560957384c2e35304856857f20ef033d9769b7040cb",
+      "bytes": 14747
+    },
+    "harnesses/he/h24/terminus_boxbox/prompt-templates/terminus-boxbox.txt": {
+      "sha256": "bc7e3c6cbe915c34c477a7da427495f0073c72f091fb216e9ec4c0f7eb0d8bc8",
+      "bytes": 2765
+    },
+    "harnesses/he/h24/terminus_boxbox/skills/autoresearch/SKILL.md": {
+      "sha256": "55f38cf505378a61fbe6955b8a94f4fdff450c8aecbb08a577c3a678ab0e3049",
+      "bytes": 17681
+    },
+    "harnesses/he/h24/terminus_boxbox/terminus_boxbox.py": {
+      "sha256": "d3fe04121cf8e18e6ac562549bde76ad7745f7cc981dc859584ad0b3633fd82b",
+      "bytes": 20830
+    },
+    "harnesses/he/h24/terminus_boxbox/terminus_kira.py": {
+      "sha256": "3abad83b3dd36584d4bbfbf2382bae96fa0e6be64ce9c2c36b0e3a43ca0754e7",
+      "bytes": 114615
+    },
+    "harnesses/he/index.json": {
+      "sha256": "18f723cf728ee604fe733e4147ad83310bf816e3ea117d22a6a75a8ecc1c8b4c",
+      "bytes": 27252
+    },
+    "results/ablation/records.json": {
+      "sha256": "b8c2de9036349e09ec08186df79da416f85a0e07e8d3a464ae7edf74af477d03",
+      "bytes": 51485
+    },
+    "results/ablation/reported.json": {
+      "sha256": "fd94dad3cc3350299009c393ac17d3eaf9936c3e57bfeed687804543b421d682",
+      "bytes": 596
+    },
+    "results/he/offline-cost.json": {
+      "sha256": "35e1495587fb18a4ff75adef3f392de925b7ac46e8ccf09e83786a1b5c12c051",
+      "bytes": 129184
+    },
+    "results/he/reported.json": {
+      "sha256": "045ef4920946bd4f30ad9466d11225df926be7bbe2db62c2f3445cb75c34d8bf",
+      "bytes": 839
+    },
+    "results/he/training.json": {
+      "sha256": "56809cb5fe59861d7d1b3fe33c61661dc75aee93c22000227950f72e94b943b7",
+      "bytes": 27443
+    },
+    "results/he/validation.json": {
+      "sha256": "8052eadae71fb0f303a68a61fc23f38950232110eb6b208ddaa814d8135b3d59",
+      "bytes": 14283
+    },
+    "results/main/figure.json.gz": {
+      "sha256": "62f8224b93bc32e081f07b46e5b5a015926e959b531c02cd8bfdeb25ce5c4bde",
+      "bytes": 107804
+    },
+    "results/main/records.jsonl.gz": {
+      "sha256": "13fe826576d92d60f6dd75ec6d162e5f3ec73e2c47fd2d50c5b9373894f9d2d9",
+      "bytes": 9378257
+    },
+    "results/main/reported.json": {
+      "sha256": "5d9e82797d629327dd12354d87db24a182fec8e127af6d44b98a74beabc824dc",
+      "bytes": 795
+    },
+    "results/reviews/harness_scaling.json.gz": {
+      "sha256": "ec9f05aff3dd06b3e8ae7272f7d5a5504f6dbda735662aaa151d2308e728f6f4",
+      "bytes": 174163
+    },
+    "scripts/analyze.py": {
+      "sha256": "b4c7ae6fcfcfca0587f06844de9be3986e715d5c368d171ab132fdc53e88311d",
+      "bytes": 13028
+    },
+    "scripts/plot_he.py": {
+      "sha256": "fc04f5a52085c0b1d5a57a58b78bde7dca0d11fec64a7d15b00de6d1a632fe90",
+      "bytes": 4387
+    },
+    "scripts/plot_main.py": {
+      "sha256": "fb1a7a7cc163f8694c359cf1cf7fdd6cdb2d5d79e6235d72cb3d3513df1aa598",
+      "bytes": 9184
+    }
+  }
+}

@@ -1,0 +1,5 @@
+---
+basic-true: "yes"
+basic-false: "no"
+nested: greater
+null-test: equal

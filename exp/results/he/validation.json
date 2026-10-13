@@ -1,0 +1,632 @@
+[
+  {
+    "harness": "h08",
+    "task_id": "dither-guy--photo-batch",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.2202618176065558
+  },
+  {
+    "harness": "h08",
+    "task_id": "dither-guy--photo-batch",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.759826025602794
+  },
+  {
+    "harness": "h08",
+    "task_id": "dither-guy--photo-batch",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.344207969123251
+  },
+  {
+    "harness": "h08",
+    "task_id": "enzyme--mnist",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0079116745035988
+  },
+  {
+    "harness": "h08",
+    "task_id": "enzyme--mnist",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.9915361027616315
+  },
+  {
+    "harness": "h08",
+    "task_id": "enzyme--mnist",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.009963210012839
+  },
+  {
+    "harness": "h08",
+    "task_id": "gdsfactory--cspdk-catalog",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.2164298274259544
+  },
+  {
+    "harness": "h08",
+    "task_id": "gdsfactory--cspdk-catalog",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.2057851550789167
+  },
+  {
+    "harness": "h08",
+    "task_id": "gdsfactory--cspdk-catalog",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.2740053474663287
+  },
+  {
+    "harness": "h08",
+    "task_id": "hftframework--eurusd-backtest",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.9780115402648997
+  },
+  {
+    "harness": "h08",
+    "task_id": "hftframework--eurusd-backtest",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0268754162297846
+  },
+  {
+    "harness": "h08",
+    "task_id": "hftframework--eurusd-backtest",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.19410005226128
+  },
+  {
+    "harness": "h08",
+    "task_id": "lsp-tree-sitter--termux-check",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.7666200782864234
+  },
+  {
+    "harness": "h08",
+    "task_id": "lsp-tree-sitter--termux-check",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.9390577717374762
+  },
+  {
+    "harness": "h08",
+    "task_id": "lsp-tree-sitter--termux-check",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.6722998901460158
+  },
+  {
+    "harness": "h08",
+    "task_id": "prody--spike-gnm",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.2987682345975604
+  },
+  {
+    "harness": "h08",
+    "task_id": "prody--spike-gnm",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.4404457382048377
+  },
+  {
+    "harness": "h08",
+    "task_id": "prody--spike-gnm",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 3.3132104859260494
+  },
+  {
+    "harness": "h08",
+    "task_id": "pysad--nab-relative-entropy",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.3919710338276072
+  },
+  {
+    "harness": "h08",
+    "task_id": "pysad--nab-relative-entropy",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.5491699112738053
+  },
+  {
+    "harness": "h08",
+    "task_id": "pysad--nab-relative-entropy",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.530869452838153
+  },
+  {
+    "harness": "h08",
+    "task_id": "snarkos--cdn-replay",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.9961597482563254
+  },
+  {
+    "harness": "h08",
+    "task_id": "snarkos--cdn-replay",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.3929697591221302
+  },
+  {
+    "harness": "h08",
+    "task_id": "snarkos--cdn-replay",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.4983643623238276
+  },
+  {
+    "harness": "h08",
+    "task_id": "tfhe-rs--erc7984-transfer",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.3445094605561017
+  },
+  {
+    "harness": "h08",
+    "task_id": "tfhe-rs--erc7984-transfer",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.060006061218305
+  },
+  {
+    "harness": "h08",
+    "task_id": "tfhe-rs--erc7984-transfer",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.1209538618585826
+  },
+  {
+    "harness": "h08",
+    "task_id": "vmecpp--precise-qh",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.0
+  },
+  {
+    "harness": "h08",
+    "task_id": "vmecpp--precise-qh",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.0
+  },
+  {
+    "harness": "h08",
+    "task_id": "vmecpp--precise-qh",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.0
+  },
+  {
+    "harness": "h16",
+    "task_id": "dither-guy--photo-batch",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.5981003220720085
+  },
+  {
+    "harness": "h16",
+    "task_id": "dither-guy--photo-batch",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.7152016103873273
+  },
+  {
+    "harness": "h16",
+    "task_id": "dither-guy--photo-batch",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.716816930818179
+  },
+  {
+    "harness": "h16",
+    "task_id": "enzyme--mnist",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0081889338660375
+  },
+  {
+    "harness": "h16",
+    "task_id": "enzyme--mnist",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.9797025659052647
+  },
+  {
+    "harness": "h16",
+    "task_id": "enzyme--mnist",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.996124359358068
+  },
+  {
+    "harness": "h16",
+    "task_id": "gdsfactory--cspdk-catalog",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0511360600339443
+  },
+  {
+    "harness": "h16",
+    "task_id": "gdsfactory--cspdk-catalog",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0607019131235804
+  },
+  {
+    "harness": "h16",
+    "task_id": "gdsfactory--cspdk-catalog",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.1873881692750612
+  },
+  {
+    "harness": "h16",
+    "task_id": "hftframework--eurusd-backtest",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0307571117448775
+  },
+  {
+    "harness": "h16",
+    "task_id": "hftframework--eurusd-backtest",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.3544053662979851
+  },
+  {
+    "harness": "h16",
+    "task_id": "hftframework--eurusd-backtest",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0667657783502338
+  },
+  {
+    "harness": "h16",
+    "task_id": "lsp-tree-sitter--termux-check",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.838733919050499
+  },
+  {
+    "harness": "h16",
+    "task_id": "lsp-tree-sitter--termux-check",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.8832237774013794
+  },
+  {
+    "harness": "h16",
+    "task_id": "lsp-tree-sitter--termux-check",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.775206030685063
+  },
+  {
+    "harness": "h16",
+    "task_id": "prody--spike-gnm",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0920329809884457
+  },
+  {
+    "harness": "h16",
+    "task_id": "prody--spike-gnm",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.1730433159215792
+  },
+  {
+    "harness": "h16",
+    "task_id": "prody--spike-gnm",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.2941749444774937
+  },
+  {
+    "harness": "h16",
+    "task_id": "pysad--nab-relative-entropy",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.5156850390296246
+  },
+  {
+    "harness": "h16",
+    "task_id": "pysad--nab-relative-entropy",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.3713038915701183
+  },
+  {
+    "harness": "h16",
+    "task_id": "pysad--nab-relative-entropy",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.5550913908268884
+  },
+  {
+    "harness": "h16",
+    "task_id": "snarkos--cdn-replay",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.3281869374834578
+  },
+  {
+    "harness": "h16",
+    "task_id": "snarkos--cdn-replay",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.3281169515968874
+  },
+  {
+    "harness": "h16",
+    "task_id": "snarkos--cdn-replay",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.4477693920002668
+  },
+  {
+    "harness": "h16",
+    "task_id": "tfhe-rs--erc7984-transfer",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.3366311409281986
+  },
+  {
+    "harness": "h16",
+    "task_id": "tfhe-rs--erc7984-transfer",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0772731939358684
+  },
+  {
+    "harness": "h16",
+    "task_id": "tfhe-rs--erc7984-transfer",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.096332671612162
+  },
+  {
+    "harness": "h16",
+    "task_id": "vmecpp--precise-qh",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.0
+  },
+  {
+    "harness": "h16",
+    "task_id": "vmecpp--precise-qh",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.0
+  },
+  {
+    "harness": "h16",
+    "task_id": "vmecpp--precise-qh",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.0
+  },
+  {
+    "harness": "h24",
+    "task_id": "dither-guy--photo-batch",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0980115599708749
+  },
+  {
+    "harness": "h24",
+    "task_id": "dither-guy--photo-batch",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.6790880447402168
+  },
+  {
+    "harness": "h24",
+    "task_id": "dither-guy--photo-batch",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0917180572465524
+  },
+  {
+    "harness": "h24",
+    "task_id": "enzyme--mnist",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.015873958589601
+  },
+  {
+    "harness": "h24",
+    "task_id": "enzyme--mnist",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.971339989577925
+  },
+  {
+    "harness": "h24",
+    "task_id": "enzyme--mnist",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0034090798015778
+  },
+  {
+    "harness": "h24",
+    "task_id": "gdsfactory--cspdk-catalog",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.1495438288549704
+  },
+  {
+    "harness": "h24",
+    "task_id": "gdsfactory--cspdk-catalog",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0956842283292643
+  },
+  {
+    "harness": "h24",
+    "task_id": "gdsfactory--cspdk-catalog",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.1723979358342427
+  },
+  {
+    "harness": "h24",
+    "task_id": "hftframework--eurusd-backtest",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0255782699140845
+  },
+  {
+    "harness": "h24",
+    "task_id": "hftframework--eurusd-backtest",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0466989933494737
+  },
+  {
+    "harness": "h24",
+    "task_id": "hftframework--eurusd-backtest",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.016259183283832
+  },
+  {
+    "harness": "h24",
+    "task_id": "lsp-tree-sitter--termux-check",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 2.104539502215813
+  },
+  {
+    "harness": "h24",
+    "task_id": "lsp-tree-sitter--termux-check",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.7018139796209697
+  },
+  {
+    "harness": "h24",
+    "task_id": "lsp-tree-sitter--termux-check",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.674383750098894
+  },
+  {
+    "harness": "h24",
+    "task_id": "prody--spike-gnm",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 3.3018378295332864
+  },
+  {
+    "harness": "h24",
+    "task_id": "prody--spike-gnm",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 3.1732383432716875
+  },
+  {
+    "harness": "h24",
+    "task_id": "prody--spike-gnm",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.370261366246797
+  },
+  {
+    "harness": "h24",
+    "task_id": "pysad--nab-relative-entropy",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.1147554487925448
+  },
+  {
+    "harness": "h24",
+    "task_id": "pysad--nab-relative-entropy",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.5427460496516299
+  },
+  {
+    "harness": "h24",
+    "task_id": "pysad--nab-relative-entropy",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 4.719958347181106
+  },
+  {
+    "harness": "h24",
+    "task_id": "snarkos--cdn-replay",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.001980320082161
+  },
+  {
+    "harness": "h24",
+    "task_id": "snarkos--cdn-replay",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.349033988920913
+  },
+  {
+    "harness": "h24",
+    "task_id": "snarkos--cdn-replay",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.4726225694113753
+  },
+  {
+    "harness": "h24",
+    "task_id": "tfhe-rs--erc7984-transfer",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0692231921470061
+  },
+  {
+    "harness": "h24",
+    "task_id": "tfhe-rs--erc7984-transfer",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.3156083697862977
+  },
+  {
+    "harness": "h24",
+    "task_id": "tfhe-rs--erc7984-transfer",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 1.0962944904924428
+  },
+  {
+    "harness": "h24",
+    "task_id": "vmecpp--precise-qh",
+    "repeat": 1,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.0
+  },
+  {
+    "harness": "h24",
+    "task_id": "vmecpp--precise-qh",
+    "repeat": 2,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.0
+  },
+  {
+    "harness": "h24",
+    "task_id": "vmecpp--precise-qh",
+    "repeat": 3,
+    "budget_seconds": 14400,
+    "recorded_reward": 0.0
+  }
+]

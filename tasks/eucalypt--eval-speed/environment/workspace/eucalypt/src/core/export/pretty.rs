@@ -1,0 +1,291 @@
+//! Export pretty printed version of core.
+use crate::common::{prettify::ToPretty, truncate::Truncated};
+use crate::core::binding::Var;
+use crate::core::expr::*;
+use pretty::{DocAllocator, DocBuilder};
+
+impl ToPretty for Var {
+    fn pretty<'b, D, A>(&'b self, allocator: &'b D) -> DocBuilder<'b, D, A>
+    where
+        D: DocAllocator<'b, A>,
+        D::Doc: Clone,
+        A: Clone,
+    {
+        match self {
+            Var::Free(name) => allocator.text(name.clone()),
+            Var::Bound(bv) => allocator.text(
+                bv.name
+                    .as_ref()
+                    .cloned()
+                    .unwrap_or_else(|| format!("${}.{}", bv.scope, bv.binder)),
+            ),
+        }
+    }
+}
+
+impl ToPretty for Primitive {
+    fn pretty<'b, D, A>(&'b self, allocator: &'b D) -> DocBuilder<'b, D, A>
+    where
+        D: DocAllocator<'b, A>,
+        D::Doc: Clone,
+        A: Clone,
+    {
+        match self {
+            Primitive::Str(s) => allocator
+                .text("\"")
+                .append(allocator.text(s))
+                .append(allocator.text("\"")),
+            Primitive::Sym(s) => allocator.text(":").append(allocator.text(s)),
+            Primitive::Num(n) => allocator.text(format!("{n}")),
+            Primitive::Bool(b) => allocator.text(if *b { "true" } else { "false" }),
+            Primitive::Null => allocator.text("null"),
+            Primitive::TypeData(s) => allocator
+                .text("s\"")
+                .append(allocator.text(s))
+                .append(allocator.text("\"")),
+        }
+    }
+}
+
+impl ToPretty for Truncated<Primitive> {
+    fn pretty<'b, D, A>(&'b self, allocator: &'b D) -> DocBuilder<'b, D, A>
+    where
+        D: DocAllocator<'b, A>,
+        D::Doc: Clone,
+        A: Clone,
+    {
+        self.content().pretty(allocator)
+    }
+}
+
+impl ToPretty for RcExpr {
+    /// Arrange core expression into compact symbolic pretty doc
+    fn pretty<'b, D, A>(&'b self, allocator: &'b D) -> DocBuilder<'b, D, A>
+    where
+        D: DocAllocator<'b, A>,
+        D::Doc: Clone,
+        A: Clone,
+    {
+        match &*self.inner {
+            Expr::Var(_, v) => v.pretty(allocator),
+            Expr::Name(_, n) => allocator.text(n),
+            Expr::Let(_, scope, _) => {
+                let binding_docs = scope.pattern.iter().map(|b| {
+                    allocator
+                        .text(b.name.clone())
+                        .append(allocator.text(" = "))
+                        .append(b.expr.pretty(allocator))
+                        .group()
+                });
+
+                allocator
+                    .text("let ")
+                    .append(
+                        allocator
+                            .intersperse(binding_docs, allocator.text(";").append(allocator.line()))
+                            .align(),
+                    )
+                    .append(allocator.line())
+                    .append(allocator.text("in "))
+                    .append(scope.body.pretty(allocator))
+                    .group()
+            }
+            Expr::Intrinsic(_, name) => allocator.text(name),
+            Expr::Literal(_, prim) => prim.pretty(allocator),
+            Expr::Lookup(_, target, field, fallback) => {
+                let base_doc = target
+                    .pretty(allocator)
+                    .append(allocator.text("."))
+                    .append(allocator.text(field));
+                match fallback {
+                    None => base_doc,
+                    Some(fb) => base_doc
+                        .append(allocator.text(" ? "))
+                        .append(fb.pretty(allocator)),
+                }
+            }
+            Expr::Block(_, bm) => {
+                if bm.is_empty() {
+                    return allocator.text("{}");
+                }
+                let decl_docs = bm.iter().map(|(k, v)| {
+                    allocator
+                        .text(k)
+                        .append(allocator.text(": "))
+                        .append(v.pretty(allocator))
+                        .group()
+                });
+                allocator
+                    .text("{")
+                    .append(
+                        allocator
+                            .line()
+                            .append(
+                                allocator
+                                    .intersperse(
+                                        decl_docs,
+                                        allocator.text(",").append(allocator.line()),
+                                    )
+                                    .align(),
+                            )
+                            .nest(2),
+                    )
+                    .append(allocator.line())
+                    .append(allocator.text("}"))
+                    .group()
+            }
+            Expr::List(_, xs) => {
+                if xs.is_empty() {
+                    return allocator.text("[]");
+                }
+                let elements_docs = xs.iter().map(|x| x.pretty(allocator));
+                allocator
+                    .text("[")
+                    .append(
+                        allocator
+                            .intersperse(
+                                elements_docs,
+                                allocator.text(",").append(allocator.space()),
+                            )
+                            .group()
+                            .nest(1),
+                    )
+                    .append(allocator.text("]"))
+                    .group()
+            }
+            Expr::BlockAnaphor(_, anaphor) => allocator.text(format!("\u{2022}{anaphor}")),
+            Expr::ExprAnaphor(_, anaphor) => allocator.text(format!("{anaphor}")),
+            Expr::Meta(_, e, m) => {
+                let meta_doc = allocator.text("`").append(m.pretty(allocator)).group();
+
+                meta_doc
+                    .append(allocator.softline())
+                    .append(e.pretty(allocator))
+                    .group()
+            }
+            Expr::ArgTuple(_, xs) => {
+                let elements_docs = xs.iter().map(|x| x.pretty(allocator));
+                allocator
+                    .text("(")
+                    .append(
+                        allocator
+                            .intersperse(
+                                elements_docs,
+                                allocator.text(",").append(allocator.space()),
+                            )
+                            .group()
+                            .nest(1),
+                    )
+                    .append(allocator.text(")"))
+            }
+            Expr::Lam(_, _, scope) => {
+                let parameter_docs = scope
+                    .pattern
+                    .iter()
+                    .map(|name| allocator.text(name.clone()));
+
+                allocator
+                    .text("\u{03bb}(")
+                    .append(allocator.intersperse(parameter_docs, allocator.text(", ")))
+                    .append(allocator.text(")."))
+                    .append(allocator.line())
+                    .append(scope.body.pretty(allocator).nest(2))
+                    .group()
+            }
+            Expr::App(_, f, xs) => {
+                let args_docs = xs.iter().map(|x| x.pretty(allocator));
+
+                // parenthesise lambdas
+                let target = if matches!(&*f.inner, Expr::Lam(_, _, _)) {
+                    allocator
+                        .text("(")
+                        .append(f.pretty(allocator))
+                        .append(allocator.text(")"))
+                } else {
+                    f.pretty(allocator)
+                };
+
+                target
+                    .append(allocator.text("("))
+                    .append(
+                        allocator
+                            .intersperse(args_docs, allocator.text(", "))
+                            .group()
+                            .nest(2),
+                    )
+                    .append(allocator.text(")"))
+                    .group()
+            }
+            Expr::Soup(_, xs, _) => {
+                let elements_docs = xs.iter().map(|x| x.pretty(allocator));
+                allocator
+                    .text("(")
+                    .append(
+                        allocator
+                            .intersperse(elements_docs, allocator.space())
+                            .group()
+                            .nest(2),
+                    )
+                    .append(allocator.text(")"))
+            }
+            Expr::Operator(_, f, p, e) => allocator
+                .text(format!("^{f}({p})^"))
+                .append(e.pretty(allocator)),
+            Expr::ErrUnresolved(_, name) => {
+                allocator.text(format!("\u{26a0}unresolved:{name}\u{26a0}"))
+            }
+            Expr::ErrRedeclaration(_, name) => {
+                allocator.text(format!("\u{26a0}redecl:{name}\u{26a0}"))
+            }
+            Expr::ErrEliminated => allocator.text("\u{20dd}"),
+            Expr::ErrPseudoDot => allocator.text("."),
+            Expr::ErrPseudoCat => allocator.text("CAT"),
+            Expr::ErrPseudoCall => allocator.nil(),
+        }
+    }
+}
+
+#[cfg(test)]
+pub mod tests {
+    use super::*;
+    use crate::{common::prettify::prettify, core::expr::acore::*};
+
+    #[test]
+    pub fn test_var() {
+        assert_eq!(prettify(&var(free("x"))), "x\n");
+    }
+
+    #[test]
+    pub fn test_primitives() {
+        assert_eq!(prettify(&Primitive::Str("blah".to_string())), "\"blah\"\n");
+        assert_eq!(prettify(&Primitive::Sym("foo".to_string())), ":foo\n");
+    }
+
+    #[test]
+    pub fn test_core_exprs() {
+        assert_eq!(prettify(&num(20)), "20\n");
+        assert_eq!(prettify(&bif("HEAD")), "HEAD\n");
+
+        let pseudocat = RcExpr::from(Expr::ErrPseudoCat);
+        let sample = app(
+            bif("HEAD"),
+            vec![app(
+                bif("CONS"),
+                vec![
+                    app(
+                        pseudocat.clone(),
+                        vec![list(vec![num(1), num(2), num(3)]), bif("HEAD")],
+                    ),
+                    app(
+                        pseudocat,
+                        vec![list(vec![num(1), num(2), num(3)]), bif("TAIL")],
+                    ),
+                ],
+            )],
+        );
+        assert_eq!(
+            prettify(&sample),
+            "HEAD(CONS(CAT([1, 2, 3], HEAD), CAT([1, 2, 3], TAIL)))\n"
+        );
+    }
+}

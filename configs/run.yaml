@@ -1,0 +1,21 @@
+# Copy to configs/local.yaml and choose your model. Never commit credentials.
+task_budget_sec: 14400
+enable_cache: false
+api_gateway:
+  port: 4101
+  base_url: ${env:LLM_BASE_URL}
+  api_key: ${env:LLM_API_KEY}
+job:
+  jobs_dir: runs
+  n_attempts: 1
+  n_concurrent_trials: 1
+  environment:
+    type: docker
+  agents:
+    - name: terminus-boxbox
+      model_name: REPLACE_WITH_MODEL_ID
+      kwargs:
+        reasoning_effort: high
+      env:
+        LLM_BASE_URL: ${api_gateway.container_base_url}
+        LLM_API_KEY: ${api_gateway.api_key}

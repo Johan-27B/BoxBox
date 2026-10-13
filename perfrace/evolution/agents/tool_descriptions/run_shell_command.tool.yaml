@@ -1,0 +1,12 @@
+type: tool
+name: run_shell_command
+description: Run a bounded bash command inside the local experiment workspace.
+input_schema:
+  type: object
+  properties:
+    command: {type: string}
+    description: {type: string}
+    dir_path: {type: string}
+    is_background: {type: boolean}
+  required: [command]
+  additionalProperties: false

@@ -1,0 +1,30 @@
+{
+  "frozen_harness": {
+    "task_count": 50,
+    "run_count": 150,
+    "speedup_at_4h": 1.4416324260104925,
+    "mean_model_cost_usd": 23.222720458666664,
+    "mean_task_ratio": 0.21417606721827215
+  },
+  "harness_evolution": {
+    "task_count": 50,
+    "run_count": 150,
+    "speedup_at_4h": 1.2806615417726053,
+    "mean_model_cost_usd": 24.5555961,
+    "mean_task_ratio": 0.1243021337424053
+  },
+  "harness_scaling": {
+    "task_count": 50,
+    "run_count": 150,
+    "speedup_at_4h": 1.538918987187046,
+    "mean_model_cost_usd": 12.984441748666667,
+    "mean_task_ratio": 0.2872463447832722
+  },
+  "boxbox": {
+    "task_count": 50,
+    "run_count": 150,
+    "speedup_at_4h": 1.7022584398199865,
+    "mean_model_cost_usd": 16.429348298666667,
+    "mean_task_ratio": 0.4886157926524298
+  }
+}

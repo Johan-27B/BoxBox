@@ -1,0 +1,513 @@
+//! Hover information for the eucalypt LSP.
+//!
+//! Provides symbol information on hover: declaration kind, parameters,
+//! documentation, and source file.
+
+use std::collections::HashMap;
+
+use super::symbol_table::BracketMode;
+use crate::core::typecheck::types::Type;
+use crate::syntax::rowan::kind::{SyntaxKind, SyntaxNode, SyntaxToken};
+use lsp_types::{Hover, HoverContents, MarkupContent, MarkupKind, Position};
+
+use super::navigation::{bracket_pair_name_for_token, find_identifier_at, resolve_dotted};
+use super::symbol_table::{DeclKind, SymbolInfo, SymbolTable};
+
+/// Produce hover information for the symbol at the given cursor position.
+///
+/// If `type_env` is provided, unannotated symbols will show their inferred
+/// type from the bidirectional checker.
+pub fn hover(
+    source: &str,
+    root: &SyntaxNode,
+    position: &Position,
+    table: &SymbolTable,
+    type_env: Option<&HashMap<String, Type>>,
+) -> Option<Hover> {
+    let offset = super::selection::position_to_offset(source, position);
+
+    // Check for bracket delimiter hover (⟦, ⟧, etc.)
+    if let Some(hover) = bracket_delimiter_hover(root, offset, table) {
+        return Some(hover);
+    }
+
+    // Check for monad tag hover (`:for`, `:io`, etc. in block metadata)
+    if let Some(hover) = monad_tag_hover(root, offset, table) {
+        return Some(hover);
+    }
+
+    let token = find_identifier_at(root, offset)?;
+    let name = identifier_text(&token);
+
+    // Check for dotted access
+    if let Some((prefix, member)) = resolve_dotted(root, &token) {
+        let symbols = table.lookup_qualified(&prefix, &member);
+        if let Some(sym) = symbols.first() {
+            return Some(make_hover(sym, Some(&prefix), type_env));
+        }
+    }
+
+    // Simple name lookup
+    let symbols = table.lookup(&name);
+    let sym = symbols.first()?;
+    Some(make_hover(sym, None, type_env))
+}
+
+/// Build an LSP Hover response from a symbol.
+fn make_hover(
+    sym: &SymbolInfo,
+    qualifier: Option<&str>,
+    type_env: Option<&HashMap<String, Type>>,
+) -> Hover {
+    let mut lines = Vec::new();
+
+    // Signature line
+    let qualified_name = match qualifier {
+        Some(q) => format!("{}.{}", q, sym.name),
+        None => sym.name.clone(),
+    };
+
+    match &sym.kind {
+        DeclKind::Property => {
+            lines.push(format!("**{}** — property", qualified_name));
+        }
+        DeclKind::Function { arity } => {
+            let params = if sym.parameters.is_empty() {
+                format!("{arity} parameter{}", if *arity == 1 { "" } else { "s" })
+            } else {
+                sym.parameters.join(", ")
+            };
+            lines.push(format!("**{}**({}) — function", qualified_name, params));
+        }
+        DeclKind::Operator { fixity } => {
+            lines.push(format!("**{}** — {} operator", qualified_name, fixity));
+        }
+    }
+
+    // Type definition name
+    if let Some(type_def) = &sym.type_def {
+        lines.push(format!("type-def: `{}`", type_def));
+    }
+
+    // Type annotation — prefer explicit annotation, fall back to inferred type
+    if let Some(type_ann) = &sym.type_annotation {
+        lines.push(format!("type: `{}`", type_ann));
+    } else if let Some(ty) = type_env.and_then(|env| env.get(&sym.name)) {
+        if !matches!(ty, Type::Any) {
+            lines.push(format!("inferred: `{}`", ty));
+        }
+    }
+
+    // Source information
+    let uri_str = sym.uri.as_str();
+    if uri_str.starts_with("resource:") || uri_str.contains("prelude") {
+        lines.push("*prelude*".to_string());
+    }
+
+    // Documentation
+    if let Some(doc) = &sym.documentation {
+        lines.push(String::new());
+        lines.push(doc.clone());
+    }
+
+    Hover {
+        contents: HoverContents::Markup(MarkupContent {
+            kind: MarkupKind::Markdown,
+            value: lines.join("\n"),
+        }),
+        range: None,
+    }
+}
+
+/// Produce hover information when the cursor is on a bracket delimiter token
+/// (`BRACKET_OPEN` or `BRACKET_CLOSE`, e.g. `⟦` or `⟧`).
+///
+/// Looks up the bracket pair definition in the symbol table and shows:
+/// - The pair name (e.g. `⟦⟧`)
+/// - The mode (expression or block)
+/// - Any documentation from the definition
+fn bracket_delimiter_hover(
+    root: &SyntaxNode,
+    offset: rowan::TextSize,
+    table: &SymbolTable,
+) -> Option<Hover> {
+    // Try right-biased first so that hovering at the very start of a bracket
+    // character (which is at a token boundary) finds the bracket token rather
+    // than the preceding whitespace.
+    let candidates = root.token_at_offset(offset);
+    let token = candidates
+        .clone()
+        .right_biased()
+        .or_else(|| candidates.left_biased())?;
+
+    if !matches!(
+        token.kind(),
+        SyntaxKind::BRACKET_OPEN | SyntaxKind::BRACKET_CLOSE
+    ) {
+        return None;
+    }
+
+    // Derive the bracket pair name from the parent node's open/close tokens.
+    let pair_name = bracket_pair_name_for_token(&token)?;
+
+    let mut lines = Vec::new();
+    lines.push(format!("**{}** — bracket pair", pair_name));
+
+    // Look up in the symbol table.
+    let symbols = table.lookup(&pair_name);
+    if let Some(sym) = symbols.first() {
+        match &sym.bracket_mode {
+            Some(BracketMode::Block) => {
+                lines.push("mode: block (declarations inside)".to_string());
+            }
+            Some(BracketMode::Expression) => {
+                lines.push("mode: expression".to_string());
+            }
+            None => {}
+        }
+
+        if sym.is_monad {
+            if let Some(monad_type) = &sym.monad_type {
+                lines.push(format!("binding type: `{}`", monad_type));
+            } else {
+                lines.push("monadic (untyped)".to_string());
+            }
+        }
+
+        if let Some(doc) = &sym.documentation {
+            lines.push(String::new());
+            lines.push(doc.clone());
+        }
+    } else {
+        lines.push("*no definition found*".to_string());
+    }
+
+    Some(Hover {
+        contents: HoverContents::Markup(MarkupContent {
+            kind: MarkupKind::Markdown,
+            value: lines.join("\n"),
+        }),
+        range: None,
+    })
+}
+
+/// Produce hover information for a monad tag (`:for`, `:io`, etc.) in block metadata.
+fn monad_tag_hover(
+    root: &SyntaxNode,
+    offset: rowan::TextSize,
+    table: &SymbolTable,
+) -> Option<Hover> {
+    let token = root.token_at_offset(offset).left_biased()?;
+
+    // Must be a SYMBOL token like `:for`
+    if token.kind() != SyntaxKind::SYMBOL {
+        return None;
+    }
+
+    let text = token.text().to_string();
+    let name = text.strip_prefix(':')?;
+
+    // Must be in block metadata position
+    let mut node = token.parent()?;
+    let mut in_meta = false;
+    loop {
+        if node.kind() == SyntaxKind::BLOCK_META {
+            in_meta = true;
+            break;
+        }
+        if node.kind() == SyntaxKind::BLOCK {
+            break;
+        }
+        node = node.parent()?;
+    }
+    if !in_meta {
+        return None;
+    }
+
+    // Look up the monad namespace
+    let symbols = table.lookup(name);
+    let sym = symbols.iter().find(|s| s.is_monad)?;
+
+    let mut lines = Vec::new();
+    lines.push(format!("**:{}** — monad tag", name));
+
+    if let Some(monad_type) = &sym.monad_type {
+        lines.push(format!("binding type: `{}`", monad_type));
+    } else {
+        lines.push("untyped monad (any binding value accepted)".to_string());
+    }
+
+    if let Some(doc) = &sym.documentation {
+        lines.push(String::new());
+        lines.push(doc.clone());
+    }
+
+    Some(Hover {
+        contents: HoverContents::Markup(MarkupContent {
+            kind: MarkupKind::Markdown,
+            value: lines.join("\n"),
+        }),
+        range: None,
+    })
+}
+
+/// Extract the display name from an identifier token.
+fn identifier_text(token: &SyntaxToken) -> String {
+    let text = token.text();
+    match token.kind() {
+        SyntaxKind::SINGLE_QUOTE_IDENTIFIER => text
+            .strip_prefix('\'')
+            .and_then(|t| t.strip_suffix('\''))
+            .unwrap_or(text)
+            .to_string(),
+        _ => text.to_string(),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::driver::lsp::symbol_table::{SymbolSource, SymbolTable};
+    use crate::syntax::rowan::parse_unit;
+
+    fn setup_table(source: &str) -> (SymbolTable, lsp_types::Url) {
+        let uri = lsp_types::Url::parse("file:///test/file.eu").unwrap();
+        let parse = parse_unit(source);
+        let unit = parse.tree();
+        let mut table = SymbolTable::new();
+        table.add_from_unit(&unit, source, &uri, SymbolSource::Local);
+        (table, uri)
+    }
+
+    #[test]
+    fn test_hover_property() {
+        let source = "x: 1\ny: x\n";
+        let (table, _) = setup_table(source);
+        let parse = parse_unit(source);
+        let root = parse.syntax_node();
+
+        let pos = Position {
+            line: 1,
+            character: 3,
+        };
+        let result = hover(source, &root, &pos, &table, None);
+        assert!(result.is_some());
+        let h = result.unwrap();
+        if let HoverContents::Markup(m) = &h.contents {
+            assert!(m.value.contains("property"), "should mention property");
+            assert!(m.value.contains("x"), "should mention name");
+        } else {
+            panic!("expected markup content");
+        }
+    }
+
+    #[test]
+    fn test_hover_function() {
+        let source = "f(a, b): a\ny: f(1, 2)\n";
+        let (table, _) = setup_table(source);
+        let parse = parse_unit(source);
+        let root = parse.syntax_node();
+
+        let pos = Position {
+            line: 1,
+            character: 3,
+        };
+        let result = hover(source, &root, &pos, &table, None);
+        assert!(result.is_some());
+        let h = result.unwrap();
+        if let HoverContents::Markup(m) = &h.contents {
+            assert!(m.value.contains("function"), "should mention function");
+            assert!(m.value.contains("a, b"), "should show parameters");
+        } else {
+            panic!("expected markup content");
+        }
+    }
+
+    #[test]
+    fn test_hover_with_doc() {
+        let source = "` { doc: \"A helper\" }\nf(x): x\ny: f(1)\n";
+        let (table, _) = setup_table(source);
+        let parse = parse_unit(source);
+        let root = parse.syntax_node();
+
+        let pos = Position {
+            line: 2,
+            character: 3,
+        };
+        let result = hover(source, &root, &pos, &table, None);
+        assert!(result.is_some());
+        let h = result.unwrap();
+        if let HoverContents::Markup(m) = &h.contents {
+            assert!(m.value.contains("A helper"), "should include documentation");
+        } else {
+            panic!("expected markup content");
+        }
+    }
+
+    #[test]
+    fn test_hover_shows_type_annotation() {
+        let source = "` { type: \"number -> number\" }\nf(x): x\ny: f(1)\n";
+        let (table, _) = setup_table(source);
+        let parse = parse_unit(source);
+        let root = parse.syntax_node();
+
+        let pos = Position {
+            line: 2,
+            character: 3,
+        };
+        let result = hover(source, &root, &pos, &table, None);
+        assert!(result.is_some());
+        let h = result.unwrap();
+        if let HoverContents::Markup(m) = &h.contents {
+            assert!(
+                m.value.contains("number -> number"),
+                "should show type annotation"
+            );
+        } else {
+            panic!("expected markup content");
+        }
+    }
+
+    #[test]
+    fn test_hover_shows_inferred_type() {
+        use crate::core::typecheck::types::Type;
+
+        let source = "x: 1\ny: x\n";
+        let (table, _) = setup_table(source);
+        let parse = parse_unit(source);
+        let root = parse.syntax_node();
+
+        let mut type_env = HashMap::new();
+        type_env.insert("x".to_string(), Type::Number);
+
+        let pos = Position {
+            line: 1,
+            character: 3,
+        };
+        let result = hover(source, &root, &pos, &table, Some(&type_env));
+        assert!(result.is_some());
+        let h = result.unwrap();
+        if let HoverContents::Markup(m) = &h.contents {
+            assert!(
+                m.value.contains("inferred: `number`"),
+                "should show inferred type, got: {}",
+                m.value
+            );
+        } else {
+            panic!("expected markup content");
+        }
+    }
+
+    #[test]
+    fn test_hover_shows_type_def_and_type() {
+        let source =
+            "` {\n  type-def: \"Assembly\"\n  type: \"{{ block: block }}\" \n}\nFoo: { x: 1 }\ny: Foo\n";
+        let (table, _) = setup_table(source);
+        let parse = parse_unit(source);
+        let root = parse.syntax_node();
+
+        // Hover on 'Foo' usage at line 5
+        let pos = Position {
+            line: 5,
+            character: 3,
+        };
+        let result = hover(source, &root, &pos, &table, None);
+        assert!(result.is_some(), "should have hover result");
+        let h = result.unwrap();
+        if let HoverContents::Markup(m) = &h.contents {
+            assert!(
+                m.value.contains("type-def: `Assembly`"),
+                "should show type-def, got: {}",
+                m.value
+            );
+            assert!(
+                m.value.contains("type: `{ block: block }`"),
+                "should show type annotation, got: {}",
+                m.value
+            );
+        } else {
+            panic!("expected markup content");
+        }
+    }
+
+    #[test]
+    fn test_hover_no_result_for_literal() {
+        let source = "x: 42\n";
+        let (table, _) = setup_table(source);
+        let parse = parse_unit(source);
+        let root = parse.syntax_node();
+
+        let pos = Position {
+            line: 0,
+            character: 3,
+        };
+        let result = hover(source, &root, &pos, &table, None);
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn test_hover_bracket_delimiter_expression_mode() {
+        // Expression-mode bracket: ⟦ x ⟧: x  then use ⟦ 42 ⟧
+        let source = "⟦ x ⟧: x\nresult: ⟦ 42 ⟧\n";
+        let (table, _) = setup_table(source);
+        let parse = parse_unit(source);
+        let root = parse.syntax_node();
+
+        // Verify the symbol table has the bracket pair registered.
+        let syms = table.lookup("⟦⟧");
+        assert!(
+            !syms.is_empty(),
+            "symbol table should have ⟦⟧ entry: {:?}",
+            table.all_names().collect::<Vec<_>>()
+        );
+
+        // Hover at the '⟦' in "result: ⟦ 42 ⟧" (line 1, char 8).
+        let pos = Position {
+            line: 1,
+            character: 8,
+        };
+        let result = hover(source, &root, &pos, &table, None);
+        assert!(
+            result.is_some(),
+            "hover on bracket delimiter should return information"
+        );
+        if let Some(h) = result {
+            if let HoverContents::Markup(m) = h.contents {
+                assert!(
+                    m.value.contains("⟦⟧") || m.value.contains("bracket"),
+                    "hover should mention the bracket pair: {}",
+                    m.value
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn test_hover_bracket_delimiter_block_mode() {
+        // Block-mode bracket: ⟦{}⟧: id  then use ⟦ a: 1 ⟧
+        let source = "⟦{}⟧: id\nresult: ⟦ a: 1 ⟧\n";
+        let (table, _) = setup_table(source);
+        let parse = parse_unit(source);
+        let root = parse.syntax_node();
+
+        // Hover at the '⟦' in "result: ⟦ a: 1 ⟧" (line 1, char 8).
+        let pos = Position {
+            line: 1,
+            character: 8,
+        };
+        let result = hover(source, &root, &pos, &table, None);
+        assert!(
+            result.is_some(),
+            "hover on block-mode bracket should return info"
+        );
+        if let Some(h) = result {
+            if let HoverContents::Markup(m) = h.contents {
+                assert!(
+                    m.value.contains("block"),
+                    "hover should mention block mode: {}",
+                    m.value
+                );
+            }
+        }
+    }
+}
